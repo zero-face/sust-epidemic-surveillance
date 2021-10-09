@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 出行记录表 前端控制器
  * </p>
  *
- * @author zero
+ * @author zyf
  * @since 2021-10-09
  */
 @RestController
-@RequestMapping("/epidemicsurveillance/travel-record")
+@RequestMapping("epidemicsurveillance//travel-record")
 public class TravelRecordController {
 
 }
-

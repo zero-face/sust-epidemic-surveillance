@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.epidemicsurveillance.mapper.AdminMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.epidemicsurveillance.entity.Admin">
+        <id column="id" property="id" />
+        <result column="wechat_id" property="wechatId" />
+        <result column="phone" property="phone" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="country" property="country" />
+        <result column="province" property="province" />
+        <result column="city" property="city" />
+        <result column="token" property="token" />
+        <result column="age" property="age" />
+        <result column="sex" property="sex" />
+        <result column="number" property="number" />
+        <result column="avator" property="avator" />
+        <result column="is_delete" property="isDelete" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, wechat_id, phone, username, password, country, province, city, token, age, sex, number, avator, is_delete, gmt_create, gmt_modified
+    </sql>
+
+</mapper>
