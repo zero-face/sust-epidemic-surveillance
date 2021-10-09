@@ -128,10 +128,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //网页图标
                 "favicon.ico",
                 //Swagger2
-                "/doc.html",
-                "/webjars/**",
-                "/swagger-resources/**",
-                "/v2/api-docs/**",
+                "/doc.html","/webjars/**","/img.icons/**",
+                "/swagger-resources/**","/**","/v2/api-docs", "/swagger-ui.html",
                 //放行图像验证码
                 "/captcha",
                 //WebSocket
