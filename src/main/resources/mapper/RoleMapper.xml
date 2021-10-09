@@ -17,4 +17,15 @@
         id, role_name, collage_id, is_delete, gmt_create, gmt_modified
     </sql>
 
+    <select id="getRoles" resultType="com.example.epidemicsurveillance.entity.Role">
+        SELECT
+            r.id,
+            r.role_name,
+            r.collage_id
+        FROM
+            role AS r
+                LEFT JOIN admin_role AS ar ON r.id = ar.role_id
+        WHERE
+            ar.admin_id = #{adminId}
+    </select>
 </mapper>

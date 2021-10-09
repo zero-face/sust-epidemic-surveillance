@@ -2,7 +2,10 @@ package com.example.epidemicsurveillance.mapper;
 
 import com.example.epidemicsurveillance.entity.Admin;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.epidemicsurveillance.entity.Role;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,4 +18,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface AdminMapper extends BaseMapper<Admin> {
 
+    List<Role> getRoles(Integer adminId);
 }

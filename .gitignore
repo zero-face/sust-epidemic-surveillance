@@ -18,7 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-application-enc.properties
+src/main/resources/application-dev.properties
 CodeGenerator.java
 ### NetBeans ###
 /nbproject/private/

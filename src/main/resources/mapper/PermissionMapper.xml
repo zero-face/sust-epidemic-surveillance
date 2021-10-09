@@ -12,9 +12,37 @@
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
+    <resultMap id="MenusWithRole" type="com.example.epidemicsurveillance.entity.Permission" extends="BaseResultMap">
+        <collection property="roles" ofType="com.example.epidemicsurveillance.entity.Role">
+            <id column="rid" property="id"/>
+            <result column="rname" property="roleName"/>
+            <result column="cid" property="collageId"/>
+            <result column="is_delete" property="isDelete"/>
+        </collection>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, permission_name, url, is_delete, gmt_create, gmt_modified
     </sql>
+
+    <select id="getMenuWithRole" resultMap="MenusWithRole">
+        SELECT
+            m.id, m.permission_name, m.url, m.is_delete, m.gmt_create, m.gmt_modified,
+            r.id AS rid,
+            r.role_name AS rname,
+            r.collage_id AS cid,
+            r.is_delete AS is_delete
+        FROM
+            permission m,
+            role_permission mr,
+            role r
+        WHERE
+            m.id = mr.permission_id
+          AND r.id = mr.role_id
+          AND r.is_delete=0
+        ORDER BY
+            m.id
+    </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.example.epidemicsurveillance.config.security;
 
 
+import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.service.IAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -58,11 +59,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean  //注入到IOC中，在登录时使用到的userDetailsService就是这个Bean，loadUserByUsername方法是这里重写过的
     public UserDetailsService userDetailsService(){
         return username->{
-//            Admin admin=adminService.getAdminByUsername(username);
-//            if(admin != null){
-//                admin.setRoles(adminService.getRoles(admin.getId()));
-//                return admin;
-//            }
+            Admin admin=adminService.getAdminByUsername(username);
+            if(admin != null){
+                admin.setRoles(adminService.getRoles(admin.getId()));
+                return admin;
+            }
             throw new UsernameNotFoundException("用户名或密码错误");
         };
     }

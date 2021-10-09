@@ -4,6 +4,8 @@ import com.example.epidemicsurveillance.entity.Permission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * <p>
  * 权限表 Mapper 接口
@@ -14,5 +16,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public interface PermissionMapper extends BaseMapper<Permission> {
+
+    List<Permission> getMenuWithRole();
 
 }

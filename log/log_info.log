@@ -25,3 +25,59 @@
 2021-10-09 15:52:05.421 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
 2021-10-09 15:52:05.443 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
 2021-10-09 15:52:05.455 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 6.87 seconds (JVM running for 10.073)
+2021-10-09 23:01:06.184 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 16344 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
+2021-10-09 23:01:06.189 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-09 23:01:06.280 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-09 23:01:06.282 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-09 23:01:07.756 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-09 23:01:07.767 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-09 23:01:07.768 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-09 23:01:07.768 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-09 23:01:07.931 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-09 23:01:07.931 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1646 ms
+2021-10-09 23:01:09.870 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-10-09 23:01:09.879 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-10-09 23:02:48.965 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 11928 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
+2021-10-09 23:02:48.970 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-09 23:02:49.018 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-09 23:02:49.018 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-09 23:02:50.259 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-09 23:02:50.269 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-09 23:02:50.270 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-09 23:02:50.270 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-09 23:02:50.441 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-09 23:02:50.442 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1423 ms
+2021-10-09 23:02:52.350 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-10-09 23:02:52.359 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-10-09 23:03:59.525 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 19480 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
+2021-10-09 23:03:59.529 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-09 23:03:59.579 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-09 23:03:59.580 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-09 23:04:01.045 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-09 23:04:01.055 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-09 23:04:01.056 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-09 23:04:01.056 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-09 23:04:01.200 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-09 23:04:01.200 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1620 ms
+2021-10-09 23:04:03.131 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-10-09 23:04:03.139 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-10-09 23:09:46.660 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 21404 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
+2021-10-09 23:09:46.665 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-09 23:09:46.733 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-09 23:09:46.733 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-09 23:09:48.117 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-09 23:09:48.126 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-09 23:09:48.127 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-09 23:09:48.127 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-09 23:09:48.322 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-09 23:09:48.323 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1588 ms
+2021-10-09 23:09:50.463 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
+2021-10-09 23:09:50.473 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
