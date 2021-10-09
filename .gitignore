@@ -18,8 +18,8 @@ target/
 *.iws
 *.iml
 *.ipr
-application-enc.yml
-Generator.java
+application-enc.properties
+CodeGenerator.java
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
