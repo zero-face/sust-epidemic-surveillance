@@ -3,7 +3,11 @@ package com.example.epidemicsurveillance.service;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.epidemicsurveillance.entity.Role;
+import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
+import com.example.epidemicsurveillance.response.ResponseResult;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -19,4 +23,8 @@ public interface IAdminService extends IService<Admin> {
     Admin getAdminByUsername(String username);
 
     List<Role> getRoles(Integer id);
+
+    ResponseResult login(AdminLoginVo adminLoginVo);
+
+    void getKaptcha(HttpServletRequest request, HttpServletResponse response, String key);
 }
