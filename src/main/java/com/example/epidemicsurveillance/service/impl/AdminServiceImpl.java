@@ -1,7 +1,7 @@
 package com.example.epidemicsurveillance.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.epidemicsurveillance.config.security.JwtTokenUtil;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
@@ -9,7 +9,7 @@ import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.AdminMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IAdminService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.epidemicsurveillance.utils.JwtTokenUtil;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

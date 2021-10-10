@@ -44,12 +44,12 @@ public class Swagger2Config {
                 .title("SUST疫情防控平台")
                 .description("SUST疫情防控平台接口文档")
                 .contact(new Contact("朱云飞", "http:localhost:8400/doc.html","2690534598@qq.com"))
-                .version("1.0")
+                .version("1.0.0")
                 .build();
 
     }
 
-    private List<ApiKey> securitySchemes(){
+    private List<ApiKey> securitySchemes() {
         //设置请求头信息
         List<ApiKey> result=new ArrayList<>();
         ApiKey apiKey=new ApiKey("Authorization", "Authorization","Header");

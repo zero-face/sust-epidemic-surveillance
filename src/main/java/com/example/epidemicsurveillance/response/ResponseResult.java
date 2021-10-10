@@ -52,12 +52,12 @@ public class ResponseResult {
     /**
      * 设置信息
      */
-    public ResponseResult success(Boolean success){
+    public ResponseResult success(Boolean success) {
         this.setSuccess(success);
         return this;
     }
 
-    public ResponseResult message(String message){
+    public ResponseResult message(String message) {
         this.setMessage(message);
         return this;
     }

@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.config.security.dynamicroute;
 
 import com.example.epidemicsurveillance.entity.Permission;
 import com.example.epidemicsurveillance.entity.Role;
