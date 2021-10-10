@@ -101,7 +101,7 @@ APPLICATION FAILED TO START
 
 Description:
 
-Field permissionService in com.example.epidemicsurveillance.config.security.CustomFilter required a bean of type 'com.example.epidemicsurveillance.service.IPermissionService' that could not be found.
+Field permissionService in com.example.epidemicsurveillance.config.security.dynamicroute.CustomFilter required a bean of type 'com.example.epidemicsurveillance.service.IPermissionService' that could not be found.
 
 The injection point has the following annotations:
 	- @org.springframework.beans.factory.annotation.Autowired(required=true)

@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.utils;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

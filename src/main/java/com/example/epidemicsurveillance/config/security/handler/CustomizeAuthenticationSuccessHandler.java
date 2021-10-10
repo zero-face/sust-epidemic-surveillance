@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.config.security.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -22,12 +22,10 @@ import java.io.IOException;
  * @Author Zero
  * @Date 2021/10/9 23:52
  * @Since 1.8
- * @Description
+ * @Description 权限认证成功处理器（颁发token）
  **/
 @Component
 public class CustomizeAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-
-
 
     @SneakyThrows
     @Override

@@ -1,485 +1,183 @@
-2021-10-09 15:51:59.252 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 6848 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 15:51:59.256 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 15:51:59.321 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 15:51:59.322 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 15:52:01.164 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 15:52:01.175 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 15:52:01.176 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 15:52:01.177 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 15:52:01.398 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 15:52:01.399 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2075 ms
-2021-10-09 15:52:05.282 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 15:52:05.282 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 15:52:05.283 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 15:52:05.283 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 15:52:05.283 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 15:52:05.283 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 15:52:05.284 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 15:52:05.284 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 15:52:05.284 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 15:52:05.284 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs/**'] with []
-2021-10-09 15:52:05.284 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 15:52:05.285 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 15:52:05.312 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7516e5cb, org.springframework.security.web.context.SecurityContextPersistenceFilter@46b95e1a, org.springframework.security.web.header.HeaderWriterFilter@45ed353d, org.springframework.security.web.authentication.logout.LogoutFilter@7ef2941f, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@5754b078, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7bd61e23, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ed47b09, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63e8ff0a, org.springframework.security.web.session.SessionManagementFilter@4ae0789f, org.springframework.security.web.access.ExceptionTranslationFilter@633411f5, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3737bfe5]
-2021-10-09 15:52:05.388 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 15:52:05.421 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 15:52:05.443 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 15:52:05.455 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 6.87 seconds (JVM running for 10.073)
-2021-10-09 23:01:06.184 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 16344 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:01:06.189 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:01:06.280 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:01:06.282 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:01:07.756 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:01:07.767 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:01:07.768 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:01:07.768 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:01:07.931 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:01:07.931 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1646 ms
-2021-10-09 23:01:09.870 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:01:09.879 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+2021-10-10 12:12:25.129 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 24396 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
+2021-10-10 12:12:25.134 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-10 12:12:25.474 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-10-10 12:12:25.476 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-10-10 12:12:30.379 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-10 12:12:30.398 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:12:30.400 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-10 12:12:30.400 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 12:12:30.405 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2021-10-10 12:12:30.406 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2021-10-10 12:12:30.406 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2021-10-10 12:12:30.407 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-10-10 12:12:31.601 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2021-10-10 12:12:31.718 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-10 12:12:31.719 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 6240 ms
+2021-10-10 12:12:33.619 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2021-10-10 12:12:33.835 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-10-10 12:12:34.149 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
+2021-10-10 12:12:34.150 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
+2021-10-10 12:12:34.150 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
+2021-10-10 12:12:34.150 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
+2021-10-10 12:12:34.151 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
+2021-10-10 12:12:34.151 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
+2021-10-10 12:12:34.151 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
+2021-10-10 12:12:34.152 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
+2021-10-10 12:12:34.152 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
+2021-10-10 12:12:34.152 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-10-10 12:12:34.152 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
+2021-10-10 12:12:34.153 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
+2021-10-10 12:12:34.153 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-10-10 12:12:34.153 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
+2021-10-10 12:12:34.153 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
+2021-10-10 12:12:34.646 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@58e739c, org.springframework.security.web.context.SecurityContextPersistenceFilter@2aa113c, org.springframework.security.web.header.HeaderWriterFilter@323054ab, org.springframework.security.web.authentication.logout.LogoutFilter@32583805, com.example.epidemicsurveillance.config.security.dynamicroute.JwtAuthencationTokenFilter@4d76026d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5b54ad15, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2418a8fe, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@55c25213, org.springframework.security.web.session.SessionManagementFilter@1510a4d1, org.springframework.security.web.access.ExceptionTranslationFilter@d720e21, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5eb505bb]
+2021-10-10 12:12:34.757 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:12:34.792 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
+2021-10-10 12:12:34.794 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2021-10-10 12:12:34.799 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-10-10 12:12:34.855 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-10-10 12:12:34.877 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 10.797 seconds (JVM running for 13.939)
+2021-10-10 12:14:47.644 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 24396 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
+2021-10-10 12:14:47.644 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-10 12:14:49.962 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-10 12:14:49.964 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:14:49.965 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-10 12:14:49.965 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 12:14:49.966 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2021-10-10 12:14:49.966 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2021-10-10 12:14:49.967 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2021-10-10 12:14:49.967 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-10-10 12:14:50.020 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2021-10-10 12:14:50.089 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-10 12:14:50.089 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2439 ms
+2021-10-10 12:14:51.541 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2021-10-10 12:14:51.573 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
+2021-10-10 12:14:51.679 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-10-10 12:14:51.680 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
+2021-10-10 12:14:51.681 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
+2021-10-10 12:14:52.632 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63b951a7, org.springframework.security.web.context.SecurityContextPersistenceFilter@19cd0483, org.springframework.security.web.header.HeaderWriterFilter@1f02a6b3, org.springframework.security.web.authentication.logout.LogoutFilter@7f68670b, com.example.epidemicsurveillance.config.security.dynamicroute.JwtAuthencationTokenFilter@8a02083, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@301da9b6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3a20b638, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2b1d818b, org.springframework.security.web.session.SessionManagementFilter@e574660, org.springframework.security.web.access.ExceptionTranslationFilter@31031f4b, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@20238672]
+2021-10-10 12:14:52.741 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:14:52.742 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
+2021-10-10 12:14:52.743 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2021-10-10 12:14:52.744 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-10-10 12:14:52.747 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-10-10 12:14:52.751 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 5.303 seconds (JVM running for 151.814)
+2021-10-10 12:14:52.753 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2021-10-10 12:14:55.597 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 24396 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
+2021-10-10 12:14:55.598 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-10 12:14:56.346 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-10 12:14:56.347 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:14:56.347 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-10 12:14:56.347 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 12:14:56.348 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2021-10-10 12:14:56.348 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2021-10-10 12:14:56.348 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2021-10-10 12:14:56.348 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-10-10 12:14:56.349 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2021-10-10 12:14:56.365 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-10 12:14:56.366 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 765 ms
+2021-10-10 12:14:57.193 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2021-10-10 12:14:57.238 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-10-10 12:14:57.291 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
+2021-10-10 12:14:57.292 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
+2021-10-10 12:14:57.292 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
+2021-10-10 12:14:57.479 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
+2021-10-10 12:14:57.479 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
+2021-10-10 12:14:57.480 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
+2021-10-10 12:14:57.480 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
+2021-10-10 12:14:57.480 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
+2021-10-10 12:14:57.480 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
+2021-10-10 12:14:57.480 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
+2021-10-10 12:14:57.481 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
+2021-10-10 12:14:57.481 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
+2021-10-10 12:14:57.481 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
+2021-10-10 12:14:57.481 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
+2021-10-10 12:14:57.481 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
+2021-10-10 12:14:57.487 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2db2bf0c, org.springframework.security.web.context.SecurityContextPersistenceFilter@327b9e6, org.springframework.security.web.header.HeaderWriterFilter@71939b25, org.springframework.security.web.authentication.logout.LogoutFilter@3191cfdf, com.example.epidemicsurveillance.config.security.dynamicroute.JwtAuthencationTokenFilter@31aa6661, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1cb86b68, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@711f8169, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@20f832ff, org.springframework.security.web.session.SessionManagementFilter@4b16a614, org.springframework.security.web.access.ExceptionTranslationFilter@17911238, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@68cd0157]
+2021-10-10 12:14:57.542 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
+2021-10-10 12:14:57.544 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
+2021-10-10 12:14:57.545 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2021-10-10 12:14:57.549 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-10-10 12:14:57.560 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-10-10 12:14:57.571 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 2.222 seconds (JVM running for 156.633)
+2021-10-10 12:14:57.575 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2021-10-10 13:10:30.753 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 24396 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
+2021-10-10 13:10:30.753 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
+2021-10-10 13:10:33.387 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
+2021-10-10 13:10:33.387 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
+2021-10-10 13:10:33.388 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2021-10-10 13:10:33.388 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-10-10 13:10:33.388 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
+2021-10-10 13:10:33.388 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
+2021-10-10 13:10:33.389 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
+2021-10-10 13:10:33.389 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
+2021-10-10 13:10:33.432 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
+2021-10-10 13:10:33.467 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2021-10-10 13:10:33.467 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2711 ms
+2021-10-10 13:10:35.262 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
+2021-10-10 13:10:35.327 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2021-10-10 13:10:35.420 [restartedMain] INFO  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:02:48.965 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 11928 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:02:48.970 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:02:49.018 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:02:49.018 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:02:50.259 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:02:50.269 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:02:50.270 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:02:50.270 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:02:50.441 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:02:50.442 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1423 ms
-2021-10-09 23:02:52.350 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:02:52.359 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+Using generated security password: 322c01f1-86b5-420b-866c-be22e8eb20c1
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:03:59.525 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 19480 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:03:59.529 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:03:59.579 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:03:59.580 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:04:01.045 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:04:01.055 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:04:01.056 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:04:01.056 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:04:01.200 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:04:01.200 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1620 ms
-2021-10-09 23:04:03.131 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:04:03.139 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+2021-10-10 13:10:35.533 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@85591f6, org.springframework.security.web.context.SecurityContextPersistenceFilter@5abbbc95, org.springframework.security.web.header.HeaderWriterFilter@708b7ba5, org.springframework.security.web.csrf.CsrfFilter@7fc3b674, org.springframework.security.web.authentication.logout.LogoutFilter@215e48f4, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@656e96f6, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@4e4ca07f, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@4100806c, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@ce47b00, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f6c8493, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14919688, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6e93df37, org.springframework.security.web.session.SessionManagementFilter@129903d6, org.springframework.security.web.access.ExceptionTranslationFilter@13c91c0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6bbdc4c5]
+2021-10-10 13:10:35.590 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
+2021-10-10 13:10:35.592 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
+2021-10-10 13:10:35.594 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
+2021-10-10 13:10:35.595 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
+2021-10-10 13:10:35.602 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
+2021-10-10 13:10:35.608 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 5.103 seconds (JVM running for 3494.682)
+2021-10-10 13:10:35.614 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation delta:
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:09:46.660 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 21404 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:09:46.665 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:09:46.733 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:09:46.733 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:09:48.117 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:09:48.126 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:09:48.127 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:09:48.127 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:09:48.322 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:09:48.323 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1588 ms
-2021-10-09 23:09:50.463 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:09:50.473 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:13:02.122 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 9852 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:13:02.125 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:13:02.177 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:13:02.177 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:13:03.875 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:13:03.884 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:13:03.885 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:13:03.885 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:13:04.041 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:13:04.042 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1864 ms
-2021-10-09 23:13:06.383 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:13:06.481 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:13:06.675 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:13:06.676 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:13:06.676 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:13:06.676 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:13:06.676 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs/**'] with []
-2021-10-09 23:13:06.677 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:13:06.678 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:13:06.703 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6cbab247, org.springframework.security.web.context.SecurityContextPersistenceFilter@63634cbd, org.springframework.security.web.header.HeaderWriterFilter@707c1397, org.springframework.security.web.authentication.logout.LogoutFilter@10253c1c, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@6e76032, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c3f9406, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@39f7d27a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14840a1a, org.springframework.security.web.session.SessionManagementFilter@35e173d2, org.springframework.security.web.access.ExceptionTranslationFilter@3c3016a2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@45ba16f]
-2021-10-09 23:13:06.777 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:13:06.792 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:13:06.793 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:13:06.795 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:13:06.815 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:13:06.828 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 5.211 seconds (JVM running for 6.971)
-2021-10-09 23:13:30.309 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:13:30.310 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:13:30.312 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2021-10-09 23:13:30.895 [http-nio-8400-exec-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2021-10-09 23:13:32.504 [http-nio-8400-exec-10] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2021-10-09 23:19:11.806 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 2984 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:19:11.810 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:19:11.870 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:19:11.870 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:19:13.479 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:19:13.487 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:19:13.488 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:19:13.488 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:19:13.646 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:19:13.646 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1775 ms
-2021-10-09 23:19:15.705 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:19:15.819 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:19:16.004 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:19:16.004 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:19:16.004 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:19:16.004 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:19:16.004 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:19:16.005 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:19:16.005 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:19:16.005 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:19:16.005 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:19:16.006 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs/**'] with []
-2021-10-09 23:19:16.006 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:19:16.006 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:19:16.027 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@468bf055, org.springframework.security.web.context.SecurityContextPersistenceFilter@11152780, org.springframework.security.web.header.HeaderWriterFilter@37b8cde3, org.springframework.security.web.authentication.logout.LogoutFilter@12f3245e, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@2750c34d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a00e6ec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1214b4cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4659ac1e, org.springframework.security.web.session.SessionManagementFilter@61750890, org.springframework.security.web.access.ExceptionTranslationFilter@59d273fe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e861c5c]
-2021-10-09 23:19:16.107 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:19:16.122 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:19:16.123 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:19:16.125 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:19:16.146 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:19:16.159 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 4.825 seconds (JVM running for 6.487)
-2021-10-09 23:20:16.426 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:20:16.426 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:20:16.430 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2021-10-09 23:20:40.520 [http-nio-8400-exec-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2021-10-09 23:20:41.870 [http-nio-8400-exec-9] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2021-10-09 23:21:14.517 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 20112 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:21:14.521 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:21:14.585 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:21:14.586 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:21:15.921 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:21:15.929 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:21:15.930 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:21:15.930 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:21:16.057 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:21:16.057 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1470 ms
-2021-10-09 23:21:18.418 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:21:18.546 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:21:18.822 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:21:18.823 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:21:18.824 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:21:18.824 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:21:18.825 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:21:18.825 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:21:18.825 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:21:18.826 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:21:18.826 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:21:18.826 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs/**'] with []
-2021-10-09 23:21:18.827 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:21:18.827 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:21:18.865 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2b8c4323, org.springframework.security.web.context.SecurityContextPersistenceFilter@23aedb7c, org.springframework.security.web.header.HeaderWriterFilter@42c86d84, org.springframework.security.web.authentication.logout.LogoutFilter@f513f, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@66c19ab7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@725ec94d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@aa520f8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@d5f5206, org.springframework.security.web.session.SessionManagementFilter@32adc029, org.springframework.security.web.access.ExceptionTranslationFilter@69eaadd0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@12ae9509]
-2021-10-09 23:21:18.988 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:21:19.005 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:21:19.006 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:21:19.008 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:21:19.038 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:21:19.055 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 5.145 seconds (JVM running for 7.116)
-2021-10-09 23:21:32.918 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:21:32.918 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:21:32.922 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-2021-10-09 23:22:10.189 [http-nio-8400-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2021-10-09 23:22:11.507 [http-nio-8400-exec-6] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2021-10-09 23:24:11.447 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 23372 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:24:11.451 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:24:11.501 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:24:11.502 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:24:12.986 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:24:12.994 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:24:12.995 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:24:12.995 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:24:13.147 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:24:13.147 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1644 ms
-2021-10-09 23:24:15.425 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:24:15.520 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:24:15.684 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:24:15.685 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html#/**'] with []
-2021-10-09 23:24:15.686 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:24:15.686 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:24:15.686 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs/**'] with []
-2021-10-09 23:24:15.686 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:24:15.686 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:24:15.709 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b310960, org.springframework.security.web.context.SecurityContextPersistenceFilter@2bf3da3b, org.springframework.security.web.header.HeaderWriterFilter@103b8d67, org.springframework.security.web.authentication.logout.LogoutFilter@15001784, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@29385c4b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67accf7d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4501e992, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6130af16, org.springframework.security.web.session.SessionManagementFilter@5579715b, org.springframework.security.web.access.ExceptionTranslationFilter@5afd2311, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@55f438a7]
-2021-10-09 23:24:15.791 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:24:15.804 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:24:15.805 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:24:15.808 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:24:15.827 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:24:15.837 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 4.985 seconds (JVM running for 7.036)
-2021-10-09 23:24:20.713 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:24:20.713 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:24:20.715 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2021-10-09 23:24:20.759 [http-nio-8400-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2021-10-09 23:24:22.130 [http-nio-8400-exec-1] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2021-10-09 23:27:00.462 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 21620 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:27:00.466 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:27:00.521 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:27:00.522 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:27:01.779 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:27:01.794 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:27:01.795 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:27:01.795 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:27:01.917 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:27:01.918 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1395 ms
-2021-10-09 23:27:03.844 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:27:03.938 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:27:04.110 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:27:04.110 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:27:04.110 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:27:04.110 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:27:04.110 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
-2021-10-09 23:27:04.111 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
-2021-10-09 23:27:04.112 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
-2021-10-09 23:27:04.112 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:27:04.112 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:27:04.132 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@468bf055, org.springframework.security.web.context.SecurityContextPersistenceFilter@11152780, org.springframework.security.web.header.HeaderWriterFilter@37b8cde3, org.springframework.security.web.authentication.logout.LogoutFilter@12f3245e, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@2750c34d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@a00e6ec, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1214b4cc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4659ac1e, org.springframework.security.web.session.SessionManagementFilter@61750890, org.springframework.security.web.access.ExceptionTranslationFilter@59d273fe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e861c5c]
-2021-10-09 23:27:04.200 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:27:04.215 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:27:04.216 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:27:04.219 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:27:04.236 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:27:04.248 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 4.326 seconds (JVM running for 6.302)
-2021-10-09 23:27:10.206 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:27:10.207 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:27:10.211 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 4 ms
-2021-10-09 23:27:54.882 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 9936 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:27:54.886 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:27:54.934 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:27:54.934 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:27:56.329 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:27:56.338 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:27:56.339 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:27:56.339 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:27:56.499 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:27:56.500 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1565 ms
-2021-10-09 23:27:58.548 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:27:58.645 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:27:58.801 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:27:58.801 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:27:58.801 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html#/**'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
-2021-10-09 23:27:58.802 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:27:58.803 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
-2021-10-09 23:27:58.803 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
-2021-10-09 23:27:58.803 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
-2021-10-09 23:27:58.803 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:27:58.803 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:27:58.821 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@37b624ba, org.springframework.security.web.context.SecurityContextPersistenceFilter@3ac7bc6d, org.springframework.security.web.header.HeaderWriterFilter@4f13e95a, org.springframework.security.web.authentication.logout.LogoutFilter@6a3c3bd6, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@4ccaa9c2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76c85cb1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4e7886fc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@18e3fd32, org.springframework.security.web.session.SessionManagementFilter@f3dab98, org.springframework.security.web.access.ExceptionTranslationFilter@4fc14574, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4ed33028]
-2021-10-09 23:27:58.892 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:27:58.905 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:27:58.906 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:27:58.909 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:27:58.927 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:27:58.939 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 4.617 seconds (JVM running for 6.336)
-2021-10-09 23:28:02.685 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:28:02.686 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:28:02.689 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2021-10-09 23:28:47.458 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_192 on LAPTOP-94NLQ9G0 with PID 23060 (D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance\target\classes started by 26905 in D:\project\sust-epidemic-surveillance\sust-epidemic-surveillance)
-2021-10-09 23:28:47.462 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:28:47.516 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:28:47.517 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:28:48.976 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:28:48.986 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:28:48.987 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:28:48.988 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:28:49.141 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:28:49.141 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1623 ms
-2021-10-09 23:28:51.213 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:28:51.307 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:28:51.474 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:28:51.474 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:28:51.475 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:28:51.476 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:28:51.498 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@458134af, org.springframework.security.web.context.SecurityContextPersistenceFilter@773525d7, org.springframework.security.web.header.HeaderWriterFilter@267c1e2b, org.springframework.security.web.authentication.logout.LogoutFilter@6e10e8e8, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@6b76d8c9, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5bcd6790, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ca97974, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@288fdd41, org.springframework.security.web.session.SessionManagementFilter@3d708042, org.springframework.security.web.access.ExceptionTranslationFilter@5a442c41, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@471bcc7]
-2021-10-09 23:28:51.572 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:28:51.587 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:28:51.588 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:28:51.590 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:28:51.611 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:28:51.624 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 4.667 seconds (JVM running for 6.371)
-2021-10-09 23:28:55.627 [http-nio-8400-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-10-09 23:28:55.628 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2021-10-09 23:28:55.631 [http-nio-8400-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
-2021-10-09 23:44:29.091 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22900 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:44:29.095 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:44:29.203 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:44:29.204 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:44:31.985 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:44:32.009 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:44:32.011 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:44:32.011 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:44:32.035 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:44:32.036 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:44:32.036 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:44:32.036 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:44:33.266 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:44:33.339 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:44:33.340 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4136 ms
-2021-10-09 23:44:33.469 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:44:33.529 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+==========================
+CONDITION EVALUATION DELTA
+==========================
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:46:18.760 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22736 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:46:18.764 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:46:18.813 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2021-10-09 23:46:18.813 [restartedMain] INFO  o.s.b.d.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2021-10-09 23:46:20.591 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:46:20.599 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:46:20.600 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:46:20.600 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:46:20.602 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:46:20.603 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:46:20.603 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:46:20.603 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:46:21.705 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:46:21.834 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:46:21.835 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3021 ms
-2021-10-09 23:46:23.975 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:46:24.127 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:46:24.423 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:46:24.424 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:46:24.425 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:46:24.425 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
-2021-10-09 23:46:24.425 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:46:24.425 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
-2021-10-09 23:46:24.426 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
-2021-10-09 23:46:24.426 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
-2021-10-09 23:46:24.426 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:46:24.426 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:46:25.400 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5c34af33, org.springframework.security.web.context.SecurityContextPersistenceFilter@64cb33e6, org.springframework.security.web.header.HeaderWriterFilter@4b9a9db, org.springframework.security.web.authentication.logout.LogoutFilter@16fee127, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@57c8a4c4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5425a42e, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4b841d83, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7dfcb0eb, org.springframework.security.web.session.SessionManagementFilter@514e394f, org.springframework.security.web.access.ExceptionTranslationFilter@390dda10, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5ca5cc16]
-2021-10-09 23:46:25.505 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:46:25.531 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:46:25.532 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:46:25.535 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:46:25.568 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:46:25.582 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 7.202 seconds (JVM running for 8.211)
-2021-10-09 23:52:22.892 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22736 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:52:22.892 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:52:23.142 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:52:23.142 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:52:23.143 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:52:23.144 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:52:23.159 [restartedMain] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:52:23.160 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 264 ms
-2021-10-09 23:52:24.849 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:52:24.867 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:52:26.539 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22736 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:52:26.540 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:52:26.796 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:52:26.797 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:52:26.797 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:52:26.797 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:52:26.798 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:52:26.798 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:52:26.798 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:52:26.799 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:52:26.799 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:52:26.861 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:52:26.861 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 318 ms
-2021-10-09 23:52:26.881 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:52:26.886 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+Positive matches:
+-----------------
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:52:31.359 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22736 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:52:31.359 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:52:31.778 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:52:31.780 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:52:31.781 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:52:31.782 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:52:31.782 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:52:31.783 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:52:31.783 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:52:31.784 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:52:31.785 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:52:31.824 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:52:31.824 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 461 ms
-2021-10-09 23:52:31.850 [restartedMain] INFO  org.apache.catalina.core.StandardService - Stopping service [Tomcat]
-2021-10-09 23:52:31.857 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+   SpringBootWebSecurityConfiguration matched:
+      - found 'session' scope (OnWebApplicationCondition)
+      - AllNestedConditions 2 matched 0 did not; NestedCondition on DefaultWebSecurityCondition.Beans @ConditionalOnMissingBean (types: org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter,org.springframework.security.web.SecurityFilterChain; SearchStrategy: all) did not find any beans; NestedCondition on DefaultWebSecurityCondition.Classes @ConditionalOnClass found required classes 'org.springframework.security.web.SecurityFilterChain', 'org.springframework.security.config.annotation.web.builders.HttpSecurity' (DefaultWebSecurityCondition)
 
-Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
-2021-10-09 23:52:35.346 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Starting EpidemicSurveillanceApplication using Java 1.8.0_281 on zero with PID 22736 (F:\JAVA\code\sust-epidemic-surveillance\target\classes started by Administrator in F:\JAVA\code\sust-epidemic-surveillance)
-2021-10-09 23:52:35.346 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - The following profiles are active: dev
-2021-10-09 23:52:35.820 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8400 (http)
-2021-10-09 23:52:35.821 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:52:35.822 [restartedMain] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2021-10-09 23:52:35.823 [restartedMain] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.53]
-2021-10-09 23:52:35.823 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - An older version [1.2.16] of the Apache Tomcat Native library is installed, while Tomcat recommends a minimum version of [1.2.30]
-2021-10-09 23:52:35.823 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - Loaded Apache Tomcat Native library [1.2.16] using APR version [1.6.3].
-2021-10-09 23:52:35.824 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR capabilities: IPv6 [true], sendfile [true], accept filters [false], random [true], UDS [false].
-2021-10-09 23:52:35.824 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - APR/OpenSSL configuration: useAprConnector [false], useOpenSSL [true]
-2021-10-09 23:52:35.825 [restartedMain] INFO  org.apache.catalina.core.AprLifecycleListener - OpenSSL successfully initialized [OpenSSL 1.0.2m  2 Nov 2017]
-2021-10-09 23:52:35.844 [restartedMain] INFO  o.a.c.c.ContainerBase.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2021-10-09 23:52:35.844 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 495 ms
-2021-10-09 23:52:36.503 [restartedMain] INFO  s.d.s.w.WebMvcPropertySourcedRequestMappingHandlerMapping - Mapped URL path [/v2/api-docs] onto method [springfox.documentation.swagger2.web.Swagger2ControllerWebMvc#getDocumentation(String, HttpServletRequest)]
-2021-10-09 23:52:36.529 [restartedMain] INFO  o.s.b.d.autoconfigure.OptionalLiveReloadServer - LiveReload server is running on port 35729
-2021-10-09 23:52:36.556 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/login'] with []
-2021-10-09 23:52:36.556 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/logout'] with []
-2021-10-09 23:52:36.556 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/css/**'] with []
-2021-10-09 23:52:36.912 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/js/**'] with []
-2021-10-09 23:52:36.913 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/index.html'] with []
-2021-10-09 23:52:36.913 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='favicon.ico'] with []
-2021-10-09 23:52:36.914 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/doc.html'] with []
-2021-10-09 23:52:36.914 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/webjars/**'] with []
-2021-10-09 23:52:36.914 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/img.icons/**'] with []
-2021-10-09 23:52:36.914 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-resources/**'] with []
-2021-10-09 23:52:36.915 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/**'] with []
-2021-10-09 23:52:36.915 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/v2/api-docs'] with []
-2021-10-09 23:52:36.915 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/swagger-ui.html'] with []
-2021-10-09 23:52:36.915 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/captcha'] with []
-2021-10-09 23:52:36.915 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure Ant [pattern='/ws/**'] with []
-2021-10-09 23:52:36.923 [restartedMain] INFO  o.s.security.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@32fbd38e, org.springframework.security.web.context.SecurityContextPersistenceFilter@21dd5b54, org.springframework.security.web.header.HeaderWriterFilter@32bd1397, org.springframework.security.web.authentication.logout.LogoutFilter@22fb9151, com.example.epidemicsurveillance.config.security.JwtAuthencationTokenFilter@68b60e2e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17f52e0a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4d0eb6c8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5906953b, org.springframework.security.web.session.SessionManagementFilter@764a5ae3, org.springframework.security.web.access.ExceptionTranslationFilter@366af1a, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@17004ce1]
-2021-10-09 23:52:37.014 [restartedMain] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8400"]
-2021-10-09 23:52:37.020 [restartedMain] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8400 (http) with context path ''
-2021-10-09 23:52:37.025 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Documentation plugins bootstrapped
-2021-10-09 23:52:37.028 [restartedMain] INFO  s.d.s.web.plugins.DocumentationPluginsBootstrapper - Found 1 custom documentation plugin(s)
-2021-10-09 23:52:37.051 [restartedMain] INFO  s.d.spring.web.scanners.ApiListingReferenceScanner - Scanning for api listing references
-2021-10-09 23:52:37.061 [restartedMain] INFO  com.example.EpidemicSurveillanceApplication - Started EpidemicSurveillanceApplication in 1.755 seconds (JVM running for 379.69)
-2021-10-09 23:52:37.068 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+   UserDetailsServiceAutoConfiguration matched:
+      - @ConditionalOnClass found required class 'org.springframework.security.authentication.AuthenticationManager' (OnClassCondition)
+      - @ConditionalOnBean (types: org.springframework.security.config.annotation.ObjectPostProcessor; SearchStrategy: all) found bean 'objectPostProcessor'; @ConditionalOnMissingBean (types: org.springframework.security.authentication.AuthenticationManager,org.springframework.security.authentication.AuthenticationProvider,org.springframework.security.core.userdetails.UserDetailsService,org.springframework.security.oauth2.jwt.JwtDecoder,org.springframework.security.oauth2.server.resource.introspection.OpaqueTokenIntrospector; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+   UserDetailsServiceAutoConfiguration#inMemoryUserDetailsManager matched:
+      - @ConditionalOnMissingBean (types: org.springframework.security.oauth2.client.registration.ClientRegistrationRepository; SearchStrategy: all) did not find any beans (OnBeanCondition)
+
+
+Negative matches:
+-----------------
+
+    None
+
+
+Exclusions:
+-----------
+
+    None
+
+
+Unconditional classes:
+----------------------
+
+    None
+
+
+

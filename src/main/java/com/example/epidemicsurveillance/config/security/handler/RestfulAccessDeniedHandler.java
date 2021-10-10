@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.config.security.handler;
 
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.fasterxml.jackson.databind.ObjectMapper;

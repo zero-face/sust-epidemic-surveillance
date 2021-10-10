@@ -1,5 +1,6 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.config.security.dynamicroute;
 
+import com.example.epidemicsurveillance.utils.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

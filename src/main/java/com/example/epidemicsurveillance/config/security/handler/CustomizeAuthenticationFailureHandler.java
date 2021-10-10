@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security;
+package com.example.epidemicsurveillance.config.security.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.example.epidemicsurveillance.response.ResponseResult;
