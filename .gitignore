@@ -20,6 +20,9 @@ target/
 *.ipr
 src/main/resources/application-dev.properties
 CodeGenerator.java
+log_error.log
+log_info.log
+log_warn.log
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
