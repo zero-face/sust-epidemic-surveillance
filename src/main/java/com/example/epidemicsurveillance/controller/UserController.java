@@ -50,13 +50,16 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
     private String GETOPENIDURL= "https://api.weixin.qq.com/sns/jscode2session";
 
 
 
     @PostMapping("/code")
     @ApiOperation("根据code获取openid并得到登录token")
-    public ResponseResult receiveCode(@RequestParam("code") String code, User user) {
+    public ResponseResult receiveCode(@RequestParam("code") String code, User user) throws NoSuchAlgorithmException, InvalidKeySpecException {
         log.info("获取code开始=========》{}",code);
         //接收到临时登录的code，向微信服务器发起请求，获取openid,session_key，unionid
         Map<String,String> map = new HashMap<>();
@@ -84,7 +87,7 @@ public class UserController {
         final Map<String, Object> maps = new HashMap<String, Object>(){{
             put("username", user.getNickname());
         }};
-        final String token = JwtTokenUtil.generateToken(maps);
+        final String token = jwtTokenUtil.generateToken(maps);
         final User id = userService.getOne(new QueryWrapper<User>().eq("open_id", openid));
         final UserVO userVO = new UserVO();
         BeanUtils.copyProperties(id, userVO);
