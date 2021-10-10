@@ -3,7 +3,7 @@ package com.example.epidemicsurveillance.config.security;
 
 import com.example.epidemicsurveillance.config.security.dynamicroute.CustomFilter;
 import com.example.epidemicsurveillance.config.security.dynamicroute.CustomUrlDecisionManager;
-import com.example.epidemicsurveillance.config.security.dynamicroute.JwtAuthencationTokenFilter;
+import com.example.epidemicsurveillance.config.security.jwtfilter.JwtAuthencationTokenFilter;
 import com.example.epidemicsurveillance.config.security.handler.*;
 import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;

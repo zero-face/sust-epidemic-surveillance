@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security.dynamicroute;
+package com.example.epidemicsurveillance.config.security.jwtfilter;
 
 import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
 import com.example.epidemicsurveillance.utils.JwtTokenUtil;
