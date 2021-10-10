@@ -10,6 +10,7 @@ import com.example.epidemicsurveillance.mapper.AdminMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IAdminService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.epidemicsurveillance.utils.JwtTokenUtil;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
