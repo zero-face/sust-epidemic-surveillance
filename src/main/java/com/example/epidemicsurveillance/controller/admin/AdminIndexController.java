@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 
 
 /**
@@ -38,7 +40,7 @@ public class AdminIndexController {
     @ApiOperation(value = "管理员登录")
     @PostMapping("/login")
     public ResponseResult login(@ApiParam(name = "adminLoginVo",value = "管理员对象",required = true)
-                                @RequestBody AdminLoginVo adminLoginVo){
+                                @RequestBody AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return adminService.login(adminLoginVo);
     }
 
