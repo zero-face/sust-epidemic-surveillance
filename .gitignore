@@ -14,13 +14,18 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-log
+Database-SQL
+log.path_IS_UNDEFINED
 .idea
 *.iws
 *.iml
 *.ipr
 src/main/resources/application-dev.properties
 CodeGenerator.java
+log
+log_error.log
+log_info.log
+log_warn.log
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

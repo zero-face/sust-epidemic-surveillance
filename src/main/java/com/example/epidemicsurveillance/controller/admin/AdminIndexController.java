@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  * @Date 2021/10/10 12:09
  * @Version 1.0
  **/
-@RequestMapping("/admin/epidemicsurveillance/index")
+@RequestMapping("/api/v1/admin")
 @RestController
 @CrossOrigin
 @Api(tags = "后台用户管理模块")

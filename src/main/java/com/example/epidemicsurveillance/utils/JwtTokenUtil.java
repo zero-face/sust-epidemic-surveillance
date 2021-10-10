@@ -62,7 +62,7 @@ public class JwtTokenUtil {
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())//添加失效时间
-                .signWith(SignatureAlgorithm.RS256,secret)//添加密钥以及加密方式
+                .signWith(SignatureAlgorithm.HS512,secret)//添加密钥以及加密方式
                 .compact();
     }
 
