@@ -8,6 +8,8 @@ import com.example.epidemicsurveillance.response.ResponseResult;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 
 /**
@@ -24,7 +26,7 @@ public interface IAdminService extends IService<Admin> {
 
     List<Role> getRoles(Integer id);
 
-    ResponseResult login(AdminLoginVo adminLoginVo);
+    ResponseResult login(AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException;
 
     void getKaptcha(HttpServletRequest request, HttpServletResponse response, String key);
 }

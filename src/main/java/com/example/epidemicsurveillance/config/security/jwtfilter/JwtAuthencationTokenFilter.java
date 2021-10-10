@@ -2,6 +2,7 @@ package com.example.epidemicsurveillance.config.security.jwtfilter;
 
 import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
 import com.example.epidemicsurveillance.utils.JwtTokenUtil;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -38,6 +39,7 @@ public class JwtAuthencationTokenFilter extends OncePerRequestFilter {
     @Autowired
     private MyUserDetailService userDetailsService;
 
+    @SneakyThrows
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         //token存储在Jwt的请求头中

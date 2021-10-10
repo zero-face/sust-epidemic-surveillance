@@ -7,6 +7,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,8 +40,11 @@ public class JwtTokenUtil {
      * default_value，就是前面的值为空时的默认值。注意二者的不同，#{}里面那个obj代表对象。
      */
     //JWT密钥
-    @Value("${jwt.secret}")
-    private  String secret;
+    @Value("${jwt.publicKey}")
+    private String publicKey;
+
+    @Value("${jwt.privateKey}")
+    private String privateKey;
 
     //JWT失效时间
     @Value("${jwt.expiration}")
@@ -45,7 +56,7 @@ public class JwtTokenUtil {
      * @param userDetails
      * @return
      */
-    public String generateToken(UserDetails userDetails){
+    public String generateToken(UserDetails userDetails) throws NoSuchAlgorithmException, InvalidKeySpecException {
         //荷载
         Map<String,Object> claim=new HashMap<>();
         claim.put(CLAIM_KEY_USERNAME,userDetails.getUsername());
@@ -58,11 +69,12 @@ public class JwtTokenUtil {
      * @param claims
      * @return
      */
-    private String generateToken(Map<String,Object> claims) {
+    public String generateToken(Map<String, Object> claims) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        PrivateKey key = KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(Base64.getDecoder().decode(privateKey)));
         return Jwts.builder()
                 .setClaims(claims)
                 .setExpiration(generateExpirationDate())//添加失效时间
-                .signWith(SignatureAlgorithm.HS512,secret)//添加密钥以及加密方式
+                .signWith(SignatureAlgorithm.RS256,key)//添加密钥以及加密方式
                 .compact();
     }
 
@@ -98,11 +110,12 @@ public class JwtTokenUtil {
      * @param token
      * @return
      */
-    private Claims getClaimFromToken(String token) {
+    private Claims getClaimFromToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        PublicKey key = KeyFactory.getInstance("RSA").generatePublic(new X509EncodedKeySpec(Base64.getDecoder().decode(publicKey)));
         Claims claims=null;
         try {
             claims=Jwts.parser()
-                    .setSigningKey(secret)
+                    .setSigningKey(key)
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception e) {
@@ -119,7 +132,7 @@ public class JwtTokenUtil {
      * @param userDetails
      * @return
      */
-    public boolean TokenIsValid(String token, UserDetails userDetails){
+    public boolean TokenIsValid(String token, UserDetails userDetails) throws NoSuchAlgorithmException, InvalidKeySpecException {
         String username = getUsernameFormToken(token);
         return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
@@ -129,7 +142,7 @@ public class JwtTokenUtil {
      * @param token
      * @return
      */
-    private boolean isTokenExpired(String token) {
+    private boolean isTokenExpired(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
         //获取Token的失效时间
         Date expireDate=getExpiredDateFromToken(token);
         //在当前时间之前，则失效
@@ -141,7 +154,7 @@ public class JwtTokenUtil {
      * @param token
      * @return
      */
-    private Date getExpiredDateFromToken(String token) {
+    private Date getExpiredDateFromToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
         Claims claims = getClaimFromToken(token);
         return claims.getExpiration();
     }
@@ -153,7 +166,7 @@ public class JwtTokenUtil {
      * @param token
      * @return
      */
-    public boolean canRefresh(String token){
+    public boolean canRefresh(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return !isTokenExpired(token);
     }
 
@@ -162,7 +175,7 @@ public class JwtTokenUtil {
      * @param token
      * @return
      */
-    public String refreshToken(String token){
+    public String refreshToken(String token) throws NoSuchAlgorithmException, InvalidKeySpecException {
         Claims claims=getClaimFromToken(token);
         claims.put(CLAIM_KEY_CREATED,new Date());
         return generateToken(claims);
