@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.config.security.handler;
+package com.example.epidemicsurveillance.config.security.dynamicroute;
 
 import com.example.epidemicsurveillance.config.security.dynamicroute.CustomFilter;
 import org.springframework.beans.factory.annotation.Autowired;
