@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.vo;
+package com.example.epidemicsurveillance.entity.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

@@ -1,7 +1,6 @@
 package com.example.epidemicsurveillance.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.epidemicsurveillance.config.security.JwtTokenUtil;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
@@ -24,6 +23,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -111,7 +112,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     }
 
     @Override
-    public ResponseResult login(AdminLoginVo adminLoginVo) {
+    public ResponseResult login(AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
         ValueOperations<String, Object> operations = redisTemplate.opsForValue();
         String kaptchaCode=(String) operations.get(adminLoginVo.getKaptchaCodeId());
         if(kaptchaCode == null){
