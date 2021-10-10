@@ -1,6 +1,5 @@
 package com.example.epidemicsurveillance.config.security.dynamicroute;
 
-import com.example.epidemicsurveillance.config.security.dynamicroute.CustomFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDeniedException;

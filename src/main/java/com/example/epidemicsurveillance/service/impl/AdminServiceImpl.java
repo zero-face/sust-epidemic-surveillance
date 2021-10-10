@@ -1,20 +1,26 @@
 package com.example.epidemicsurveillance.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
 import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.AdminMapper;
+import com.example.epidemicsurveillance.mapper.RoleMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IAdminService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.utils.JwtTokenUtil;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -43,6 +49,9 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     private AdminMapper adminMapper;
 
     @Autowired
+    private RoleMapper roleMapper;
+
+    @Autowired
     private DefaultKaptcha defaultKaptcha;
 
     @Autowired
@@ -50,6 +59,12 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+
+    @Autowired
+    private MyUserDetailService myUserDetailService;
+
+    @Value("${jwt.tokenHead}")
+    private String tokenHead;
 
     @Override
     public Admin getAdminByUsername(String username) {
@@ -67,7 +82,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     @Override
     public List<Role> getRoles(Integer adminId) {
-        return adminMapper.getRoles(adminId);
+        return roleMapper.getRoles(adminId);
     }
 
     @Override
@@ -118,19 +133,22 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         if(kaptchaCode == null){
             throw new EpidemicException("验证码已经过期，请重新输入");
         }
+        System.out.println(kaptchaCode);
+        System.out.println(adminLoginVo.getKaptchaCode());
         if(!kaptchaCode.equals(adminLoginVo.getKaptchaCode())){
             throw new EpidemicException("验证码错误，请重试");
         }
-        QueryWrapper<Admin> wrapper=new QueryWrapper<>();
-        wrapper.eq("username",adminLoginVo.getUsername());
-        Admin admin = adminMapper.selectOne(wrapper);
+        UserDetails admin = myUserDetailService.loadUserByUsername(adminLoginVo.getUsername());
         if(admin == null){
             throw new EpidemicException("该用户不存在");
         }
         if(!admin.getPassword().equals(adminLoginVo.getPassword())){
             throw new EpidemicException("密码错误，请重试");
         }
+        //更新登录用户对象，放入security全局中,密码不放
+        UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(admin,null,admin.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
         String token= jwtTokenUtil.generateToken(admin);
-        return ResponseResult.ok().data("token",token);
+        return ResponseResult.ok().data("token",token).data("tokenHead",tokenHead);
     }
 }
