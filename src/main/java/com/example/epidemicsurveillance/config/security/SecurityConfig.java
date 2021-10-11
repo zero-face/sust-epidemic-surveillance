@@ -83,6 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //登录成功失败处理
         http.formLogin()
+//            .loginProcessingUrl("/api/v1/user/login")
             .successHandler(customizeAuthenticationSuccessHandler)
             .failureHandler(customizeAuthenticationFailureHandler)
         .and()
@@ -112,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
-                "/login",
+                "/api/v1/admin/login",
                 "/logout",
                 "/css/**",
                 "/js/**",
@@ -124,7 +125,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/doc.html","/webjars/**","/img.icons/**",
                 "/swagger-resources/**","/**","/v2/api-docs", "/swagger-ui.html",
                 //放行图像验证码
-                "/captcha",
+                "/api/v1/admin/captcha/**",
                 //WebSocket
                 "/ws/**"
         );

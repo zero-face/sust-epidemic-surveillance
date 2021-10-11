@@ -14,6 +14,8 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
+Database-SQL
+log.path_IS_UNDEFINED
 .idea
 *.iws
 *.iml

@@ -21,7 +21,7 @@ import java.security.spec.InvalidKeySpecException;
  * @Date 2021/10/10 12:09
  * @Version 1.0
  **/
-@RequestMapping("/admin/epidemicsurveillance/index")
+@RequestMapping("/api/v1/admin")
 @RestController
 @CrossOrigin
 @Api(tags = "后台用户管理模块")
@@ -43,6 +43,7 @@ public class AdminIndexController {
                                 @RequestBody AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return adminService.login(adminLoginVo);
     }
+
 
 
 }
