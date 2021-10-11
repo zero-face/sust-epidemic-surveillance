@@ -67,7 +67,7 @@ public class UserController {
         String openid = userService.getOpenIdByCode(GETOPENIDURL, map);
         log.info("获取到openid:{}=========》",openid);
         //查询数据库中是否含有这个openID，如果有，说明已经授权，查询用户信息，返回信息以及token；没有则保存，但是其他的用户信息是空，返回用户信息以及token
-        final User one = userService.getOne(new QueryWrapper<User>().eq("open_id", openid));
+        final User one = userService.getOne(new QueryWrapper<User>().eq("wechat_id", openid));
         if(null == one) {
             log.info("不存在存在该用户，正在登陆....");
             final User tUser = new User();
@@ -80,19 +80,19 @@ public class UserController {
             BeanUtils.copyProperties(one, tUser);
             tUser.setWechatId(openid);
             System.out.println("userinfo"+tUser);
-            userService.update(tUser,new UpdateWrapper<User>().eq("open_id", openid));
+            userService.update(tUser,new UpdateWrapper<User>().eq("wechat_id", openid));
         }
         final Map<String, Object> maps = new HashMap<String, Object>(){{
             put("username", user.getNickname());
         }};
         final String token = jwtTokenUtil.generateToken(maps);
-        final User id = userService.getOne(new QueryWrapper<User>().eq("open_id", openid));
+        final User id = userService.getOne(new QueryWrapper<User>().eq("wechat_id", openid));
         final UserVO userVO = new UserVO();
         BeanUtils.copyProperties(id, userVO);
-        Map<String, Object> reToken = JSON.parseObject(JSON.toJSONString(userVO), new TypeReference<Map<String,
-                Object>>() {
-        });
+        log.info("返回的用户信息" + userVO);
+        Map<String, Object> reToken = JSON.parseObject(JSON.toJSONString(userVO), new TypeReference<Map<String, Object>>() {});
         reToken.put("token",token);
+        log.info("登录成功，返回消息:{}",reToken);
         return ResponseResult.ok().data(reToken).message("登录成功");
     }
 }
