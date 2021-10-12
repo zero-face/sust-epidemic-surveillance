@@ -1,5 +1,6 @@
 package com.example.epidemicsurveillance.utils;
 
+import com.example.epidemicsurveillance.exception.EpidemicException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -93,10 +94,11 @@ public class JwtTokenUtil {
      * @return
      */
     public String getUsernameFormToken(String token){
-        String username;
+        String username=null;
         //根据Token去拿荷载
         try {
             Claims claim=getClaimFromToken(token);
+            if(claim != null)
             username=claim.getSubject();//获取用户名
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,9 +134,14 @@ public class JwtTokenUtil {
      * @param userDetails
      * @return
      */
-    public boolean TokenIsValid(String token, UserDetails userDetails) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        String username = getUsernameFormToken(token);
-        return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+    public boolean TokenIsValid(String token, UserDetails userDetails) {
+        try {
+            String username = getUsernameFormToken(token);
+            return username.equals(userDetails.getUsername()) && !isTokenExpired(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new EpidemicException("token失效");
+        }
     }
 
     /**

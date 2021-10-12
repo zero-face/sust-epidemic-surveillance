@@ -1,7 +1,7 @@
 package com.example.epidemicsurveillance.service;
 
-import com.example.epidemicsurveillance.entity.Admin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
 import com.example.epidemicsurveillance.response.ResponseResult;
@@ -29,4 +29,6 @@ public interface IAdminService extends IService<Admin> {
     ResponseResult login(AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException;
 
     void getKaptcha(HttpServletRequest request, HttpServletResponse response, String key);
+
+    ResponseResult getAdminInfo(String token);
 }

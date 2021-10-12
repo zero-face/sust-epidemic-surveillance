@@ -19,4 +19,6 @@ import java.util.List;
 public interface AdminMapper extends BaseMapper<Admin> {
 
     List<Role> getRoles(Integer adminId);
+
+
 }

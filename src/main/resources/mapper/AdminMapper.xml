@@ -27,4 +27,6 @@
         id, wechat_id, phone, username, password, country, province, city, token, age, sex, number, avator, is_delete, gmt_create, gmt_modified
     </sql>
 
+
+
 </mapper>

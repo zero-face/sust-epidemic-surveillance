@@ -99,8 +99,11 @@ public class Admin implements Serializable , UserDetails {
     @Override
     @JsonDeserialize(using = CustomAuthorityDeserializer.class)
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<SimpleGrantedAuthority> authorities = roles.stream().map(role -> new SimpleGrantedAuthority(role.getRoleName()))
-                .collect(Collectors.toList());
+        List<SimpleGrantedAuthority> authorities=null;
+        if(roles != null) {
+            authorities = roles.stream().map(role -> new SimpleGrantedAuthority(role.getRoleName()))
+                    .collect(Collectors.toList());
+        }
         return authorities;
     }
 
