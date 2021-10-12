@@ -20,7 +20,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
@@ -65,6 +64,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
 
     @Override
     public Admin getAdminByUsername(String username) {
@@ -126,6 +126,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         //-------------------生成验证码 end --------------------------
     }
 
+
     @Override
     public ResponseResult login(AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
         ValueOperations<String, Object> operations = redisTemplate.opsForValue();
@@ -138,17 +139,38 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
         if(!kaptchaCode.equals(adminLoginVo.getKaptchaCode())){
             throw new EpidemicException("验证码错误，请重试");
         }
-        UserDetails admin = myUserDetailService.loadUserByUsername(adminLoginVo.getUsername());
+        QueryWrapper<Admin> wrapper=new QueryWrapper<>();
+        wrapper.eq("username",adminLoginVo.getUsername());
+        Admin admin=adminMapper.selectOne(wrapper);
         if(admin == null){
             throw new EpidemicException("该用户不存在");
         }
         if(!admin.getPassword().equals(adminLoginVo.getPassword())){
             throw new EpidemicException("密码错误，请重试");
         }
+        //更新用户数据库中的token
+        String token=tokenHead+jwtTokenUtil.generateToken(admin);
+        admin.setToken(token);
+        adminMapper.updateById(admin);
         //更新登录用户对象，放入security全局中,密码不放
         UsernamePasswordAuthenticationToken authenticationToken=new UsernamePasswordAuthenticationToken(admin,null,admin.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-        String token= jwtTokenUtil.generateToken(admin);
         return ResponseResult.ok().data("token",token).data("tokenHead",tokenHead);
+    }
+
+    @Override
+    public ResponseResult getAdminInfo(String token) {
+        Admin admin=null;
+        if(token != null && token.startsWith(tokenHead)){
+            String truetoken=token.substring(tokenHead.length());
+            String username=jwtTokenUtil.getUsernameFormToken(truetoken);
+            //admin = (Admin)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+            QueryWrapper<Admin> wrapper=new QueryWrapper<>();
+            wrapper.eq("username",username);
+            admin=adminMapper.selectOne(wrapper);
+            admin.setPassword(null);
+            admin.setRoles(roleMapper.getRoles(admin.getId()));
+        }
+        return ResponseResult.ok().data("admin",admin);
     }
 }

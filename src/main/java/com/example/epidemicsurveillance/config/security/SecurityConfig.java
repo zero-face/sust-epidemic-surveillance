@@ -3,8 +3,11 @@ package com.example.epidemicsurveillance.config.security;
 
 import com.example.epidemicsurveillance.config.security.dynamicroute.CustomFilter;
 import com.example.epidemicsurveillance.config.security.dynamicroute.CustomUrlDecisionManager;
-import com.example.epidemicsurveillance.config.security.jwtfilter.JwtAuthencationTokenFilter;
-import com.example.epidemicsurveillance.config.security.handler.*;
+import com.example.epidemicsurveillance.config.security.dynamicroute.ValidateImageCodeFilter;
+import com.example.epidemicsurveillance.config.security.handler.CustomizeAuthenticationFailureHandler;
+import com.example.epidemicsurveillance.config.security.handler.CustomizeAuthenticationSuccessHandler;
+import com.example.epidemicsurveillance.config.security.handler.RestAuthorizationEntryPoint;
+import com.example.epidemicsurveillance.config.security.handler.RestfulAccessDeniedHandler;
 import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -50,6 +53,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailService myUserDetailService;
 
+    @Autowired
+    private ValidateImageCodeFilter validateImageCodeFilter;
+
     //自定义数据源处理登录请求信息
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -65,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //添加jwt登录授权过滤器  判断是否登录
-        http.addFilterBefore(jwtAuthencationTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(validateImageCodeFilter, UsernamePasswordAuthenticationFilter.class);
 
         http.csrf()
             .disable()//禁用csrf
@@ -83,7 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         //登录成功失败处理
         http.formLogin()
-//            .loginProcessingUrl("/api/v1/user/login")
+            .loginProcessingUrl("/api/v1/admin/admin/login")
             .successHandler(customizeAuthenticationSuccessHandler)
             .failureHandler(customizeAuthenticationFailureHandler)
         .and()
@@ -93,27 +99,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authenticationEntryPoint(restAuthorizationEntryPoint);//未登录 执行该逻辑
         //动态权限配置
         http.authorizeRequests()
+                //.anyRequest()
+                //.authenticated()
             .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
                 @Override
                 public <O extends FilterSecurityInterceptor> O postProcess(O o) {
-                    o.setAccessDecisionManager(customUrlDecisionManager);
                     o.setSecurityMetadataSource(customFilter);
+                    o.setAccessDecisionManager(customUrlDecisionManager);
                     return o;
                 }
             });
-    }
-
-    //将登录过滤器注入
-    @Bean
-    public JwtAuthencationTokenFilter jwtAuthencationTokenFilter(){
-        return new JwtAuthencationTokenFilter();
     }
 
     //需要放行的资源
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers(
-                "/api/v1/admin/login",
                 "/logout",
                 "/css/**",
                 "/js/**",

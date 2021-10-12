@@ -21,7 +21,7 @@ import java.security.spec.InvalidKeySpecException;
  * @Date 2021/10/10 12:09
  * @Version 1.0
  **/
-@RequestMapping("/api/v1/admin")
+@RequestMapping("/api/v1/admin/admin")
 @RestController
 @CrossOrigin
 @Api(tags = "后台用户管理模块")
@@ -39,11 +39,23 @@ public class AdminIndexController {
 
     @ApiOperation(value = "管理员登录")
     @PostMapping("/login")
-    public ResponseResult login(@ApiParam(name = "adminLoginVo",value = "管理员对象",required = true)
-                                @RequestBody AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
-        return adminService.login(adminLoginVo);
+    public ResponseResult login(@ApiParam(name = "loginForm",value = "登录对象,",required = true)
+                                @RequestBody AdminLoginVo loginForm
+                                ) throws NoSuchAlgorithmException, InvalidKeySpecException {
+        return adminService.login(loginForm);
     }
 
+    @ApiOperation(value = "根据用户token获取用户信息")
+    @GetMapping("getAdminInfo")
+    public ResponseResult getAdminInfo(@ApiParam(name = "token",value = "用户token",required = true)
+                                       @RequestParam String token){
+        return  adminService.getAdminInfo(token);
+    }
 
+    @ApiOperation(value = "退出登录")
+    @PostMapping("logout")
+    public ResponseResult logout(){
+        return ResponseResult.ok().message("退出成功");
+    }
 
 }
