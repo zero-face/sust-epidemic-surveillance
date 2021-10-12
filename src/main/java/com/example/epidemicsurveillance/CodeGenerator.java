@@ -43,6 +43,8 @@ public class CodeGenerator {
         dsc.setUrl("jdbc:mysql://114.55.174.182:3306/sust_epidemic_surveillance?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         mpg.setDataSource(dsc);
+        dsc.setUsername("root");
+        dsc.setPassword("Zyf_20010415");
 
         // 包配置
         PackageConfig pc = new PackageConfig();
@@ -96,7 +98,7 @@ public class CodeGenerator {
         //生成 @RestController 控制器
         strategy.setRestControllerStyle(true);
         //表名称
-        strategy.setInclude("travel_record");
+        strategy.setInclude("school_epidemic_data");
         strategy.setControllerMappingHyphenStyle(true);
         //表前缀
         //strategy.setTablePrefix("t_");
