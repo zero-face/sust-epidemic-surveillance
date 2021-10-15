@@ -16,7 +16,7 @@ public class SpiderUtilsTest {
     @Test
     public void test() throws IOException {
         SpiderUtils spiderUtils=new SpiderUtils();
-        String dataJson = spiderUtils.getDataJson("https://api.inews.qq.com/newsqa/v1/automation/modules/list?modules=FAutoCountryConfirmAdd,WomWorld,WomAboard");
+        String dataJson = spiderUtils.getGlobalDataJson("https://api.inews.qq.com/newsqa/v1/automation/modules/list?modules=FAutoCountryConfirmAdd,WomWorld,WomAboard");
         System.out.println(dataJson);
     }
 }
