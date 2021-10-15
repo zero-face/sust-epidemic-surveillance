@@ -1,7 +1,10 @@
 package com.example.epidemicsurveillance.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.epidemicsurveillance.entity.SchoolEpidemicData;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.epidemicsurveillance.entity.query.SchoolEpidemicDataQuery;
+import com.example.epidemicsurveillance.response.ResponseResult;
 
 /**
  * <p>
@@ -13,4 +16,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISchoolEpidemicDataService extends IService<SchoolEpidemicData> {
 
+    void pageQuery(Page<SchoolEpidemicData> pageResult, SchoolEpidemicDataQuery schoolEpidemicDataQuery);
+
+    ResponseResult getSchool();
+
+    ResponseResult getCollage(Integer schoolId);
 }
