@@ -131,7 +131,7 @@ public class AdminServiceImpl extends ServiceImpl<AdminMapper, Admin> implements
     public ResponseResult login(AdminLoginVo adminLoginVo) throws NoSuchAlgorithmException, InvalidKeySpecException {
         ValueOperations<String, Object> operations = redisTemplate.opsForValue();
         String kaptchaCode=(String) operations.get(adminLoginVo.getKaptchaCodeId());
-        if(kaptchaCode == null) {
+        if(kaptchaCode == null){
             throw new EpidemicException("验证码已经过期，请重新输入");
         }
         System.out.println(kaptchaCode);
