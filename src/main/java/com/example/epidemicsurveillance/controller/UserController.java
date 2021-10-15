@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.example.epidemicsurveillance.entity.User;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IUserService;
-import com.example.epidemicsurveillance.utils.JwtTokenUtil;
+import com.example.epidemicsurveillance.utils.jwt.JwtTokenUtil;
 import com.example.epidemicsurveillance.entity.vo.UserVO;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

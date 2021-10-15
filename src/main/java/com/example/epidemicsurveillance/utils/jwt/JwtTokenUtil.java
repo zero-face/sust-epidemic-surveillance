@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.utils;
+package com.example.epidemicsurveillance.utils.jwt;
 
 import com.example.epidemicsurveillance.exception.EpidemicException;
 import io.jsonwebtoken.Claims;

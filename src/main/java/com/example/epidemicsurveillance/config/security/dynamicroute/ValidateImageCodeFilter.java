@@ -2,22 +2,17 @@ package com.example.epidemicsurveillance.config.security.dynamicroute;
 
 import com.example.epidemicsurveillance.config.security.handler.CustomizeAuthenticationFailureHandler;
 import com.example.epidemicsurveillance.config.security.service.MyUserDetailService;
-import com.example.epidemicsurveillance.exception.EpidemicException;
-import com.example.epidemicsurveillance.utils.JwtTokenUtil;
+import com.example.epidemicsurveillance.utils.jwt.JwtTokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.ServletRequestBindingException;
-import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.annotation.Resource;
@@ -61,12 +56,6 @@ public class ValidateImageCodeFilter extends OncePerRequestFilter {
             //处理登录请求
             if (StringUtils.contains(request.getRequestURI(), "/admin/login")
                     && StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
-//                try {
-//                    validateCode(new ServletWebRequest(request));
-//                } catch (AuthenticationException e) {
-//                    customizeAuthenticationFailureHandler.onAuthenticationFailure(request, response, e);
-//                    return;
-//                }
                 filterChain.doFilter(request, response);
             }else {
                 //token存储在Jwt的请求头中
@@ -101,20 +90,4 @@ public class ValidateImageCodeFilter extends OncePerRequestFilter {
             filterChain.doFilter(request,response);
         }
     }
-
-        private void validateCode (ServletWebRequest servletWebRequest) throws ServletRequestBindingException {
-            String kaptchaCode = ServletRequestUtils.getStringParameter(servletWebRequest.getRequest(), "kaptchaCode");
-            String kaptchaCodeId = ServletRequestUtils.getStringParameter(servletWebRequest.getRequest(), "kaptchaCodeId");
-            ValueOperations<String, Object> operations = redisTemplate.opsForValue();
-            String kaptchaCodeInRedis =(String) operations.get(kaptchaCodeId);
-            if (StringUtils.isBlank(kaptchaCode)) {
-                throw new EpidemicException("验证码不能为空 ");
-            }
-            if (kaptchaCodeInRedis == null) {
-                throw new EpidemicException("验证码已经过期，有效时间为5分钟");
-            }
-            if (!StringUtils.equalsIgnoreCase(kaptchaCode, kaptchaCodeInRedis)) {
-                throw new EpidemicException("验证码不正确！");
-            }
-        }
     }
