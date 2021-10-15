@@ -26,7 +26,12 @@ public class SpiderUtils {
     @Autowired
     private ObjectMapper objectMapper;
 
-    public String getDataJson(String url) {
+    /**
+     * 爬取全球疫情数据JSON
+     * @param url
+     * @return
+     */
+    public String getGlobalDataJson(String url) {
         try {
             HttpGet httpGet=new HttpGet(url);
             CloseableHttpResponse response = httpClient.execute(httpGet);
@@ -42,5 +47,30 @@ public class SpiderUtils {
             throw new EpidemicException("数据获取失败,url是"+url);
         }
     }
+
+    /**
+     * 爬取中国疫情数据
+     */
+    public String getChinaDataJson(String url){
+        try {
+            HttpGet httpGet=new HttpGet(url);
+            CloseableHttpResponse response = httpClient.execute(httpGet);
+            if (response.getStatusLine().getStatusCode() == 200) {
+                HttpEntity httpEntity = response.getEntity();
+                //爬取的JSON数据有误，这里进行处理
+                String context = EntityUtils.toString(httpEntity, "utf8").replaceAll("\\\\","");
+                int areaTree = context.indexOf("areaTree");
+                String substring = "{"+context.substring(areaTree - 1, context.length() - 3);
+                return substring;
+            }else {
+                throw new EpidemicException("数据获取失败,url是"+url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new EpidemicException("数据获取失败,url是"+url);
+        }
+    }
+
+
 
 }
