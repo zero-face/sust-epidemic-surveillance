@@ -27,5 +27,11 @@
     <sql id="Base_Column_List">
         id, name, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, total_vaccines, vaccines_proportion, parent_id, is_delete, gmt_create, gmt_modified
     </sql>
+    <select id="getSchool" resultType="com.example.epidemicsurveillance.entity.SchoolEpidemicData">
+        select <include refid="Base_Column_List"/>
+        from school_epidemic_data s where
+        s.id=s.parent_id and s.is_delete = 0
+        order by  s.id
+    </select>
 
 </mapper>
