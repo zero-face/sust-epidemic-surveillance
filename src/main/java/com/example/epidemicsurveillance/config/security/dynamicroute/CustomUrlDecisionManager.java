@@ -25,6 +25,7 @@ import java.util.List;
 public class CustomUrlDecisionManager implements AccessDecisionManager {
     @Autowired
     private CustomFilter customFilter;
+
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
         for (ConfigAttribute configAttribute: collection) {

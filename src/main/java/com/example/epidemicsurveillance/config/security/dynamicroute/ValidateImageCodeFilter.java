@@ -61,12 +61,7 @@ public class ValidateImageCodeFilter extends OncePerRequestFilter {
             //处理登录请求
             if (StringUtils.contains(request.getRequestURI(), "/admin/login")
                     && StringUtils.equalsIgnoreCase(request.getMethod(), "post")) {
-//                try {
-//                    validateCode(new ServletWebRequest(request));
-//                } catch (AuthenticationException e) {
-//                    customizeAuthenticationFailureHandler.onAuthenticationFailure(request, response, e);
-//                    return;
-//                }
+
                 filterChain.doFilter(request, response);
             }else {
                 //token存储在Jwt的请求头中

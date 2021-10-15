@@ -40,8 +40,7 @@ public class AdminIndexController {
     @ApiOperation(value = "管理员登录")
     @PostMapping("/login")
     public ResponseResult login(@ApiParam(name = "loginForm",value = "登录对象,",required = true)
-                                @RequestBody AdminLoginVo loginForm
-                                ) throws NoSuchAlgorithmException, InvalidKeySpecException {
+                                @RequestBody AdminLoginVo loginForm) throws NoSuchAlgorithmException, InvalidKeySpecException {
         return adminService.login(loginForm);
     }
 
