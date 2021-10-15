@@ -2,6 +2,9 @@ package com.example.epidemicsurveillance.mapper;
 
 import com.example.epidemicsurveillance.entity.SchoolEpidemicData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <p>
@@ -11,6 +14,8 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author zyf
  * @since 2021-10-12
  */
+@Component
 public interface SchoolEpidemicDataMapper extends BaseMapper<SchoolEpidemicData> {
 
+    List<SchoolEpidemicData> getSchool();
 }
