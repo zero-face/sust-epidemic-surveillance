@@ -31,7 +31,7 @@ public class ChinaEpidemicTask {
     @Autowired
     private IGlobalEpidemicDataService iGlobalEpidemicDataService;
 
-    @Scheduled(cron = "0 0 1 * * ?  ")//每日凌晨一点执行
+    @Scheduled(cron = "* 10 2 * * ? *")//每日凌晨两点十分执行
     @Transactional
     public void getChinaEpidemicData(){
         System.out.println("定时任务开始");

@@ -7,7 +7,7 @@ import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import com.example.epidemicsurveillance.task.epidemic_data_task.ChinaEpidemicTask;
 import com.example.epidemicsurveillance.task.epidemic_data_task.GlobalEpidemicTask;
-import com.example.epidemicsurveillance.utils.spider.SpiderUtils;
+import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ import java.io.IOException;
 @CrossOrigin
 public class SpiderAdminController {
     @Autowired
-    private SpiderUtils spiderUtils;
+    private SpiderEpidemicDataUtils spiderUtils;
 
     @Autowired
     private SpiderToGetData spiderToGetData;
@@ -47,7 +47,7 @@ public class SpiderAdminController {
     @ApiOperation(value = "数据爬取")
     @GetMapping("/")
     public ResponseResult get() throws IOException {
-        chinaEpidemicTask.getChinaEpidemicData();
+        spiderToGetData.getSustJournalism();
         return ResponseResult.ok();
     }
 
