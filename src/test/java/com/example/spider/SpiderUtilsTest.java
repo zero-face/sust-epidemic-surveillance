@@ -1,6 +1,6 @@
 package com.example.spider;
 
-import com.example.epidemicsurveillance.utils.spider.SpiderUtils;
+import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class SpiderUtilsTest {
 
     @Test
     public void test() throws IOException {
-        SpiderUtils spiderUtils=new SpiderUtils();
+        SpiderEpidemicDataUtils spiderUtils=new SpiderEpidemicDataUtils();
         String dataJson = spiderUtils.getGlobalDataJson("https://api.inews.qq.com/newsqa/v1/automation/modules/list?modules=FAutoCountryConfirmAdd,WomWorld,WomAboard");
         System.out.println(dataJson);
     }

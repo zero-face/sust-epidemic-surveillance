@@ -29,7 +29,7 @@ public class GlobalEpidemicTask {
     @Autowired
     private IGlobalEpidemicDataService iGlobalEpidemicDataService;
 
-    @Scheduled(cron = "0 0 0,2 * * ? ")//每日凌晨两点执行
+    @Scheduled(cron = "* 0 2 * * ? *")//每日凌晨两点执行
     @Transactional
     public void getGlobalEpidemicData(){
         System.out.println("爬取全球疫情数据任务开始");

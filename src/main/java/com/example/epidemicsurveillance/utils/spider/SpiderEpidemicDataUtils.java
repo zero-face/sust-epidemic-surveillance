@@ -19,7 +19,7 @@ import java.io.IOException;
  * @Version 1.0
  **/
 @Component
-public class SpiderUtils {
+public class SpiderEpidemicDataUtils {
     @Autowired
     private CloseableHttpClient httpClient;
 
