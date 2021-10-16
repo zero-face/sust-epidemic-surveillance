@@ -62,6 +62,9 @@ public class User implements Serializable {
     @ApiModelProperty(value = "头像地址")
     private String avator;
 
+    @ApiModelProperty(value = "是否实名认证")
+    private String authed;
+
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
     private Integer isDelete;

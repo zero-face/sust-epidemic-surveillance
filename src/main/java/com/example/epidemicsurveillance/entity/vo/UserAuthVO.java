@@ -33,10 +33,10 @@ public class UserAuthVO {
     private String phone;
 
     @ApiModelProperty(value = "学院id")
-    private Integer collageId;
+    private String collage;
 
     @ApiModelProperty(value = "班级id")
-    private Integer classId;
+    private String clazz;
 
     @ApiModelProperty(value = "学号")
     private String number;

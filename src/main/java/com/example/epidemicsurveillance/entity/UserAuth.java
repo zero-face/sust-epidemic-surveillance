@@ -54,7 +54,7 @@ public class UserAuth {
 
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
-    private Integer isDelete;
+    private Integer deleted;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)

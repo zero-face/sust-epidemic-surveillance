@@ -22,6 +22,9 @@ public class UserVO {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @ApiModelProperty(value = "openid")
+    private String openid;
+
     @ApiModelProperty(value = "昵称")
     private String nickname;
 
@@ -39,6 +42,9 @@ public class UserVO {
 
     @ApiModelProperty(value = "性别 0男 1女")
     private Integer sex;
+
+    @ApiModelProperty(value = "是否实名认证")
+    private String authed;
 
     @ApiModelProperty(value = "头像地址")
     private String avator;
