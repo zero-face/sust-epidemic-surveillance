@@ -33,7 +33,7 @@ public class Collage implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "学院名称")
-    private String collaeName;
+    private String collageName;
 
     @ApiModelProperty(value = "0未删除,1已删除")
     private Integer isDelete;

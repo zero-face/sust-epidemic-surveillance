@@ -1,6 +1,9 @@
 package com.example.epidemicsurveillance.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -10,34 +13,38 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 学校表
- * </p>
- *
- * @author zyf
- * @since 2021-10-09
- */
+ * @Author Zero
+ * @Date 2021/10/16 13:52
+ * @Since 1.8
+ * @Description
+ **/
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="School对象", description="学校表")
-public class School implements Serializable {
-
+@ApiModel(value="clazz对象", description="班级表")
+public class Clazz {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "学校Id")
+    @ApiModelProperty(value = "班级Id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     @ApiModelProperty(value = "学院名称")
-    private String schoolName;
+    private String className;
 
-    @ApiModelProperty(value = "0未删除,1已删除")
-    @TableLogic
-    private Integer isDelete;
+    @ApiModelProperty(value = "学院名称")
+    private String schoolId;
+
+    @ApiModelProperty(value = "学院名称")
+    private String collageId;
+
+    @ApiModelProperty(value = "学院名称")
+    private String grade;
+
+    @ApiModelProperty(value = "学院名称")
+    private String isDelete;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
@@ -50,6 +57,4 @@ public class School implements Serializable {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime gmtModified;
-
-
 }

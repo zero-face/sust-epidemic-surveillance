@@ -33,13 +33,7 @@ public class User implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "微信号")
-    private String wechatId;
-
-    @ApiModelProperty(value = "手机号")
-    private String phone;
-
-    @ApiModelProperty(value = "用户名")
-    private String username;
+    private String openid;
 
     @ApiModelProperty(value = "昵称")
     private String nickname;
@@ -65,14 +59,8 @@ public class User implements Serializable {
     @ApiModelProperty(value = "性别 0男 1女")
     private Integer sex;
 
-    @ApiModelProperty(value = "身份证号")
-    private String number;
-
     @ApiModelProperty(value = "头像地址")
     private String avator;
-
-    @ApiModelProperty(value = "是否是负责人 0不是,1是")
-    private Integer isCharge;
 
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
@@ -89,9 +77,5 @@ public class User implements Serializable {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime gmtModified;
-
-    @ApiModelProperty(value = "班级Id")
-    private Integer classId;
-
 
 }

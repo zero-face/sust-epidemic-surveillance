@@ -15,11 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -53,7 +49,10 @@ public class UserController {
 
     private String GETOPENIDURL= "https://api.weixin.qq.com/sns/jscode2session";
 
-
+    @GetMapping("/test")
+    public ResponseResult test() {
+        return ResponseResult.ok().message("请求成功").data("result","这是一个测试接口");
+    }
 
     @PostMapping("/code")
     @ApiOperation("根据code获取openid并得到登录token")
@@ -67,26 +66,26 @@ public class UserController {
         String openid = userService.getOpenIdByCode(GETOPENIDURL, map);
         log.info("获取到openid:{}=========》",openid);
         //查询数据库中是否含有这个openID，如果有，说明已经授权，查询用户信息，返回信息以及token；没有则保存，但是其他的用户信息是空，返回用户信息以及token
-        final User one = userService.getOne(new QueryWrapper<User>().eq("wechat_id", openid));
+        final User one = userService.getOne(new QueryWrapper<User>().eq("openid", openid));
         if(null == one) {
             log.info("不存在存在该用户，正在登陆....");
             final User tUser = new User();
             BeanUtils.copyProperties(user, tUser);
-            tUser.setWechatId(openid);
+            tUser.setOpenid(openid);
             userService.save(tUser);
-        }else {
+        } else {
             final User tUser = new User();
             System.out.println("传输的用户信息：" + user);
             BeanUtils.copyProperties(one, tUser);
-            tUser.setWechatId(openid);
+            tUser.setOpenid(openid);
             System.out.println("userinfo"+tUser);
-            userService.update(tUser,new UpdateWrapper<User>().eq("wechat_id", openid));
+            userService.update(tUser,new UpdateWrapper<User>().eq("openid", openid));
         }
         final Map<String, Object> maps = new HashMap<String, Object>(){{
             put("username", user.getNickname());
         }};
         final String token = jwtTokenUtil.generateToken(maps);
-        final User id = userService.getOne(new QueryWrapper<User>().eq("wechat_id", openid));
+        final User id = userService.getOne(new QueryWrapper<User>().eq("openid", openid));
         final UserVO userVO = new UserVO();
         BeanUtils.copyProperties(id, userVO);
         log.info("返回的用户信息" + userVO);

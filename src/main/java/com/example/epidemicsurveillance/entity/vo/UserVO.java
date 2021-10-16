@@ -42,10 +42,4 @@ public class UserVO {
 
     @ApiModelProperty(value = "头像地址")
     private String avator;
-
-    @ApiModelProperty(value = "是否是负责人 0不是,1是")
-    private Integer isCharge;
-
-    @ApiModelProperty(value = "班级Id")
-    private Integer classId;
 }

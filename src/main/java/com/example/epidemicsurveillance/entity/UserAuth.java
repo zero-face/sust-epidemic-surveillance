@@ -10,30 +10,47 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
- * <p>
- * 学校表
- * </p>
- *
- * @author zyf
- * @since 2021-10-09
- */
+ * @Author Zero
+ * @Date 2021/10/16 13:37
+ * @Since 1.8
+ * @Description
+ **/
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="School对象", description="学校表")
-public class School implements Serializable {
-
+@ApiModel(value="userAuthr对象", description="实名认证表")
+public class UserAuth {
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "学校Id")
+    @ApiModelProperty(value = "用户Id")
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
-    @ApiModelProperty(value = "学院名称")
-    private String schoolName;
+    @ApiModelProperty(value = "微信号")
+    private String openid;
+
+     @ApiModelProperty(value = "真实姓名")
+    private String username;
+
+     @ApiModelProperty(value = "手机号")
+    private String phone;
+
+     @ApiModelProperty(value = "学院id")
+    private Integer collageId;
+
+     @ApiModelProperty(value = "班级id")
+    private Integer classId;
+
+     @ApiModelProperty(value = "学号")
+    private String number;
+
+     @ApiModelProperty(value = "是否是负责人")
+    private boolean isCharge;
+
+     @ApiModelProperty(value = "身份证号")
+    private String profileId;
 
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
@@ -50,6 +67,4 @@ public class School implements Serializable {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime gmtModified;
-
-
 }
