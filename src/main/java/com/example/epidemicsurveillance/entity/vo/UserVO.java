@@ -41,10 +41,10 @@ public class UserVO {
     private Integer age;
 
     @ApiModelProperty(value = "性别 0男 1女")
-    private Integer sex;
+    private String sex;
 
     @ApiModelProperty(value = "是否实名认证")
-    private String authed;
+    private Boolean authed;
 
     @ApiModelProperty(value = "头像地址")
     private String avator;

@@ -162,6 +162,7 @@ public class UserController {
         final User id = userService.getOne(new QueryWrapper<User>().eq("openid", openid));
         final UserVO userVO = new UserVO();
         BeanUtils.copyProperties(id, userVO);
+        userVO.setSex(id.getSex() > 1? "女":"男");
         log.info("返回的用户信息" + userVO);
         Map<String, Object> reToken = JSON.parseObject(JSON.toJSONString(userVO), new TypeReference<Map<String, Object>>() {});
         reToken.put("token",token);
