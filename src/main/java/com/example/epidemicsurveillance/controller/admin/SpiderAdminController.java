@@ -1,9 +1,11 @@
 package com.example.epidemicsurveillance.controller.admin;
 
-import com.alibaba.fastjson.JSON;
-import com.example.epidemicsurveillance.entity.spider.global.GlobalEpidemic;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.response.ResponseResult;
+import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
+import com.example.epidemicsurveillance.task.epidemic_data_task.ChinaEpidemicTask;
 import com.example.epidemicsurveillance.task.epidemic_data_task.GlobalEpidemicTask;
 import com.example.epidemicsurveillance.utils.spider.SpiderUtils;
 import io.swagger.annotations.Api;
@@ -36,18 +38,28 @@ public class SpiderAdminController {
     @Autowired
     private GlobalEpidemicTask globalEpidemicTask;
 
+    @Autowired
+    private ChinaEpidemicTask chinaEpidemicTask;
+
+    @Autowired
+    private IGlobalEpidemicDataService iGlobalEpidemicDataService;
+
     @ApiOperation(value = "数据爬取")
     @GetMapping("/")
     public ResponseResult get() throws IOException {
-        String data=spiderUtils.getDataJson("https://api.inews.qq.com/newsqa/v1/automation/modules/list?modules=FAutoCountryConfirmAdd,WomWorld,WomAboard");
-        GlobalEpidemic globalEpidemic = JSON.parseObject(data, GlobalEpidemic.class);
-        return ResponseResult.ok().data("data",globalEpidemic);
+        chinaEpidemicTask.getChinaEpidemicData();
+        return ResponseResult.ok();
     }
 
-    @ApiOperation(value = "邮件发送")
+    @ApiOperation(value = "测试")
     @GetMapping("/1")
     public ResponseResult send() throws IOException {
-       globalEpidemicTask.getGlobalEpidemicData();
-       return ResponseResult.ok();
+        QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
+        wrapper.eq("area_name","地区待确认");
+        wrapper.eq("area_name","境外输入");
+        iGlobalEpidemicDataService.remove(wrapper);
+        return ResponseResult.ok();
     }
+
+
 }
