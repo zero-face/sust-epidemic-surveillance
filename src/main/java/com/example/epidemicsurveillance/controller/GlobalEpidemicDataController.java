@@ -3,7 +3,6 @@ package com.example.epidemicsurveillance.controller;
 
 import com.example.epidemicsurveillance.entity.vo.globaldata.AllGlobalData;
 import com.example.epidemicsurveillance.response.ResponseResult;
-import com.example.epidemicsurveillance.task.epidemic_data_task.GlobalEpidemicTask;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +29,7 @@ public class GlobalEpidemicDataController {
 
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
-
-    @Autowired
-    private GlobalEpidemicTask globalEpidemicTask;
+    
 
     @ApiOperation(value = "获取全部地区的名称")
     @GetMapping("getAllAreaData")
