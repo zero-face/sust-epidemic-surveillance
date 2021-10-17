@@ -25,4 +25,25 @@
         id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, parent_id, is_delete, gmt_create, gmt_modified
     </sql>
 
+    <!--获取各个国家-->
+    <select id="getAllCountryData" resultType="com.example.epidemicsurveillance.entity.vo.globaldata.CountryData">
+        select id as id,
+               area_name as name
+               from global_epidemic_data
+               where parent_id=1 and id!=1
+    </select>
+    <!--获取每个国家的省信息-->
+    <select id="getEveryCountryProvinceData" resultType="com.example.epidemicsurveillance.entity.vo.globaldata.ProvinceData">
+        select id as id,
+               area_name as name
+               from global_epidemic_data
+               where parent_id=${countryId}
+    </select>
+    <!--获取每个省的城市信息-->
+    <select id="getEveryProvinceCityData" resultType="com.example.epidemicsurveillance.entity.vo.globaldata.CityData">
+        select id as id,
+               area_name as name
+        from global_epidemic_data
+        where parent_id=${provinceId}
+    </select>
 </mapper>

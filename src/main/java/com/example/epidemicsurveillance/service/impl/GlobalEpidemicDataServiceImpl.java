@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.entity.query.GlobalEpidemicDataQuery;
+import com.example.epidemicsurveillance.entity.vo.globaldata.CityData;
+import com.example.epidemicsurveillance.entity.vo.globaldata.CountryData;
+import com.example.epidemicsurveillance.entity.vo.globaldata.ProvinceData;
 import com.example.epidemicsurveillance.mapper.GlobalEpidemicDataMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
@@ -85,5 +88,21 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
         wrapper.eq("parent_id",provinceId);
         List<GlobalEpidemicData> cityList = globalEpidemicDataMapper.selectList(wrapper);
         return ResponseResult.ok().data("cityList",cityList);
+    }
+
+    @Override
+    public List<CountryData> getAllCountryData() {
+        return globalEpidemicDataMapper.getAllCountryData();
+    }
+
+    @Override
+    public List<ProvinceData> getEveryCountryProvinceData(Integer countryId) {
+        return globalEpidemicDataMapper.getEveryCountryProvinceData(countryId);
+    }
+
+
+    @Override
+    public List<CityData> getEveryProvinceCityData(Integer provinceId) {
+        return globalEpidemicDataMapper.getEveryProvinceCityData(provinceId);
     }
 }
