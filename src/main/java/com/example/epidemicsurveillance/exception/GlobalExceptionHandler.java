@@ -3,6 +3,7 @@ package com.example.epidemicsurveillance.exception;
 
 import com.example.epidemicsurveillance.response.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,12 +17,19 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @ControllerAdvice
 @Slf4j
 public class GlobalExceptionHandler {
-    @ExceptionHandler
+
+    @ExceptionHandler(EpidemicException.class)
     @ResponseBody
     public ResponseResult epidemicException(EpidemicException e){
         e.printStackTrace();
         log.error(ExceptionUtil.getMessage(e));//将错误日志堆栈信息写入文件中
         return ResponseResult.error().message(e.getMessage()).code(e.getCode());
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseResult methodArgumentNotValidException(MethodArgumentNotValidException e){
+        e.printStackTrace();
+        return ResponseResult.error().message(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)

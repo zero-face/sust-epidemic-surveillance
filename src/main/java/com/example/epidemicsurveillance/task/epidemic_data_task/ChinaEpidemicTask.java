@@ -9,7 +9,6 @@ import com.example.epidemicsurveillance.entity.spider.china.ProvinceEpidemicArea
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +30,8 @@ public class ChinaEpidemicTask {
     @Autowired
     private IGlobalEpidemicDataService iGlobalEpidemicDataService;
 
-    @Scheduled(cron = "* 10 2 * * ? *")//每日凌晨两点十分执行
+
+    //@Scheduled(cron = "* 10 2 * * ? *")//每日凌晨两点十分执行
     @Transactional
     public void getChinaEpidemicData(){
         System.out.println("定时任务开始");
