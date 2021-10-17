@@ -16,10 +16,10 @@ import lombok.EqualsAndHashCode;
 import java.time.LocalDateTime;
 
 /**
- * @Author Zero
- * @Date 2021/10/16 13:52
- * @Since 1.8
- * @Description
+ * @author Zero
+ * @date 2021/10/16 13:52
+ * @since 1.8
+ * @description
  **/
 @Data
 @EqualsAndHashCode(callSuper = false)
