@@ -47,7 +47,7 @@ public class SpiderAdminController {
     @ApiOperation(value = "数据爬取")
     @GetMapping("/")
     public ResponseResult get() throws IOException {
-        spiderToGetData.getSustJournalism();
+        spiderToGetData.getNotification();
         return ResponseResult.ok();
     }
 

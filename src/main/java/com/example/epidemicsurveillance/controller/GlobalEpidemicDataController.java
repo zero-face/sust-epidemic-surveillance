@@ -29,7 +29,7 @@ public class GlobalEpidemicDataController {
 
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
-    
+
 
     @ApiOperation(value = "获取全部地区的名称")
     @GetMapping("getAllAreaData")
