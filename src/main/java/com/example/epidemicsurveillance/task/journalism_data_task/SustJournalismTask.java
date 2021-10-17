@@ -5,7 +5,6 @@ import com.example.epidemicsurveillance.entity.Article;
 import com.example.epidemicsurveillance.service.IArticleService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,7 +23,7 @@ public class SustJournalismTask {
     private IArticleService iArticleService;
 
     //@Scheduled(cron = "0 0 3 * * ? ")//每日凌晨两点十五执行
-    @Scheduled(cron = "* 15 2 * * ? *")
+    //@Scheduled(cron = "* 15 2 * * ? *")
     public void getSustJournalismData(){
         //删除昨日热点数据
         QueryWrapper<Article> wrapper=new QueryWrapper<>();
