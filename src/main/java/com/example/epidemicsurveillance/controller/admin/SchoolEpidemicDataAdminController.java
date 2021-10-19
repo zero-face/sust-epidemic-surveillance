@@ -36,8 +36,10 @@ public class SchoolEpidemicDataAdminController {
         Page<SchoolEpidemicData> pageResult=new Page<>(page,limit);
         //将查询的数据放入pageResult中
         schoolEpidemicDataService.pageQuery(pageResult, schoolEpidemicDataQuery);
-        long total=pageResult.getTotal();//数据总数
-        List<SchoolEpidemicData> list=pageResult.getRecords();//EduCourse的list集合
+        //数据总数
+        long total=pageResult.getTotal();
+        //EduCourse的list集合
+        List<SchoolEpidemicData> list=pageResult.getRecords();
         return ResponseResult.ok().data("total",total).data("rows",list);
     }
 

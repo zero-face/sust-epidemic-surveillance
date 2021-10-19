@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseResult error(Exception e){
+    public ResponseResult error(Exception e) {
         e.printStackTrace();
         log.error(e.getMessage());//将错误日志堆栈信息写入文件中
         return ResponseResult.error();

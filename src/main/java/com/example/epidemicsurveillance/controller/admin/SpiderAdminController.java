@@ -43,7 +43,7 @@ public class SpiderAdminController {
     private IGlobalEpidemicDataService iGlobalEpidemicDataService;
 
     @ApiOperation(value = "数据爬取")
-    @GetMapping("/")
+    @GetMapping
     public ResponseResult get() throws IOException {
 
         return ResponseResult.ok();

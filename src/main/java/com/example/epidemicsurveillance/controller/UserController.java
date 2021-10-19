@@ -21,11 +21,11 @@ import com.example.epidemicsurveillance.utils.jwt.JwtTokenUtil;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.constraints.NotBlank;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -53,22 +53,22 @@ public class UserController {
     @Value("${wx.secret}")
     private String secret;
 
-    @Autowired
+    @Resource
     private IUserService userService;
 
-    @Autowired
+    @Resource
     private JwtTokenUtil jwtTokenUtil;
 
-    @Autowired
+    @Resource
     private IClassService classService;
 
-    @Autowired
+    @Resource
     private ICollageService collageService;
 
-    @Autowired
+    @Resource
     private IUserAuthService userAuthService;
 
-    private String GETOPENIDURL= "https://api.weixin.qq.com/sns/jscode2session";
+    private static final String OPENID_URL= "https://api.weixin.qq.com/sns/jscode2session";
 
     @GetMapping
     public ResponseResult getRealInfo(@RequestParam("id") @NotBlank String openid) {
@@ -135,11 +135,11 @@ public class UserController {
     public ResponseResult receiveCode(@RequestParam("code") String code, User user) throws NoSuchAlgorithmException, InvalidKeySpecException {
         log.info("获取code开始=========》{}",code);
         //接收到临时登录的code，向微信服务器发起请求，获取openid,session_key，unionid
-        Map<String,String> map = new HashMap<>();
+        Map<String,String> map = new HashMap<>(16);
         map.put("appid", appid);
         map.put("code", code);
         map.put("secret", secret);
-        String openid = userService.getOpenIdByCode(GETOPENIDURL, map);
+        String openid = userService.getOpenIdByCode(OPENID_URL, map);
         log.info("获取到openid:{}=========》",openid);
         //查询数据库中是否含有这个openID，如果有，说明已经授权，查询用户信息，返回信息以及token；没有则保存，但是其他的用户信息是空，返回用户信息以及token
         final User one = userService.getOne(new QueryWrapper<User>().eq("openid", openid));
@@ -157,7 +157,7 @@ public class UserController {
             System.out.println("userinfo"+tUser);
             userService.update(tUser,new UpdateWrapper<User>().eq("openid", openid));
         }
-        final Map<String, Object> maps = new HashMap<String, Object>(){{
+        final Map<String, Object> maps = new HashMap<String, Object>(16){{
             put("username", user.getNickname());
         }};
         final String token = jwtTokenUtil.generateToken(maps);
