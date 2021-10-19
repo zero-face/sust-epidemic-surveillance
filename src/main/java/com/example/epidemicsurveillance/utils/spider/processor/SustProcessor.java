@@ -50,9 +50,6 @@ public class SustProcessor implements PageProcessor {
             int start = url.lastIndexOf('/');
             int end = url.lastIndexOf('.');
             int sort = Integer.parseInt(url.substring(start + 1, end));
-            if(content.length() < 1){
-                spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取科大新闻失败,Url是https://www.sust.edu.cn/xxyw/yxz1.htm");
-            }
             Article article=new Article();
             article.setTitle(title);
             article.setUrl(url);

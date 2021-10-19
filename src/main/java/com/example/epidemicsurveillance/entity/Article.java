@@ -54,7 +54,7 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "排序")
     private Integer sort;
 
-    @ApiModelProperty(value = "类型 1.科大新闻,2.疫情最新通报,3.疫苗接种,4.今日资讯")
+    @ApiModelProperty(value = "类型 1.科大新闻,2.疫情最新通报,4.今日资讯")
     private Integer type;
 
     @ApiModelProperty(value = "创建时间")
