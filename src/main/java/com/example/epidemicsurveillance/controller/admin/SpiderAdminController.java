@@ -1,7 +1,5 @@
 package com.example.epidemicsurveillance.controller.admin;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
@@ -47,18 +45,14 @@ public class SpiderAdminController {
     @ApiOperation(value = "数据爬取")
     @GetMapping("/")
     public ResponseResult get() throws IOException {
-        spiderToGetData.getNotification();
+
         return ResponseResult.ok();
     }
 
     @ApiOperation(value = "测试")
     @GetMapping("/1")
     public ResponseResult send() throws IOException {
-        QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
-        wrapper.eq("area_name","地区待确认");
-        wrapper.eq("area_name","境外输入");
-        iGlobalEpidemicDataService.remove(wrapper);
-        return ResponseResult.ok();
+       return ResponseResult.ok();
     }
 
 

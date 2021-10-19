@@ -8,6 +8,7 @@ import com.example.epidemicsurveillance.entity.spider.notification.NotificationD
 import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
 import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
 import com.example.epidemicsurveillance.utils.spider.processor.NotificationProcessor;
+import com.example.epidemicsurveillance.utils.spider.processor.RealTimeInfoProcessor;
 import com.example.epidemicsurveillance.utils.spider.processor.SustProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -34,6 +35,11 @@ public class SpiderToGetData {
 
     @Autowired
     private NotificationProcessor notificationProcessor;
+
+    @Autowired
+    private RealTimeInfoProcessor realTimeInfoProcessor;
+
+
     /**
      * 爬取全球数据
      */
@@ -91,15 +97,36 @@ public class SpiderToGetData {
      * 爬取最新通报
      */
     public void getNotification(){
-        String dataJson = spiderUtils.getNotificationData("https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=antip&srv_id=pc&offset=0&limit=60&strategy=1&ext=%7B%22pool%22%3A[%22hot%22],%22is_filter%22:2,%22check_title%22:0,%22check_type%22:true%7D");
-        AllNotificationData allNotificationData = JSON.parseObject(dataJson, AllNotificationData.class);
-        List<NotificationDataDetails> list = allNotificationData.getData().getList();
-        for (NotificationDataDetails detail:list) {
-            Spider.create(notificationProcessor)
+        try {
+            String dataJson = spiderUtils.getNotificationData("https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=antip&srv_id=pc&offset=0&limit=60&strategy=1&ext=%7B%22pool%22%3A[%22hot%22],%22is_filter%22:2,%22check_title%22:0,%22check_type%22:true%7D");
+            AllNotificationData allNotificationData = JSON.parseObject(dataJson, AllNotificationData.class);
+            List<NotificationDataDetails> list = allNotificationData.getData().getList();
+            for (NotificationDataDetails detail:list) {
+                Spider.create(notificationProcessor)
+                        //初始访问url地址
+                        .addUrl(detail.getUrl())
+                        //.thread(10)
+                        .run(); // 执行爬虫
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取疫情最新通报报错,Url是https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=antip&srv_id=pc&offset=0&limit=60&strategy=1&ext=%7B%22pool%22%3A[%22hot%22],%22is_filter%22:2,%22check_title%22:0,%22check_type%22:true%7D");
+        }
+    }
+
+    /**
+     * 爬取今日资讯最新新闻
+     */
+    public void getRealTimeInfo(){
+        try {
+            Spider.create(realTimeInfoProcessor)
                     //初始访问url地址
-                    .addUrl(detail.getUrl())
+                    .addUrl("http://swt.changsha.gov.cn/fwwb/zxzx/jrzx/")
                     //.thread(10)
                     .run(); // 执行爬虫
+        } catch (Exception e) {
+            e.printStackTrace();
+            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取最新资讯报错,Url是http://swt.changsha.gov.cn/fwwb/zxzx/jrzx/");
         }
     }
 }

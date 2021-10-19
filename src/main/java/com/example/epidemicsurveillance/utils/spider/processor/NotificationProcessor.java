@@ -28,7 +28,6 @@ public class NotificationProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-        try {
             String title=page.getHtml().css("title").toString().replaceAll("_腾讯新闻","");
             String context=page.getHtml().css("div.content-article").toString();
             String url=page.getUrl().toString();
@@ -38,18 +37,12 @@ public class NotificationProcessor implements PageProcessor {
             article.setContent(context);
             article.setUrl(url);
             article.setTime(time);
-            if(context.length() < 1){
-                spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取最新疫情通告失败,url是"+url);
-            }
+            article.setType(2);
             articleService.save(article);
-        } catch (Exception e) {
-            e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取最新疫情通告出错");
-        }
     }
 
     private Site site = Site.me()
-            .setCharset("UTF-8") // 设置编码
+            .setCharset("GBK") // 设置编码
             .setRetrySleepTime(3000) // 设置重试的间隔时间
             .setSleepTime(5); // 设置重试次数
     @Override
