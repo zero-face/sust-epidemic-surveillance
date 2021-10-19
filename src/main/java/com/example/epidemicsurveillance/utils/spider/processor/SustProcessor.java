@@ -1,5 +1,6 @@
 package com.example.epidemicsurveillance.utils.spider.processor;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.epidemicsurveillance.entity.Article;
 import com.example.epidemicsurveillance.service.IArticleService;
 import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
@@ -55,7 +56,11 @@ public class SustProcessor implements PageProcessor {
             article.setUrl(url);
             article.setContent(content);
             article.setSort(sort);
-            articleService.save(article);
+            QueryWrapper<Article> wrapper=new QueryWrapper<>();
+            wrapper.eq("title",title);
+            if(articleService.getOne(wrapper) == null){
+                articleService.save(article);
+            }
         }
     }
 

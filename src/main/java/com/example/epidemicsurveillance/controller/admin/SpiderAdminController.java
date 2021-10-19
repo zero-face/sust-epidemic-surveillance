@@ -1,20 +1,15 @@
 package com.example.epidemicsurveillance.controller.admin;
 
-import com.example.epidemicsurveillance.response.ResponseResult;
-import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
-import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import com.example.epidemicsurveillance.task.epidemic_data_task.ChinaEpidemicTask;
 import com.example.epidemicsurveillance.task.epidemic_data_task.GlobalEpidemicTask;
-import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
+import com.example.epidemicsurveillance.task.journalism_data_task.NotificationTask;
+import com.example.epidemicsurveillance.task.journalism_data_task.RestTimeInfoTask;
+import com.example.epidemicsurveillance.task.journalism_data_task.SustJournalismTask;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName SpiderAdminController
@@ -28,32 +23,38 @@ import java.io.IOException;
 @CrossOrigin
 public class SpiderAdminController {
     @Autowired
-    private SpiderEpidemicDataUtils spiderUtils;
-
-    @Autowired
-    private SpiderToGetData spiderToGetData;
-
-    @Autowired
     private GlobalEpidemicTask globalEpidemicTask;
 
     @Autowired
     private ChinaEpidemicTask chinaEpidemicTask;
 
     @Autowired
-    private IGlobalEpidemicDataService iGlobalEpidemicDataService;
+    private NotificationTask notificationTask;
 
-    @ApiOperation(value = "数据爬取")
-    @GetMapping("/")
-    public ResponseResult get() throws IOException {
+    @Autowired
+    private RestTimeInfoTask restTimeInfoTask;
 
-        return ResponseResult.ok();
+    @Autowired
+    private SustJournalismTask sustJournalismTask;
+
+    @ApiOperation(value = "爬取数据")
+    @GetMapping("spiderData/{type}")
+    public void spiderData(@ApiParam(name = "type",value = "爬取数据的类型",required = true)
+                           @PathVariable("type")Integer type){
+        try {
+            if(type == 1){//爬取全球各国疫情数据
+                globalEpidemicTask.getGlobalEpidemicData();
+            }else if (type == 2){//爬取全国各地区疫情数据
+                chinaEpidemicTask.getChinaEpidemicData();
+            }else if (type == 3){//爬取疫情最新通报数据
+                notificationTask.getNotificationData();
+            }else if (type == 4){//爬取实时资讯通用数据
+                restTimeInfoTask.getRealTimeInfo();
+            }else if(type == 5){//爬取科大最新新闻
+                sustJournalismTask.getSustJournalismData();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-    @ApiOperation(value = "测试")
-    @GetMapping("/1")
-    public ResponseResult send() throws IOException {
-       return ResponseResult.ok();
-    }
-
-
 }
