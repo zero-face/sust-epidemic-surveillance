@@ -34,7 +34,6 @@ public class ChinaEpidemicTask {
     //@Scheduled(cron = "* 10 2 * * ? *")//每日凌晨两点十分执行
     @Transactional
     public void getChinaEpidemicData(){
-        System.out.println("定时任务开始");
         ChinaEpidemic chinaEpidemicData = spiderToGetData.getChinaEpidemicData("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=jQuery35108028357975576601_1634228907365&_=1634228907366");
         ChinaEpidemicAreaTree tree=chinaEpidemicData.getAreaTree().get(0);
         //数据库中待更新的全国各地区疫情数据List
@@ -78,17 +77,18 @@ public class ChinaEpidemicTask {
                 QueryWrapper<GlobalEpidemicData> cityWrapper=new QueryWrapper<>();
                 cityWrapper.eq("area_name",city.getName());
                 GlobalEpidemicData cityData=iGlobalEpidemicDataService.getOne(cityWrapper);
-                cityData.setAreaName(city.getName());
-                cityData.setExistingDiagnosis(city.getTotal().getNowConfirm());//现有确诊
-                cityData.setSuspected(city.getTotal().getSuspect());//疑似
-                cityData.setTotalDiagnosis(city.getTotal().getConfirm());//累计确诊
-                cityData.setTotalDeath(city.getTotal().getDead());//累计死亡
-                cityData.setTotalCure(city.getTotal().getHeal());//累计治愈
-                cityData.setParentId(provinceData.getId());
-                waitForUpdateList.add(cityData);
+                if (cityData != null) {
+                    cityData.setAreaName(city.getName());
+                    cityData.setExistingDiagnosis(city.getTotal().getNowConfirm());//现有确诊
+                    cityData.setSuspected(city.getTotal().getSuspect());//疑似
+                    cityData.setTotalDiagnosis(city.getTotal().getConfirm());//累计确诊
+                    cityData.setTotalDeath(city.getTotal().getDead());//累计死亡
+                    cityData.setTotalCure(city.getTotal().getHeal());//累计治愈
+                    cityData.setParentId(provinceData.getId());
+                    waitForUpdateList.add(cityData);
+                }
             }
         }
         iGlobalEpidemicDataService.updateBatchById(waitForUpdateList);
-        System.out.println("定时任务结束");
     }
 }

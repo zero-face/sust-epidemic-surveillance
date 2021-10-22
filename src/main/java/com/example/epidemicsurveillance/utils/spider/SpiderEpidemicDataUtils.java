@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 /**
+ * 爬取数据返回JSON字符串
+ *
  * @ClassName SpiderUtils
  * @Author 朱云飞
  * @Date 2021/10/14 10:25
@@ -70,6 +72,28 @@ public class SpiderEpidemicDataUtils {
             throw new EpidemicException("数据获取失败,url是"+url);
         }
     }
+
+    /**
+     * 爬取疫情最新通报信息
+     */
+    public String getNotificationData(String url){
+        try {
+            HttpGet httpGet=new HttpGet(url);
+            CloseableHttpResponse response = httpClient.execute(httpGet);
+            if (response.getStatusLine().getStatusCode() == 200) {
+                HttpEntity httpEntity = response.getEntity();
+                //爬取的JSON数据有误，这里进行处理
+                String context = EntityUtils.toString(httpEntity, "utf8");
+                return context;
+            }else {
+                throw new EpidemicException("数据获取失败,url是"+url);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new EpidemicException("数据获取失败,url是"+url);
+        }
+    }
+
 
 
 }

@@ -40,7 +40,6 @@ public class GlobalEpidemicTask {
     //@Scheduled(cron = "* 0 2 * * ? *")//每日凌晨两点执行
     @Transactional
     public void getGlobalEpidemicData(){
-        System.out.println("爬取全球疫情数据任务开始");
         GlobalEpidemic globalEpidemicData = spiderToGetData.getGlobalEpidemicData("https://api.inews.qq.com/newsqa/v1/automation/modules/list?modules=FAutoCountryConfirmAdd,WomWorld,WomAboard");
         List<GlobalCountryData> list = globalEpidemicData.getData().getWomAboard();
         QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
@@ -66,7 +65,6 @@ public class GlobalEpidemicTask {
             }
         }
         iGlobalEpidemicDataService.updateBatchById(dbList);
-        System.out.println("爬取全球疫情数据任务结束");
     }
 
 

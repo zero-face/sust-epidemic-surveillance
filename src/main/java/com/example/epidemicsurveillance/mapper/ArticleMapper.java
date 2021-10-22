@@ -2,6 +2,7 @@ package com.example.epidemicsurveillance.mapper;
 
 import com.example.epidemicsurveillance.entity.Article;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.springframework.stereotype.Component;
 
 /**
  * <p>
@@ -11,6 +12,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author zyf
  * @since 2021-10-16
  */
+@Component
 public interface ArticleMapper extends BaseMapper<Article> {
 
 }

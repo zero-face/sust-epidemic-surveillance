@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SustJournalismTask {
     @Autowired
-    private SpiderToGetData spiderToGetDatal;
+    private SpiderToGetData spiderToGetData;
 
     @Autowired
     private IArticleService iArticleService;
@@ -30,6 +30,6 @@ public class SustJournalismTask {
         wrapper.eq("type",1);
         iArticleService.remove(wrapper);
         //获取今日热点数据
-        spiderToGetDatal.getSustJournalism();
+        spiderToGetData.getSustJournalism();
     }
 }
