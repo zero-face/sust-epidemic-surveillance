@@ -5,6 +5,7 @@ import com.example.epidemicsurveillance.entity.spider.china.ChinaEpidemic;
 import com.example.epidemicsurveillance.entity.spider.global.GlobalEpidemic;
 import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
 import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
+import com.example.epidemicsurveillance.utils.spider.processor.CityCodeProcessor;
 import com.example.epidemicsurveillance.utils.spider.processor.SustProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,6 +27,9 @@ public class SpiderToGetData {
 
     @Autowired
     private SustProcessor sustProcessor;
+
+    @Autowired
+    private CityCodeProcessor cityCodeProcessor;
     /**
      * 爬取全球数据
      */
@@ -77,6 +81,21 @@ public class SpiderToGetData {
         } catch (Exception e) {
             e.printStackTrace();
             spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取科大新闻报错,Url是https://www.sust.edu.cn/xxyw/yxz1.htm");
+        }
+    }
+
+    /**
+     * 爬取地区编码
+     * @param url
+     */
+    public void getCityCOde(String url) {
+        try {
+            Spider.create(cityCodeProcessor)
+                    .addUrl(url)
+                    .run();
+        }catch (Exception e) {
+            e.printStackTrace();
+            spiderErrorSendMailToAdmin.sendEmailToAdmin("1444171773@qq.com", "爬取地区编码出错");
         }
     }
 }
