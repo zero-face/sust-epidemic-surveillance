@@ -86,7 +86,7 @@ public class MailReceiver {
             context.setVariable("messageCode", vo.getEmailMessage());
             //将准备好的theymeleaf模板中的信息转为String
             //String mail = templateEngine.process("mail", context);
-            String mail=vo.getEmailMessage() + "尽快处理";
+            String mail=vo.getEmailMessage();
             helper.setText(mail, true);
             //发送邮件
             javaMailSender.send(msg);

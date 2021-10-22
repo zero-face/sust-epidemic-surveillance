@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.AdminLoginVo;
+import com.example.epidemicsurveillance.entity.vo.RegisterVo;
 import com.example.epidemicsurveillance.response.ResponseResult;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,4 +32,22 @@ public interface IAdminService extends IService<Admin> {
     void getKaptcha(HttpServletRequest request, HttpServletResponse response, String key);
 
     ResponseResult getAdminInfo(String token);
+
+    void getEmailCode(String email);
+
+    ResponseResult register(RegisterVo admin);
+
+    ResponseResult getAdmins(Integer type);
+
+    ResponseResult getAdminById(Integer adminId);
+
+    ResponseResult addAdmin(Admin admin);
+
+    ResponseResult updateAdmin(Admin admin);
+
+    ResponseResult deleteAdmin(Integer adminId);
+
+    ResponseResult adminAdopt(Integer adminId);
+
+    ResponseResult adminFail(Integer adminId);
 }

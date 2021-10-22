@@ -7,6 +7,7 @@
         <id column="id" property="id" />
         <result column="wechat_id" property="wechatId" />
         <result column="phone" property="phone" />
+        <result column="email" property="email"/>
         <result column="username" property="username" />
         <result column="password" property="password" />
         <result column="country" property="country" />
@@ -18,14 +19,30 @@
         <result column="number" property="number" />
         <result column="avator" property="avator" />
         <result column="is_delete" property="isDelete" />
+        <result column="is_examine" property="isExamine"/>
         <result column="gmt_create" property="gmtCreate" />
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
+    <resultMap id="AdminWithRoles" type="com.example.epidemicsurveillance.entity.Admin" extends="BaseResultMap">
+        <collection property="roles" ofType="com.example.epidemicsurveillance.entity.Role">
+           <id column="rid" property="id"/>
+            <result column="rname" property="roleName"/>
+        </collection>
+    </resultMap>
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, wechat_id, phone, username, password, country, province, city, token, age, sex, number, avator, is_delete, gmt_create, gmt_modified
+        id, wechat_id, phone,email, username, password, country, province, city, token, age, sex, number, avator, is_delete,is_examine, gmt_create, gmt_modified
     </sql>
+
+    <select id="getAdmins" resultMap="AdminWithRoles">
+     select a.*,r.id as rid ,r.role_name as rname from
+     admin a
+     join admin_role ar on a.id = ar.admin_id
+     join  role r on ar.role_id = r.id
+     where a.is_delete=0 and a.is_examine=${type}
+    </select>
 
 
 
