@@ -12,6 +12,8 @@
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
+
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, role_name, collage_id, is_delete, gmt_create, gmt_modified

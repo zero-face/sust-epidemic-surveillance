@@ -45,6 +45,9 @@ public class Admin implements Serializable , UserDetails {
     @ApiModelProperty(value = "手机号")
     private String phone;
 
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
     @ApiModelProperty(value = "用户名")
     private String username;
 
@@ -66,7 +69,7 @@ public class Admin implements Serializable , UserDetails {
     @ApiModelProperty(value = "年龄")
     private Integer age;
 
-    @ApiModelProperty(value = "性别 0男 1女")
+    @ApiModelProperty(value = "性别 0未知 1男 2女")
     private Integer sex;
 
     @ApiModelProperty(value = "身份证号")
@@ -74,6 +77,9 @@ public class Admin implements Serializable , UserDetails {
 
     @ApiModelProperty(value = "头像地址")
     private String avator;
+
+    @ApiModelProperty(value = "管理员审核是否通过 0待审核,1已经审核")
+    private Integer isExamine;
 
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
@@ -94,6 +100,14 @@ public class Admin implements Serializable , UserDetails {
     @ApiModelProperty(value = "角色")
     @TableField(exist = false)
     private List<Role> roles;
+
+    @ApiModelProperty(value = "全部角色的字符串")
+    @TableField(exist = false)
+    private String roleNames;
+
+    @ApiModelProperty(value = "管理员拥有角色对应的Id")
+    @TableField(exist = false)
+    private List<Integer> value;
 
     //返回角色
     @Override

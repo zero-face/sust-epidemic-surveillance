@@ -39,7 +39,6 @@ public class AdminRole implements Serializable {
     private Integer roleId;
 
     @ApiModelProperty(value = "0未删除,1已删除")
-    @TableLogic
     private Integer isDelete;
 
     @ApiModelProperty(value = "创建时间")

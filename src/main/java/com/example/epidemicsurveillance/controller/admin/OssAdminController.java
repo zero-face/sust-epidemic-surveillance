@@ -27,7 +27,7 @@ public class OssAdminController {
     @PostMapping("uploadPicture")
     public ResponseResult uploadPicture(@ApiParam(name = "file",value = "图片文件",required = true)
                                         MultipartFile file){
-        String pictureUrl = ALiYunOssUtil.upload(file, "community");
+        String pictureUrl = ALiYunOssUtil.upload(file, "sustEpidemic");
         return ResponseResult.ok().data("pictureUrl",pictureUrl);
     }
 }

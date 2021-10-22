@@ -5,7 +5,7 @@ import com.example.epidemicsurveillance.entity.spider.china.ChinaEpidemic;
 import com.example.epidemicsurveillance.entity.spider.global.GlobalEpidemic;
 import com.example.epidemicsurveillance.entity.spider.notification.AllNotificationData;
 import com.example.epidemicsurveillance.entity.spider.notification.NotificationDataDetails;
-import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
+import com.example.epidemicsurveillance.utils.rabbitmq.EmailSendUtil;
 import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
 import com.example.epidemicsurveillance.utils.spider.processor.CityCodeProcessor;
 import com.example.epidemicsurveillance.utils.spider.processor.NotificationProcessor;
@@ -26,7 +26,7 @@ import java.util.List;
 @Component
 public class SpiderToGetData {
     @Autowired
-    private SpiderErrorSendMailToAdmin spiderErrorSendMailToAdmin;
+    private EmailSendUtil emailSendUtil;
 
     @Autowired
     private SpiderEpidemicDataUtils spiderUtils;
@@ -50,12 +50,12 @@ public class SpiderToGetData {
             String dataJson = spiderUtils.getGlobalDataJson(url);
             GlobalEpidemic globalEpidemic = JSON.parseObject(dataJson, GlobalEpidemic.class);
             if(globalEpidemic==null || globalEpidemic.getData().getWomAboard() == null){
-                spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取全球数据失败，url是"+url);
+                emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取全球数据失败，url是"+url);
             }
             return globalEpidemic;
         } catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取全球数据报错，url是"+url);
+            emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取全球数据报错，url是"+url);
         }
         return null;
     }
@@ -70,12 +70,12 @@ public class SpiderToGetData {
             System.out.println(dataJson);
             ChinaEpidemic chinaEpidemic = JSON.parseObject(dataJson, ChinaEpidemic.class);
             if(chinaEpidemic==null || chinaEpidemic.getAreaTree()== null){
-                spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取中国数据失败，url是"+url);
+                emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取中国数据失败，url是"+url);
             }
             return chinaEpidemic;
         } catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取中国数据报错，url是"+url);
+            emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取中国数据报错，url是"+url);
         }
         return null;
     }
@@ -92,7 +92,7 @@ public class SpiderToGetData {
                     .run(); // 执行爬虫
         } catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取科大新闻报错,Url是https://www.sust.edu.cn/xxyw/yxz1.htm");
+            emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取科大新闻报错,Url是https://www.sust.edu.cn/xxyw/yxz1.htm");
         }
     }
     /**
@@ -112,7 +112,7 @@ public class SpiderToGetData {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取疫情最新通报报错,Url是https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=antip&srv_id=pc&offset=0&limit=60&strategy=1&ext=%7B%22pool%22%3A[%22hot%22],%22is_filter%22:2,%22check_title%22:0,%22check_type%22:true%7D");
+            emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取疫情最新通报报错,Url是https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=antip&srv_id=pc&offset=0&limit=60&strategy=1&ext=%7B%22pool%22%3A[%22hot%22],%22is_filter%22:2,%22check_title%22:0,%22check_type%22:true%7D");
         }
     }
 
@@ -128,7 +128,7 @@ public class SpiderToGetData {
                     .run(); // 执行爬虫
         } catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("2690534598@qq.com","爬取最新资讯报错,Url是http://swt.changsha.gov.cn/fwwb/zxzx/jrzx/");
+            emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取最新资讯报错,Url是http://swt.changsha.gov.cn/fwwb/zxzx/jrzx/");
         }
     }
     /**
