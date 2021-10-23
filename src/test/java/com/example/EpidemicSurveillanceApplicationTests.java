@@ -1,35 +1,37 @@
 package com.example;
 
+import com.example.epidemicsurveillance.service.ICityPolicyService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Scanner;
 
 
 @SpringBootTest
 class EpidemicSurveillanceApplicationTests {
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
     private SpiderToGetData spiderToGetData;
 
+    @Autowired
+    private ICityPolicyService cityPolicyService;
+
+
     @Test
-    void contextLoads() {
-    }
-    @Test
-    void test() throws URISyntaxException {
+    void getCityCodeTest() {
         spiderToGetData.getCityCOde("http://www.mca.gov.cn/article/sj/xzqh/2020/20201201.html");
     }
+    @Test
+    void preventionPolicy() {
+//        cityPolicyService.GuideData("西安市");
+    }
+
+    @Test
+    void test1() {
+        System.out.println(System.currentTimeMillis());
+    }
+
 }

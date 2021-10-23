@@ -35,7 +35,7 @@ public class MyFormHttpMessageConverter implements HttpMessageConverter<Map<Stri
     public static final Charset DEFAULT_CHARSET = StandardCharsets.UTF_8;
     private final Charset charset = DEFAULT_CHARSET;
     private static final MediaType DEFAULT_FORM_DATA_MEDIA_TYPE =
-            new MediaType(MediaType.APPLICATION_FORM_URLENCODED, DEFAULT_CHARSET);
+            new MediaType(MediaType.APPLICATION_JSON, DEFAULT_CHARSET);
 
     @Override
     public boolean canRead(Class<?> clazz, MediaType mediaType) {
@@ -71,7 +71,7 @@ public class MyFormHttpMessageConverter implements HttpMessageConverter<Map<Stri
 
     @Override
     public List<MediaType> getSupportedMediaTypes() {
-        return Collections.singletonList(MediaType.APPLICATION_FORM_URLENCODED);
+        return Collections.singletonList(MediaType.APPLICATION_JSON);
     }
 
     @Override
