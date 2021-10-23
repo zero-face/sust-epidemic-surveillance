@@ -76,7 +76,7 @@ public class ALiYunOssUtil {
             //删除图片
             //需要去掉域名前缀 域名不能有中文
             //找文件名(找到最后一个/，截取后面的文件名字
-            String fileName=pictureUrl.replaceAll("http://graduation-shiyi.oss-cn-beijing.aliyuncs.com/","");
+            String fileName=pictureUrl.replaceAll("http://epidemic-sust.oss-cn-beijing.aliyuncs.com/","");
             ossClient.deleteObject(bucketName,fileName);
             System.out.println(fileName);
             System.out.println(bucketName);

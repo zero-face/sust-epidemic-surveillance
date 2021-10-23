@@ -3,7 +3,7 @@ package com.example.epidemicsurveillance.utils.spider.processor;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.epidemicsurveillance.entity.Article;
 import com.example.epidemicsurveillance.service.IArticleService;
-import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
+import com.example.epidemicsurveillance.utils.rabbitmq.EmailSendUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +28,7 @@ public class SustProcessor implements PageProcessor {
     private IArticleService articleService;
 
     @Autowired
-    private SpiderErrorSendMailToAdmin spiderErrorSendMailToAdmin;
+    private EmailSendUtil emailSendUtil;
 
     @Transactional
     @Override

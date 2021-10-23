@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.utils.rabbitmq.spider;
+package com.example.epidemicsurveillance.utils.rabbitmq;
 
 import com.example.epidemicsurveillance.config.rabbitmq.MailConstants;
 import com.example.epidemicsurveillance.entity.vo.EmailVo;
@@ -16,7 +16,7 @@ import java.util.UUID;
  * @Version 1.0
  **/
 @Component
-public class SpiderErrorSendMailToAdmin {
+public class EmailSendUtil {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
