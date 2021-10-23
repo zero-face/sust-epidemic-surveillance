@@ -1,14 +1,13 @@
 package com.example.epidemicsurveillance.controller.admin;
 
+import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName RoleAdminController
@@ -28,5 +27,18 @@ public class RoleAdminController {
     @GetMapping("getAllRoles")
     public ResponseResult getAllRoles(){
         return iRoleService.getAllRoles();
+    }
+
+    @ApiOperation(value = "获取全部角色列表及对应的管理员")
+    @GetMapping("getAllRolesWithAdmins")
+    public ResponseResult getAllRolesWithAdmins(){
+        return iRoleService.getAllRolesWithAdmins();
+    }
+
+    @ApiOperation(value = "添加角色")
+    @PostMapping("addRole")
+    public ResponseResult addRole(@ApiParam(name = "role",value = "角色对象",required = true)
+                                  @RequestBody Role role){
+        return iRoleService.addRole(role);
     }
 }

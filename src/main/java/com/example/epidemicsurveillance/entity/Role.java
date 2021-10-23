@@ -12,6 +12,7 @@ import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -53,6 +54,10 @@ public class Role implements Serializable {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime gmtModified;
+
+    @ApiModelProperty(value = "拥有角色的管理员")
+    @TableField(exist = false)
+    private List<Admin> admins;
 
 
 }

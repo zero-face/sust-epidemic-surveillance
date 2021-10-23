@@ -44,6 +44,17 @@
      where a.is_delete=0 and a.is_examine=${type}
     </select>
 
+    <select id="getAdminByPermissionId" resultType="com.example.epidemicsurveillance.entity.Admin">
+        select distinct a.id,a.username,a.is_delete,a.is_examine from admin a
+        join admin_role ar on a.id = ar.admin_id
+        join role r on ar.role_id = r.id
+        join role_permission rp on r.id = rp.role_id
+        join permission p on rp.permission_id = p.id
+        where p.id=${permissionId}
+        and a.is_examine=1
+        and a.is_delete=0
+    </select>
+
 
 
 </mapper>

@@ -1,7 +1,7 @@
 package com.example.epidemicsurveillance.mapper;
 
-import com.example.epidemicsurveillance.entity.Permission;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.example.epidemicsurveillance.entity.Permission;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

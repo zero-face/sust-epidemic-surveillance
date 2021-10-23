@@ -19,5 +19,4 @@ public class RoleRenderVo {
     private Integer id;
     private String roleName;
     private String admins;
-    private String permissions;
 }
