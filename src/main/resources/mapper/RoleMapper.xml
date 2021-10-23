@@ -12,6 +12,13 @@
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
+    <resultMap id="RolesWithAdmins" type="com.example.epidemicsurveillance.entity.Role" extends="BaseResultMap">
+        <collection property="admins" ofType="com.example.epidemicsurveillance.entity.Admin">
+            <id column="aid" property="id"/>
+            <result column="aname" property="username"/>
+        </collection>
+    </resultMap>
+
 
 
     <!-- 通用查询结果列 -->
@@ -29,5 +36,21 @@
                 LEFT JOIN admin_role AS ar ON r.id = ar.role_id
         WHERE
             ar.admin_id = #{adminId}
+    </select>
+
+
+
+    <select id="getAllRolesWithAdmins" resultMap="RolesWithAdmins">
+        select a.id as aid,a.username as aname,r.* from role r
+         join admin_role ar on r.id = ar.role_id
+         join admin a on ar.admin_id = a.id
+         where a.is_delete=0 and  r.is_delete=0 and a.is_examine=1
+    </select>
+
+    <select id="getRoleListByPermissionId" resultType="com.example.epidemicsurveillance.entity.Role">
+        select r.* from role r
+        join role_permission rp on r.id = rp.role_id
+        join permission p on rp.permission_id = p.id
+        where p.id=${permissionId}
     </select>
 </mapper>

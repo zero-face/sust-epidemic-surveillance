@@ -7,6 +7,7 @@
         <id column="id" property="id" />
         <result column="permission_name" property="permissionName" />
         <result column="url" property="url" />
+        <result column="parent_id" property="parentId"/>
         <result column="is_delete" property="isDelete" />
         <result column="gmt_create" property="gmtCreate" />
         <result column="gmt_modified" property="gmtModified" />
@@ -21,9 +22,10 @@
         </collection>
     </resultMap>
 
+
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, permission_name, url, is_delete, gmt_create, gmt_modified
+        id, permission_name, url,parent_id,is_delete, gmt_create, gmt_modified
     </sql>
 
     <select id="getMenuWithRole" resultMap="MenusWithRole">
@@ -44,5 +46,6 @@
         ORDER BY
             m.id
     </select>
+    
 
 </mapper>

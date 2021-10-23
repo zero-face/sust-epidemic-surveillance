@@ -142,7 +142,7 @@ public class SpiderToGetData {
                     .run();
         }catch (Exception e) {
             e.printStackTrace();
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("1444171773@qq.com", "爬取地区编码出错");
+            emailSendUtil.sendEmailToAdmin("1444171773@qq.com", "爬取地区编码出错");
         }
     }
 }

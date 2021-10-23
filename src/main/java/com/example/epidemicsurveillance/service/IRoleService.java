@@ -15,4 +15,8 @@ import com.example.epidemicsurveillance.response.ResponseResult;
 public interface IRoleService extends IService<Role> {
 
     ResponseResult getAllRoles();
+
+    ResponseResult getAllRolesWithAdmins();
+
+    ResponseResult addRole(Role role);
 }

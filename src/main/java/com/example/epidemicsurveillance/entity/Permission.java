@@ -39,6 +39,9 @@ public class Permission implements Serializable {
     @ApiModelProperty(value = "权限控制地址")
     private String url;
 
+    @ApiModelProperty(value = "上级权限Id")
+    private Integer parentId;
+
     @ApiModelProperty(value = "0未删除,1已删除")
     @TableLogic
     private Integer isDelete;
@@ -58,5 +61,17 @@ public class Permission implements Serializable {
     @ApiModelProperty(value = "角色列表")
     @TableField(exist = false)
     private List<Role> roles;
+
+    @ApiModelProperty(value = "角色字符串")
+    @TableField(exist = false)
+    private String roleNames;
+
+    @ApiModelProperty(value = "拥有该权限的管理员名称字符串")
+    @TableField(exist = false)
+    private String adminUsernames;
+
+    @ApiModelProperty(value = "下级权限")
+    @TableField(exist = false)
+    private List<Permission> children;
 
 }

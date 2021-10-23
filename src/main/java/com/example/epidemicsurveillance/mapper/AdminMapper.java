@@ -19,4 +19,6 @@ public interface AdminMapper extends BaseMapper<Admin> {
 
 
     List<Admin> getAdmins(Integer type);
+
+    List<Admin> getAdminByPermissionId(Integer id);
 }
