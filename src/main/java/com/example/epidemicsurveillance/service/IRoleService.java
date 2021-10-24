@@ -19,4 +19,10 @@ public interface IRoleService extends IService<Role> {
     ResponseResult getAllRolesWithAdmins();
 
     ResponseResult addRole(Role role);
+
+    ResponseResult updateRole(Role role);
+
+    ResponseResult getRoleById(Integer roleId);
+
+    ResponseResult deleteRoleById(Integer roleId);
 }

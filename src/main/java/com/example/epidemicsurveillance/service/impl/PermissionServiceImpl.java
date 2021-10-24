@@ -5,12 +5,15 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Permission;
 import com.example.epidemicsurveillance.entity.Role;
+import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.AdminMapper;
 import com.example.epidemicsurveillance.mapper.PermissionMapper;
 import com.example.epidemicsurveillance.mapper.RoleMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IPermissionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -104,6 +107,131 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         }
         return ResponseResult.ok().data("list",list);
     }
+
+    @Override
+    public ResponseResult getPermissionTreeByRoleId(Integer roleId) {
+        List<Permission> permissions=permissionMapper.getPermissionTreeByRoleId(roleId);
+        List<Permission> result = permissionLayered(permissions);
+        return ResponseResult.ok().data("list",result);
+    }
+
+    @Override
+    public ResponseResult getPermissionListById(Integer permissionId) {
+        if(permissionId == null){
+            throw new EpidemicException("待查询的权限记录不存在");
+        }
+        Permission permission = permissionMapper.selectById(permissionId);
+        permission.setRoleNames(roleListToRoleString(roleMapper.getRoleListByPermissionId(permissionId)));
+        permission.setAdminUsernames(adminListToRoleString(adminMapper.getAdminByPermissionId(permissionId)));
+        List<Permission> parentPermission=new LinkedList<>();
+        parentPermission.add(permission);
+        return ResponseResult.ok().data("parentPermission",parentPermission );
+    }
+
+    @Override
+    public ResponseResult addPermission(Integer permissionId, Permission permission) {
+        if(StringUtils.isBlank(permission.getPermissionName())){
+            throw new EpidemicException("权限名称不能为空");
+        }
+        if(StringUtils.isBlank(permission.getUrl())){
+            throw new EpidemicException("权限路由不能为空");
+        }
+        QueryWrapper<Permission> permissionNameWrapper=new QueryWrapper<>();
+        permissionNameWrapper.eq("permission_name",permission.getPermissionName());
+        Permission permission1 = permissionMapper.selectOne(permissionNameWrapper);
+        if(permission1 != null){
+            throw new EpidemicException("该权限名称已经存在");
+        }
+        QueryWrapper<Permission> permissionUrlWrapper=new QueryWrapper<>();
+        permissionUrlWrapper.eq("url",permission.getUrl());
+        Permission permission2 = permissionMapper.selectOne(permissionUrlWrapper);
+        if(permission2 != null){
+            throw new EpidemicException("该权限路由已经存在");
+        }
+        permission.setParentId(permissionId);
+        permissionMapper.insert(permission);
+        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+        RedisOperations<String, Object> redisOperations = operations.getOperations();
+        redisOperations.delete("permissionList");
+        return ResponseResult.ok().message("添加权限成功");
+    }
+
+    @Override
+    public ResponseResult getPermissionById(Integer permissionId) {
+        if(permissionId == null){
+            throw new EpidemicException("待查询的权限记录不存在");
+        }
+        Permission permission = permissionMapper.selectById(permissionId);
+        return ResponseResult.ok().data("permission",permission);
+    }
+
+    @Override
+    public ResponseResult updatePermission(Permission permission) {
+        if(StringUtils.isBlank(permission.getPermissionName())){
+            throw new EpidemicException("权限名称不能为空");
+        }
+        if(StringUtils.isBlank(permission.getUrl())){
+            throw new EpidemicException("权限路由不能为空");
+        }
+        QueryWrapper<Permission> permissionNameWrapper=new QueryWrapper<>();
+        permissionNameWrapper.eq("permission_name",permission.getPermissionName());
+        Permission permission1 = permissionMapper.selectOne(permissionNameWrapper);
+        if(permission1 != null && !permission1.getId().equals(permission.getId())){
+            throw new EpidemicException("该权限名称已经存在");
+        }
+        QueryWrapper<Permission> permissionUrlWrapper=new QueryWrapper<>();
+        permissionUrlWrapper.eq("url",permission.getUrl());
+        Permission permission2 = permissionMapper.selectOne(permissionUrlWrapper);
+        if(permission2 != null && !permission2.getId().equals(permission.getId())){
+            throw new EpidemicException("该权限路由已经存在");
+        }
+        permissionMapper.updateById(permission);
+        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+        RedisOperations<String, Object> redisOperations = operations.getOperations();
+        redisOperations.delete("permissionList");
+        return ResponseResult.ok().message("修改成功");
+    }
+
+    @Override
+    public ResponseResult deletePermissionById(Integer permissionId) {
+        Permission permission = permissionMapper.selectById(permissionId);
+        if(permission == null){
+            throw new EpidemicException("待删除的权限信息不存在");
+        }
+        QueryWrapper<Permission> wrapper=new QueryWrapper<>();
+        wrapper.eq("parent_id",permissionId);
+        List<Permission> permissions = permissionMapper.selectList(wrapper);
+        if(permissions != null && permissions.size() > 0){
+            throw new EpidemicException("该权限还存在子权限，无法删除");
+        }
+        permissionMapper.deleteById(permissionId);
+        ValueOperations<String, Object> operations = redisTemplate.opsForValue();
+        RedisOperations<String, Object> redisOperations = operations.getOperations();
+        redisOperations.delete("permissionList");
+        return ResponseResult.ok().message("删除成功");
+    }
+
+    @Override
+    public ResponseResult getRoleNotOwnedPermissionByRoleId(Integer roleId) {
+        List<Permission> ownerPermissions=permissionMapper.getPermissionTreeByRoleId(roleId);
+        List<Permission> allPermission=permissionMapper.selectList(null);
+        List<Permission> notOwnerPermission=new LinkedList<>();
+        for (Permission permission:allPermission) {
+            boolean isOwner=false;//记录该权限是否已经拥有
+            for (Permission ownerPermission: ownerPermissions) {
+                if(permission.getId().equals(ownerPermission.getId())){
+                    isOwner=true;//已经拥有
+                    break;
+                }
+            }
+            if(!isOwner){
+                notOwnerPermission.add(permission);
+            }
+        }
+        List<Permission> result = permissionLayered(notOwnerPermission);
+        return ResponseResult.ok().data("list",result);
+    }
+
     /**
      * 将角色列表转换为角色字符串
      */
@@ -131,5 +259,60 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
             }
         }
         return adminString.toString();
+    }
+    /**
+     * 权限分层
+     */
+    public List<Permission> permissionLayered(List<Permission> permissions){
+        Permission rootPermission=null;
+        List<Permission> secondPermissionList=new LinkedList<>();
+        List<Permission> thirdPermissionList=new LinkedList<>();
+        List<Permission> result=new LinkedList<>();
+        for (Permission permission:permissions) {
+            permission.setAdminUsernames(adminListToRoleString(adminMapper.getAdminByPermissionId(permission.getId())));
+            permission.setRoleNames(roleListToRoleString(roleMapper.getRoleListByPermissionId(permission.getId())));
+            permission.setChildren(new LinkedList<>());
+            if(permission.getId() == 1){
+                rootPermission=permission;
+            }
+            if(permission.getParentId() == 1 && permission.getId() != 1){
+                secondPermissionList.add(permission);
+            }
+        }
+        if (secondPermissionList.size() != 0) {
+            for (Permission permission: permissions) {
+                for (Permission secondPermission:secondPermissionList) {
+                    if(permission.getParentId().equals(secondPermission.getId())){
+                        secondPermission.getChildren().add(permission);
+                        thirdPermissionList.add(permission);
+                    }
+                }
+            }
+            for (Permission permission:permissions) {
+                for (Permission thirdPermission: thirdPermissionList) {
+                    if(permission.getParentId().equals(thirdPermission.getId())){
+                        thirdPermission.getChildren().add(permission);
+                    }
+                }
+            }
+
+            if(rootPermission != null){
+                rootPermission.setChildren(secondPermissionList);
+                result.add(rootPermission);
+            }else {
+                result=secondPermissionList;
+            }
+        }else {
+            for (Permission thirdPermission: permissions) {
+                for (Permission fourthPermission:permissions) {
+                    if(thirdPermission.getId().equals(fourthPermission.getParentId())){
+                        thirdPermission.getChildren().add(fourthPermission);
+                        thirdPermissionList.add(thirdPermission);
+                    }
+                }
+            }
+            result=thirdPermissionList;
+        }
+        return result;
     }
 }

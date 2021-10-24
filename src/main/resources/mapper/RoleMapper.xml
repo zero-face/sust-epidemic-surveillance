@@ -38,12 +38,10 @@
             ar.admin_id = #{adminId}
     </select>
 
-
-
     <select id="getAllRolesWithAdmins" resultMap="RolesWithAdmins">
         select a.id as aid,a.username as aname,r.* from role r
-         join admin_role ar on r.id = ar.role_id
-         join admin a on ar.admin_id = a.id
+         left join admin_role ar on r.id = ar.role_id
+         left join admin a on ar.admin_id = a.id
          where a.is_delete=0 and  r.is_delete=0 and a.is_examine=1
     </select>
 

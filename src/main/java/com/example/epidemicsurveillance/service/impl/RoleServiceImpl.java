@@ -7,6 +7,7 @@ import com.example.epidemicsurveillance.entity.Role;
 import com.example.epidemicsurveillance.entity.vo.RoleRenderVo;
 import com.example.epidemicsurveillance.entity.vo.RoleVo;
 import com.example.epidemicsurveillance.exception.EpidemicException;
+import com.example.epidemicsurveillance.mapper.AdminMapper;
 import com.example.epidemicsurveillance.mapper.RoleMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IRoleService;
@@ -30,6 +31,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     @Autowired
     private RoleMapper roleMapper;
 
+    @Autowired
+    private AdminMapper adminMapper;
+
     @Override
     public ResponseResult getAllRoles() {
         List<Role> roleList = roleMapper.selectList(null);
@@ -45,12 +49,13 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
 
     @Override
     public ResponseResult getAllRolesWithAdmins() {
-        List<Role> roleList=roleMapper.getAllRolesWithAdmins();
+        List<Role> roleList=roleMapper.selectList(null);
         List<RoleRenderVo> list=new LinkedList<>();
         for (Role role: roleList) {
             RoleRenderVo roleRenderVo=new RoleRenderVo();
+            roleRenderVo.setId(role.getId());
             roleRenderVo.setRoleName(role.getRoleName());
-            List<Admin> adminList = role.getAdmins();
+            List<Admin> adminList = adminMapper.getAdminByRoleId(role.getId());
             StringBuilder admins=new StringBuilder();
             for (int i = 0; i <adminList.size() ; i++) {
                 if(i == 0){
@@ -79,5 +84,39 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
         role.setCollageId(1);
         roleMapper.insert(role);
         return ResponseResult.ok().message("添加成功");
+    }
+
+    @Override
+    public ResponseResult updateRole(Role role) {
+        if(role == null || role.getRoleName() == null){
+            throw new EpidemicException("角色名称不能为空");
+        }
+        QueryWrapper<Role> wrapper=new QueryWrapper<>();
+        wrapper.eq("role_name",role.getRoleName());
+        Role role1 = roleMapper.selectOne(wrapper);
+        if(role1 != null && !role.getId().equals(role1.getId())){
+            throw new EpidemicException("该角色已经存在");
+        }
+        roleMapper.updateById(role);
+        return ResponseResult.ok().message("修改成功");
+    }
+
+    @Override
+    public ResponseResult getRoleById(Integer roleId) {
+        if(roleId == null){
+            throw new EpidemicException("该角色信息不存在");
+        }
+        Role role=roleMapper.selectById(roleId);
+        return ResponseResult.ok().data("role",role);
+    }
+
+    @Override
+    public ResponseResult deleteRoleById(Integer roleId) {
+        List<Admin> adminList=adminMapper.getAdminByRoleId(roleId);
+        if(adminList.size() != 0){
+            throw new EpidemicException("存在管理员分配到了该角色，无法删除");
+        }
+        roleMapper.deleteById(roleId);
+        return ResponseResult.ok().message("删除成功");
     }
 }

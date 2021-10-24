@@ -46,6 +46,22 @@
         ORDER BY
             m.id
     </select>
+
+    <select id="getPermissionTreeByRoleId" resultType="com.example.epidemicsurveillance.entity.Permission">
+        select p.* ,r.id from permission p
+        join role_permission rp on p.id = rp.permission_id
+        join role r on rp.role_id = r.id
+        where p.is_delete=0
+        and r.id=${roleId}
+    </select>
+
+    <select id="getRoleNotOwnedPermissionByRoleId" resultType="com.example.epidemicsurveillance.entity.Permission">
+        select p.* ,r.id from permission p
+                                  join role_permission rp on p.id = rp.permission_id
+                                  join role r on rp.role_id = r.id
+        where p.is_delete=0
+          and r.id!=${roleId}
+    </select>
     
 
 </mapper>
