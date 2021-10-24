@@ -19,7 +19,6 @@ public interface RoleMapper extends BaseMapper<Role> {
 
     List<Role> getRoles(Integer adminId);
 
-    List<Role> getAllRolesWithAdmins();
 
     List<Role> getRoleListByPermissionId(Integer permissionId);
 }

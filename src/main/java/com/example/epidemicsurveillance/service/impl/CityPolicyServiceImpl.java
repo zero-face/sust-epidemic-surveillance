@@ -3,34 +3,19 @@ package com.example.epidemicsurveillance.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.epidemicsurveillance.entity.CityCode;
 import com.example.epidemicsurveillance.entity.CityPolicy;
 import com.example.epidemicsurveillance.entity.CityServicePhone;
 import com.example.epidemicsurveillance.entity.vo.CityPhoneVO;
 import com.example.epidemicsurveillance.entity.vo.CityPolicyVO;
 import com.example.epidemicsurveillance.exception.EpidemicException;
-import com.example.epidemicsurveillance.mapper.CityCodeMapper;
 import com.example.epidemicsurveillance.service.ICityPolicyService;
 import com.example.epidemicsurveillance.utils.citypolicy.PolicyUtil;
-import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
