@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @ClassName PermissionAdminController
  * @Author 朱云飞
@@ -78,5 +80,27 @@ public class PermissionAdminController {
     public ResponseResult getRoleNotOwnedPermissionByRoleId(@ApiParam(name = "roleId",value = "角色Id",required = true)
                                                             @PathVariable Integer roleId){
         return iPermissionService.getRoleNotOwnedPermissionByRoleId(roleId);
+    }
+
+    @ApiOperation(value = "授权")
+    @PostMapping("distributionPermission/{roleId}/{permissionId}")
+    public ResponseResult distributionPermission(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                 @PathVariable Integer roleId,
+                                                 @ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                                 @PathVariable Integer permissionId,
+                                                 @ApiParam(name = "notOwnerList",value = "该角色未拥有的权限List",required = true)
+                                                 @RequestBody List<Permission> notOwnerList){
+        return iPermissionService.distributionPermission(roleId,permissionId,notOwnerList);
+    }
+
+    @ApiOperation(value = "取消授权")
+    @PostMapping("notDistributionPermission/{roleId}/{permissionId}")
+    public ResponseResult notDistributionPermission(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                 @PathVariable Integer roleId,
+                                                 @ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                                 @PathVariable Integer permissionId,
+                                                 @ApiParam(name = "ownerList",value = "该角色拥有的权限List",required = true)
+                                                 @RequestBody List<Permission> ownerList){
+        return iPermissionService.notDistributionPermission(roleId,permissionId,ownerList);
     }
 }

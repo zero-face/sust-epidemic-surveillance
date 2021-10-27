@@ -5,10 +5,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.Admin;
 import com.example.epidemicsurveillance.entity.Permission;
 import com.example.epidemicsurveillance.entity.Role;
+import com.example.epidemicsurveillance.entity.RolePermission;
 import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.AdminMapper;
 import com.example.epidemicsurveillance.mapper.PermissionMapper;
 import com.example.epidemicsurveillance.mapper.RoleMapper;
+import com.example.epidemicsurveillance.mapper.RolePermissionMapper;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IPermissionService;
 import org.apache.commons.lang3.StringUtils;
@@ -18,6 +20,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -41,6 +44,9 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
 
     @Autowired
     private AdminMapper adminMapper;
+
+    @Autowired
+    private RolePermissionMapper rolePermissionMapper;
 
     @Autowired
     private RedisTemplate<String,Object> redisTemplate;
@@ -232,6 +238,44 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         return ResponseResult.ok().data("list",result);
     }
 
+    @Override
+    public ResponseResult distributionPermission(Integer roleId, Integer permissionId, List<Permission> notOwnerList) {
+        //未拥有的权限
+       List<Permission> notOwnerPermissionList=getAllChildrenPermission(notOwnerList);
+       //根据权限Id获取权限及其全部子权限
+        List<Permission> allChildrenPermissionList=getChildrenPermissionByPermissionId(permissionId);
+        for (Permission notOwnerPermission:notOwnerPermissionList) {
+            for (Permission permission:allChildrenPermissionList) {
+                if(permission.getId().equals(notOwnerPermission.getId())){
+                    RolePermission rolePermission=new RolePermission();
+                    rolePermission.setRoleId(roleId);
+                    rolePermission.setPermissionId(permission.getId());
+                    rolePermissionMapper.insert(rolePermission);
+                }
+            }
+        }
+        return ResponseResult.ok().message("分配权限成功");
+    }
+
+
+    @Override
+    public ResponseResult notDistributionPermission(Integer roleId, Integer permissionId, List<Permission> ownerList) {
+        List<Permission> ownerPermissionList=getAllChildrenPermission(ownerList);
+        List<Permission> allChildrenPermissionList=getChildrenPermissionByPermissionId(permissionId);
+        //拥有的权限列表
+        for (Permission ownerPermission:ownerPermissionList) {
+            for (Permission permission:allChildrenPermissionList) {
+                if(permission.getId().equals(ownerPermission.getId())){
+                    QueryWrapper<RolePermission> wrapper=new QueryWrapper<>();
+                    wrapper.eq("role_id",roleId);
+                    wrapper.eq("permission_id",permission.getId());
+                    rolePermissionMapper.delete(wrapper);
+                }
+            }
+        }
+        return ResponseResult.ok().message("取消授权成功");
+    }
+
     /**
      * 将角色列表转换为角色字符串
      */
@@ -264,55 +308,106 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
      * 权限分层
      */
     public List<Permission> permissionLayered(List<Permission> permissions){
+       //四层权限 从下往上，下层权限在相邻的上层权限有其父权限，则加入父权限的孩子，如果没用，有下层上升一级
         Permission rootPermission=null;
+        List<Permission> result=new LinkedList<>();
         List<Permission> secondPermissionList=new LinkedList<>();
         List<Permission> thirdPermissionList=new LinkedList<>();
-        List<Permission> result=new LinkedList<>();
+        List<Permission> fourthPermissionList=new LinkedList<>();
         for (Permission permission:permissions) {
-            permission.setAdminUsernames(adminListToRoleString(adminMapper.getAdminByPermissionId(permission.getId())));
-            permission.setRoleNames(roleListToRoleString(roleMapper.getRoleListByPermissionId(permission.getId())));
             permission.setChildren(new LinkedList<>());
+            permission.setRoleNames(roleListToRoleString(roleMapper.getRoleListByPermissionId(permission.getId())));
+            permission.setAdminUsernames(adminListToRoleString(adminMapper.getAdminByPermissionId(permission.getParentId())));
+            //第一层
             if(permission.getId() == 1){
                 rootPermission=permission;
+                continue;
             }
-            if(permission.getParentId() == 1 && permission.getId() != 1){
+            //第二层
+            if(permission.getParentId()==1 && permission.getParentId() != 1){
                 secondPermissionList.add(permission);
+                continue;
+            }
+            //第四层
+            QueryWrapper<Permission> wrapper=new QueryWrapper<>();
+            wrapper.eq("parent_id",permission.getId());
+            List<Permission> fifthPermissionList = permissionMapper.selectList(wrapper);
+            if(fifthPermissionList == null || fifthPermissionList.size() == 0){
+                fourthPermissionList.add(permission);
+                continue;
+            }
+            //第三层
+            thirdPermissionList.add(permission);
+        }
+        //处理第四层
+        for (Permission fourthPermission:fourthPermissionList) {
+            boolean isAdd=false;//记录上层权限是否有其父权限
+            for (Permission thirdPermission:thirdPermissionList) {
+                if(fourthPermission.getParentId().equals(thirdPermission.getId())){
+                    thirdPermission.getChildren().add(fourthPermission);
+                    isAdd=true;
+                }
+            }
+            if(!isAdd){//如果没有，加到上层目录
+                thirdPermissionList.add(fourthPermission);
             }
         }
-        if (secondPermissionList.size() != 0) {
-            for (Permission permission: permissions) {
-                for (Permission secondPermission:secondPermissionList) {
-                    if(permission.getParentId().equals(secondPermission.getId())){
-                        secondPermission.getChildren().add(permission);
-                        thirdPermissionList.add(permission);
-                    }
+        //处理第三层
+        for (Permission thirdPermission:thirdPermissionList) {
+            boolean isAdd=false;//记录上层权限是否有其父权限
+            for (Permission secondPermission:secondPermissionList) {
+                if(thirdPermission.getParentId().equals(secondPermission.getId())){
+                    secondPermission.getChildren().add(thirdPermission);
+                    isAdd=true;
                 }
             }
-            for (Permission permission:permissions) {
-                for (Permission thirdPermission: thirdPermissionList) {
-                    if(permission.getParentId().equals(thirdPermission.getId())){
-                        thirdPermission.getChildren().add(permission);
-                    }
-                }
+            if(!isAdd){//如果没有，加到上层目录
+                secondPermissionList.add(thirdPermission);
             }
-
-            if(rootPermission != null){
-                rootPermission.setChildren(secondPermissionList);
-                result.add(rootPermission);
-            }else {
-                result=secondPermissionList;
-            }
+        }
+        //处理第二层
+        if(rootPermission != null){
+            rootPermission.getChildren().addAll(secondPermissionList);
+            result.add(rootPermission);
         }else {
-            for (Permission thirdPermission: permissions) {
-                for (Permission fourthPermission:permissions) {
-                    if(thirdPermission.getId().equals(fourthPermission.getParentId())){
-                        thirdPermission.getChildren().add(fourthPermission);
-                        thirdPermissionList.add(thirdPermission);
-                    }
-                }
-            }
-            result=thirdPermissionList;
+            result.addAll(secondPermissionList);
         }
         return result;
+    }
+
+    /**
+     * 获取子权限中的全部权限
+     */
+    public List<Permission> getAllChildrenPermission(List<Permission> parentPermission){
+        List<Permission> permissionList=new LinkedList<>();
+        Deque<Permission> queue=new LinkedList<>();
+        queue.addAll(parentPermission);
+        while (!queue.isEmpty()){
+            Permission permission=queue.poll();
+            if(permission.getChildren() != null && permission.getChildren().size() > 0){
+                queue.addAll(permission.getChildren());
+            }
+            permissionList.add(permission);
+        }
+        return permissionList;
+    }
+
+    private List<Permission> getChildrenPermissionByPermissionId(Integer permissionId) {
+        List<Permission> permissionList=new LinkedList<>();
+        Permission permission = permissionMapper.selectById(permissionId);
+        Deque<Permission> queue=new LinkedList<>();
+        queue.add(permission);
+        while (!queue.isEmpty()){
+            Permission poll = queue.poll();
+            QueryWrapper<Permission> wrapper=new QueryWrapper<>();
+            wrapper.eq("parent_id",poll.getId());
+            wrapper.ne("id",1);
+            List<Permission> permissionList1 = permissionMapper.selectList(wrapper);
+            if(permissionList1 != null && permissionList1.size() > 0){
+                queue.addAll(permissionList1);
+            }
+            permissionList.add(poll);
+        }
+        return permissionList;
     }
 }

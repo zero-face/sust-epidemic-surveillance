@@ -33,4 +33,8 @@ public interface IPermissionService extends IService<Permission> {
     ResponseResult deletePermissionById(Integer permissionId);
 
     ResponseResult getRoleNotOwnedPermissionByRoleId(Integer roleId);
+
+    ResponseResult distributionPermission(Integer roleId, Integer permissionId, List<Permission> notOwnerList);
+
+    ResponseResult notDistributionPermission(Integer roleId, Integer permissionId, List<Permission> ownerList);
 }
