@@ -2,7 +2,7 @@ package com.example.epidemicsurveillance.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.epidemicsurveillance.entity.CityCode;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * @author Zero
@@ -10,6 +10,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @description
  * @since 1.8
  **/
-@Mapper
+@Component
 public interface CityCodeMapper extends BaseMapper<CityCode> {
 }

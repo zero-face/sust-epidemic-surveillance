@@ -20,4 +20,21 @@ public interface IPermissionService extends IService<Permission> {
 
     ResponseResult getPermissionTree();
 
+    ResponseResult getPermissionTreeByRoleId(Integer roleId);
+
+    ResponseResult getPermissionListById(Integer permissionId);
+
+    ResponseResult addPermission(Integer permissionId, Permission permission);
+
+    ResponseResult getPermissionById(Integer permissionId);
+
+    ResponseResult updatePermission(Permission permission);
+
+    ResponseResult deletePermissionById(Integer permissionId);
+
+    ResponseResult getRoleNotOwnedPermissionByRoleId(Integer roleId);
+
+    ResponseResult distributionPermission(Integer roleId, Integer permissionId, List<Permission> notOwnerList);
+
+    ResponseResult notDistributionPermission(Integer roleId, Integer permissionId, List<Permission> ownerList);
 }

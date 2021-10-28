@@ -13,12 +13,24 @@ import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.CityCodeMapper;
 import com.example.epidemicsurveillance.service.ICityPolicyService;
 import com.example.epidemicsurveillance.utils.citypolicy.PolicyUtil;
+import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import java.util.List;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -86,7 +98,7 @@ public class CityPolicyServiceImpl implements ICityPolicyService {
             return null;
         }
         final List<CityServicePhone> cityServicePhones = list.toJavaList(CityServicePhone.class);
-        log.info("地区服务电话：{}",cityServicePhones);
+        log.info("地区防服务电话策：{}",cityServicePhones);
         return cityServicePhones;
     }
 

@@ -19,4 +19,7 @@ public interface PermissionMapper extends BaseMapper<Permission> {
 
     List<Permission> getMenuWithRole();
 
+    List<Permission> getPermissionTreeByRoleId(Integer roleId);
+
+    List<Permission> getRoleNotOwnedPermissionByRoleId(Integer roleId);
 }

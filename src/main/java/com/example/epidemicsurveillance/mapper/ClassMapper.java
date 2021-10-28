@@ -2,7 +2,7 @@ package com.example.epidemicsurveillance.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.epidemicsurveillance.entity.Clazz;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author Zero
@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @Since 1.8
  * @Description
  **/
-@Mapper
+
+@Component
 public interface ClassMapper extends BaseMapper<Clazz> {
 }

@@ -41,4 +41,25 @@ public class RoleAdminController {
                                   @RequestBody Role role){
         return iRoleService.addRole(role);
     }
+
+    @ApiOperation(value = "修改角色")
+    @PutMapping("updateRole")
+    public ResponseResult updateRole(@ApiParam(name = "role",value = "角色对象",required = true)
+                                         @RequestBody Role role){
+        return iRoleService.updateRole(role);
+    }
+
+    @ApiOperation(value = "根据角色id查询角色信息")
+    @GetMapping("getRoleById/{roleId}")
+    public ResponseResult getRoleById(@ApiParam(name = "roleId",value = "角色id",required = true)
+                                      @PathVariable Integer roleId){
+        return iRoleService.getRoleById(roleId);
+    }
+
+    @ApiOperation(value = "删除角色信息")
+    @DeleteMapping("deleteRoleById/{roleId}")
+    public ResponseResult deleteRoleById(@ApiParam(name = "roleId",value = "角色id",required = true)
+                                         @PathVariable Integer roleId){
+        return iRoleService.deleteRoleById(roleId);
+    }
 }

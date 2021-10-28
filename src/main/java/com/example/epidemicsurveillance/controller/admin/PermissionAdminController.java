@@ -1,14 +1,15 @@
 package com.example.epidemicsurveillance.controller.admin;
 
+import com.example.epidemicsurveillance.entity.Permission;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IPermissionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @ClassName PermissionAdminController
@@ -28,5 +29,78 @@ public class PermissionAdminController {
     @GetMapping("getPermissionTree")
     public ResponseResult getPermissionTree(){
         return iPermissionService.getPermissionTree();
+    }
+
+    @ApiOperation(value = "根据角色获取权限树形列表")
+    @GetMapping("getPermissionTreeByRoleId/{roleId}")
+    public ResponseResult getPermissionTreeByRoleId(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                    @PathVariable Integer roleId){
+        return iPermissionService.getPermissionTreeByRoleId(roleId);
+    }
+
+    @ApiOperation(value = "根据权限Id获取权限的list")
+    @GetMapping("getPermissionListById/{permissionId}")
+    public ResponseResult getPermissionListById(@ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                            @PathVariable Integer permissionId){
+        return iPermissionService.getPermissionListById(permissionId);
+    }
+
+    @ApiOperation(value = "添加权限")
+    @PostMapping("addPermission/{permissionId}")
+    public ResponseResult addPermission(@ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                        @PathVariable Integer permissionId,
+                                        @ApiParam(name = "permission",value = "权限对象",required = true)
+                                        @RequestBody Permission permission){
+        return iPermissionService.addPermission(permissionId,permission);
+    }
+
+    @ApiOperation(value = "根据权限Id获取权限信息")
+    @GetMapping("getPermissionById/{permissionId}")
+    public ResponseResult getPermissionById(@ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                            @PathVariable Integer permissionId){
+        return iPermissionService.getPermissionById(permissionId);
+    }
+
+    @ApiOperation(value = "修改权限信息")
+    @PutMapping("updatePermission")
+    public ResponseResult updatePermission(@ApiParam(name = "permission",value = "权限对象",required = true)
+                                           @RequestBody Permission permission){
+        return iPermissionService.updatePermission(permission);
+    }
+
+    @ApiOperation(value = "删除权限信息")
+    @DeleteMapping("deletePermissionById/{permissionId}")
+    public ResponseResult deletePermissionById(@ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                               @PathVariable Integer permissionId){
+        return iPermissionService.deletePermissionById(permissionId);
+    }
+
+    @ApiOperation(value = "根据角色Id查询角色未拥有的权限树")
+    @GetMapping("getRoleNotOwnedPermissionByRoleId/{roleId}")
+    public ResponseResult getRoleNotOwnedPermissionByRoleId(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                            @PathVariable Integer roleId){
+        return iPermissionService.getRoleNotOwnedPermissionByRoleId(roleId);
+    }
+
+    @ApiOperation(value = "授权")
+    @PostMapping("distributionPermission/{roleId}/{permissionId}")
+    public ResponseResult distributionPermission(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                 @PathVariable Integer roleId,
+                                                 @ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                                 @PathVariable Integer permissionId,
+                                                 @ApiParam(name = "notOwnerList",value = "该角色未拥有的权限List",required = true)
+                                                 @RequestBody List<Permission> notOwnerList){
+        return iPermissionService.distributionPermission(roleId,permissionId,notOwnerList);
+    }
+
+    @ApiOperation(value = "取消授权")
+    @PostMapping("notDistributionPermission/{roleId}/{permissionId}")
+    public ResponseResult notDistributionPermission(@ApiParam(name = "roleId",value = "角色Id",required = true)
+                                                 @PathVariable Integer roleId,
+                                                 @ApiParam(name = "permissionId",value = "权限Id",required = true)
+                                                 @PathVariable Integer permissionId,
+                                                 @ApiParam(name = "ownerList",value = "该角色拥有的权限List",required = true)
+                                                 @RequestBody List<Permission> ownerList){
+        return iPermissionService.notDistributionPermission(roleId,permissionId,ownerList);
     }
 }
