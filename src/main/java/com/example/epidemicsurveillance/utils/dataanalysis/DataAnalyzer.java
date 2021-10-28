@@ -46,19 +46,12 @@ public class DataAnalyzer {
         if(this.paragraphs == null) {
             throw new DataAnalysisException("The analyzed data cannot be empty");
         }
-        //第一部分分析
-        paragraphAnalyze(paragraphs);
-    }
-
-    /**
-     * 处理每一段
-     * @param paragraphs
-     */
-    private void paragraphAnalyze(String[] paragraphs) {
+        //处理每一段
         final List<Object> list = IntStream.range(0, paragraphs.length)
                 .mapToObj(i -> handle(paragraphs[i], i + 1))
                 .collect(Collectors.toList());
     }
+
 
     private Object handle(String text, int order) {
         final Paragraph paragraph = new Paragraph(text, order);
