@@ -20,7 +20,11 @@ public class CityPhoneVO {
 
     private String county;
 
-    private String phone;
+    private String province;
 
-    private String serverTime;
+    private String city;
+
+    private String telephone;
+
+    private String serviceTime;
 }

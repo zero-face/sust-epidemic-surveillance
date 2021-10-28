@@ -7,10 +7,7 @@ import com.example.epidemicsurveillance.entity.spider.notification.AllNotificati
 import com.example.epidemicsurveillance.entity.spider.notification.NotificationDataDetails;
 import com.example.epidemicsurveillance.utils.rabbitmq.EmailSendUtil;
 import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
-import com.example.epidemicsurveillance.utils.spider.processor.CityCodeProcessor;
-import com.example.epidemicsurveillance.utils.spider.processor.NotificationProcessor;
-import com.example.epidemicsurveillance.utils.spider.processor.RealTimeInfoProcessor;
-import com.example.epidemicsurveillance.utils.spider.processor.SustProcessor;
+import com.example.epidemicsurveillance.utils.spider.processor.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import us.codecraft.webmagic.Spider;
@@ -42,6 +39,10 @@ public class SpiderToGetData {
 
     @Autowired
     private CityCodeProcessor cityCodeProcessor;
+
+    @Autowired
+    private DomesticDataProcessor domesticDataProcessor;
+
     /**
      * 爬取全球数据
      */
@@ -59,7 +60,6 @@ public class SpiderToGetData {
         }
         return null;
     }
-
 
     /**
      * 爬取中国疫情数据
@@ -131,6 +131,7 @@ public class SpiderToGetData {
             emailSendUtil.sendEmailToAdmin("2690534598@qq.com","爬取最新资讯报错,Url是http://swt.changsha.gov.cn/fwwb/zxzx/jrzx/");
         }
     }
+
     /**
      * 爬取地区编码
      * @param url
@@ -144,5 +145,15 @@ public class SpiderToGetData {
             e.printStackTrace();
             emailSendUtil.sendEmailToAdmin("1444171773@qq.com", "爬取地区编码出错");
         }
+    }
+
+    /**
+     * 爬取国内疫情数据
+     * @param url
+     */
+    public void getDomesticData(String url) {
+        Spider.create(domesticDataProcessor)
+                .addUrl(url)
+                .run();
     }
 }

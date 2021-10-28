@@ -95,7 +95,7 @@ public class AdminAdminController {
     @ApiOperation(value = "添加管理员")
     @PostMapping("addAdmin")
     public ResponseResult addAdmin(@ApiParam(name = "admin",value = "管理员对象",required = true)
-                                   @RequestBody Admin admin){
+                                   @RequestBody Admin admin) {
         return adminService.addAdmin(admin);
     }
 

@@ -1,32 +1,21 @@
 package com.example.epidemicsurveillance.utils.citypolicy;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.epidemicsurveillance.entity.CityCode;
-import com.example.epidemicsurveillance.entity.CityPolicy;
 import com.example.epidemicsurveillance.exception.EpidemicException;
 import com.example.epidemicsurveillance.mapper.CityCodeMapper;
-import com.example.epidemicsurveillance.utils.rabbitmq.spider.SpiderErrorSendMailToAdmin;
-import com.mongodb.client.result.UpdateResult;
+import com.example.epidemicsurveillance.utils.rabbitmq.EmailSendUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.mongodb.core.query.UpdateDefinition;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,7 +61,7 @@ public class PolicyUtil {
     private static final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36";
 
     @Autowired
-    private SpiderErrorSendMailToAdmin spiderErrorSendMailToAdmin;
+    private EmailSendUtil emailSendUtil;
 
     public String GuideData(String city,String key) {
         log.info("开始获取防控{}的政策",city);
@@ -96,7 +85,7 @@ public class PolicyUtil {
            return exchange.getBody();
         } else {
             log.error("获取疫情防控信息失败");
-            spiderErrorSendMailToAdmin.sendEmailToAdmin("1444171773@qq.com", "获取{"+city +"}的防控政策数据失败");
+            emailSendUtil.sendEmailToAdmin("1444171773@qq.com", "获取{"+city +"}的防控政策数据失败");
             throw new EpidemicException("获取防控信息失败:" + city);
         }
     }
