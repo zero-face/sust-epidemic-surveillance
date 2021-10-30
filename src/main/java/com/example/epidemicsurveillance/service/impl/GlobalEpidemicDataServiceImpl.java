@@ -105,4 +105,10 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
     public List<CityData> getEveryProvinceCityData(Integer provinceId) {
         return globalEpidemicDataMapper.getEveryProvinceCityData(provinceId);
     }
+
+    @Override
+    public ResponseResult getChinaEpidemicTotalData() {
+        GlobalEpidemicData chinaEpidemicTotalData = globalEpidemicDataMapper.selectById(2);
+        return ResponseResult.ok().data("chinaEpidemicTotalData",chinaEpidemicTotalData);
+    }
 }

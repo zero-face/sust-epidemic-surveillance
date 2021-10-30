@@ -1,11 +1,10 @@
 package com.example.epidemicsurveillance.task.epidemic_data_task;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.epidemicsurveillance.entity.EpidemicDataTrend;
 import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
-import com.example.epidemicsurveillance.entity.spider.china.ChinaEpidemic;
-import com.example.epidemicsurveillance.entity.spider.china.ChinaEpidemicAreaTree;
-import com.example.epidemicsurveillance.entity.spider.china.CityEpidemicAreaTree;
-import com.example.epidemicsurveillance.entity.spider.china.ProvinceEpidemicAreaTree;
+import com.example.epidemicsurveillance.entity.spider.china.*;
+import com.example.epidemicsurveillance.service.IEpidemicDataTrendService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,9 @@ public class ChinaEpidemicTask {
     @Autowired
     private IGlobalEpidemicDataService iGlobalEpidemicDataService;
 
+    @Autowired
+    private IEpidemicDataTrendService iEpidemicDataTrendService;
+
 
     //@Scheduled(cron = "* 10 2 * * ? *")//每日凌晨两点十分执行
     @Transactional
@@ -43,12 +45,31 @@ public class ChinaEpidemicTask {
         QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
         wrapper.eq("area_name","中国");
         GlobalEpidemicData china = iGlobalEpidemicDataService.getOne(wrapper);
-        china.setExistingDiagnosis(tree.getTotal().getNowConfirm());//现有确诊
-        china.setSuspected(tree.getTotal().getSuspect());//疑似
-        china.setTotalDiagnosis(tree.getTotal().getConfirm());//累计确诊
-        china.setTotalDeath(tree.getTotal().getDead());//累计死亡
-        china.setTotalCure(tree.getTotal().getHeal());//累计治愈
+        ChinaTotal chinaTotal=chinaEpidemicData.getChinaTotal();
+        ChinaAdd chinaAdd=chinaEpidemicData.getChinaAdd();
+        china.setExistingDiagnosis(chinaTotal.getNowConfirm());//现有确诊
+        china.setAsymptomatic(chinaTotal.getNoInfect());//无症状
+        china.setSuspected(chinaTotal.getSuspect());//疑似
+        china.setSevere(chinaTotal.getNowSevere());//现有重症
+        china.setTotalDiagnosis(chinaTotal.getConfirm());//累计确诊
+        china.setOverseasInput(chinaTotal.getImportedCase());//境外输入
+        china.setTotalDeath(chinaTotal.getDead());//累计死亡
+        china.setTotalCure(chinaTotal.getHeal());//累计治愈
         waitForUpdateList.add(china);
+
+        EpidemicDataTrend trend=new EpidemicDataTrend();
+        trend.setAreaName("中国");
+
+        trend.setExistingDiagnosis(chinaAdd.getNowConfirm());//现有确诊
+        trend.setAsymptomatic(chinaAdd.getNoInfect());//无症状
+        trend.setSuspected(chinaAdd.getSuspect());//疑似
+        trend.setSevere(chinaAdd.getNowSevere());//现有重症
+        trend.setTotalDiagnosis(chinaAdd.getConfirm());//累计确诊
+        trend.setOverseasInput(chinaAdd.getImportedCase());//境外输入
+        trend.setTotalDeath(chinaAdd.getDead());//累计死亡
+        trend.setTotalCure(chinaAdd.getHeal());//累计治愈
+        iEpidemicDataTrendService.save(trend);
+
 
         //更新各个省每日疫情数据
         List<ProvinceEpidemicAreaTree> provinceList=tree.getChildren();
