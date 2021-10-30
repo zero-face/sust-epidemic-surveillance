@@ -4,10 +4,12 @@ package com.example.epidemicsurveillance.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.epidemicsurveillance.entity.DomesticData;
 import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.entity.vo.EpidemicDataVO;
 import com.example.epidemicsurveillance.entity.vo.globaldata.AllGlobalData;
 import com.example.epidemicsurveillance.response.ResponseResult;
+import com.example.epidemicsurveillance.service.IDomesticDataService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,6 +45,9 @@ public class GlobalEpidemicDataController {
     @Resource
     private IGlobalEpidemicDataService globalEpidemicDataService;
 
+    @Resource
+    private IDomesticDataService domesticDataService;
+
     @ApiOperation(value = "获取全部地区的名称")
     @GetMapping
     public ResponseResult getAllAreaData() {
@@ -63,6 +68,17 @@ public class GlobalEpidemicDataController {
         Map<String, Object> epidemicVo = JSON.parseObject(JSON.toJSONString(epidemicDataVO), new TypeReference<Map<String, Object>>() {});
         log.info("返回的疫情信息：{}",epidemicVo);
         return ResponseResult.ok().message("获取成功").data(epidemicVo);
+    }
+
+    @GetMapping("/domestic")
+    public ResponseResult getTodayData() {
+        final DomesticData todayData = domesticDataService.getTodayData();
+        final DomesticData yesterdayData = domesticDataService.getYesterdayData();
+        Map<String, Object> todayDatavo = JSON.parseObject(JSON.toJSONString(todayData), new TypeReference<Map<String, Object>>() {});
+        if(todayData != null && yesterdayData != null) {
+            return ResponseResult.ok().data(todayDatavo).message("获取成功");
+        }
+        return ResponseResult.error().message("获取失败");
     }
 
 }

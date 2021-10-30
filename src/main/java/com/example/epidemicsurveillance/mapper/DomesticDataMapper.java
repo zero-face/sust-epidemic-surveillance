@@ -12,4 +12,8 @@ import org.apache.ibatis.annotations.Mapper;
  **/
 @Mapper
 public interface DomesticDataMapper extends BaseMapper<DomesticData> {
+
+    DomesticData getTodayData();
+
+    DomesticData getYesterdayData();
 }

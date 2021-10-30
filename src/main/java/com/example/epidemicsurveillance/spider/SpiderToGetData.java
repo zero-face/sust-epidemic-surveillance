@@ -7,6 +7,7 @@ import com.example.epidemicsurveillance.entity.spider.notification.AllNotificati
 import com.example.epidemicsurveillance.entity.spider.notification.NotificationDataDetails;
 import com.example.epidemicsurveillance.utils.rabbitmq.EmailSendUtil;
 import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
+import com.example.epidemicsurveillance.utils.spider.pipeline.DomesticDataPipeline;
 import com.example.epidemicsurveillance.utils.spider.processor.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,9 @@ public class SpiderToGetData {
 
     @Autowired
     private DomesticDataProcessor domesticDataProcessor;
+
+    @Autowired
+    private DomesticDataPipeline domesticDataPipeline;
 
     /**
      * 爬取全球数据
@@ -154,6 +158,7 @@ public class SpiderToGetData {
     public void getDomesticData(String url) {
         Spider.create(domesticDataProcessor)
                 .addUrl(url)
+                .addPipeline(domesticDataPipeline)
                 .run();
     }
 }

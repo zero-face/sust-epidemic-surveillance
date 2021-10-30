@@ -10,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.net.URISyntaxException;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 @SpringBootTest
@@ -50,4 +52,16 @@ class EpidemicSurveillanceApplicationTests {
         domesticDataTask.getChinaEpidemicData();
     }
 
+    @Test
+    void regex() {
+        String regex = "\\d+";
+        String str = "aaa2223bb";
+        final Pattern compile = Pattern.compile(regex);
+        final Matcher matcher = compile.matcher(str);
+//        System.out.println(matcher.group(0));
+        System.out.println(matcher.group());
+//        System.out.println(matcher.group(1));
+//        System.out.println(matcher.group(2));
+
+    }
 }

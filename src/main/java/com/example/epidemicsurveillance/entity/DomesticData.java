@@ -6,7 +6,10 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -18,9 +21,12 @@ import java.util.Date;
  * @since 1.8
  **/
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class DomesticData {
-    @TableId(type = IdType.AUTO)
-    private Integer id;
+    @TableId(value = "id", type = IdType.AUTO)
+    private Long id;
 
     /**
      * 现有确诊

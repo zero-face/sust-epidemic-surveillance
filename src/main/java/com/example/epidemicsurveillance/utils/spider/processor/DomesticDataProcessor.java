@@ -1,5 +1,7 @@
 package com.example.epidemicsurveillance.utils.spider.processor;
 
+import com.alibaba.fastjson.JSON;
+import com.example.epidemicsurveillance.entity.DomesticData;
 import com.example.epidemicsurveillance.utils.dataanalysis.DataAnalyzer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import us.codecraft.webmagic.selector.Selectable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
@@ -32,7 +35,7 @@ public class DomesticDataProcessor implements PageProcessor {
         final List<Selectable> nodes = page.getHtml().xpath("//*[@id=\"tab-1\"]").links().regex("http://www.gov.cn/xinwen/" + regexDate + "/" + regexDay + "/.*?.htm$").nodes();
         List<String> accessUrl = new ArrayList<>();
         if(nodes.size() > 0) {
-            for(int i = 0; i < 2; i++) {
+            for(int i = 0; i < nodes.size(); i++) {
                 accessUrl.add(nodes.get(i).get());
             }
             page.addTargetRequests(accessUrl);
@@ -52,10 +55,11 @@ public class DomesticDataProcessor implements PageProcessor {
             final String five = page.getHtml().xpath("//*[@id=\"UCAP-CONTENT\"]/p[5]/text()").toString();
             final String six = page.getHtml().xpath("//*[@id=\"UCAP-CONTENT\"]/p[6]/text()").toString();
             final DataAnalyzer dataAnalyzer = new DataAnalyzer();
-            dataAnalyzer.put(title, first,second,third,four,five,six)
-                    .startAnalyze();
-
-
+            final Map<String, Integer> todayData = dataAnalyzer.put(title, first, second, third, four, five, six)
+                    .startAnalyze()
+                    .todayData();
+            System.out.println(todayData);
+            page.putField("todayData", todayData);
         }
 
     }
