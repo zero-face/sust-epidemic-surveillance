@@ -34,7 +34,7 @@ import java.util.Map;
 @Validated
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/epidemic-data")
+@RequestMapping("/api/v1/user/epidemic-data")
 @CrossOrigin
 @Api(tags = "前台全球疫情数据模块")
 public class GlobalEpidemicDataController {

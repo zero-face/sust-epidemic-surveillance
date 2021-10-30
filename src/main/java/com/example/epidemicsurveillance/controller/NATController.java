@@ -29,7 +29,7 @@ import java.util.Map;
  **/
 @RestController
 @Slf4j
-@RequestMapping("/api/v1/nat")
+@RequestMapping("/api/v1/user/nat")
 @Validated
 public class NATController {
 

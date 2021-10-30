@@ -27,7 +27,7 @@ import java.util.Map;
  * @since 1.8
  **/
 @RestController
-@RequestMapping("/api/v1/policy")
+@RequestMapping("/api/v1//user/policy")
 @Slf4j
 @Validated
 public class CityPolicyController {
