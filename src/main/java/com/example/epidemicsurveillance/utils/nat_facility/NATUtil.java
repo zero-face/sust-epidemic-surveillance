@@ -1,4 +1,4 @@
-package com.example.epidemicsurveillance.utils.citypolicy;
+package com.example.epidemicsurveillance.utils.nat_facility;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.epidemicsurveillance.entity.CityCode;
@@ -12,21 +12,23 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.*;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
  * @author Zero
- * @date 2021/10/23 13:18
+ * @date 2021/10/30 15:56
  * @description
  * @since 1.8
  **/
-@Slf4j
 @Component
-public class PolicyUtil {
+@Slf4j
+public class NATUtil {
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -52,6 +54,14 @@ public class PolicyUtil {
     @Value("${gov.x-wif-paasid}")
     private String x_wif_paasid;
 
+    @Value("${gov.placeKey}")
+    private String key;
+
+    @Value("${gov.placetoken}")
+    private String token;
+    @Value("${gov.placeHeaderKey}")
+    private String placeHeaderKey;
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -63,43 +73,34 @@ public class PolicyUtil {
     @Autowired
     private EmailSendUtil emailSendUtil;
 
-    public String GuideData(String city,String key) {
-        log.info("开始获取防控{}的政策",city);
+    public String PlacesFind(String cityCode,String search_key,Integer pn,String pageSize) {
+        log.info("开始获取{}的核酸检测机构，关键词是:{}",cityCode,search_key);
         String timestamp = String.valueOf(System.currentTimeMillis()/1000);
+        //构建请求头
         HttpHeaders headers = headers(timestamp);
-        final CityCode cityCode = getCityCode(city);
-        log.info("组装请求头完成");
-        Map<String,String> maps = new HashMap<>();
+
+        Map<String,Object> maps = new HashMap<>();
         maps.put("appId", appId);
         maps.put("key",key);
         maps.put("nonceHeader", nonceHeader);
         maps.put("paasHeader",paasHeader);
         maps.put("timestampHeader", timestamp);
-        maps.put("code", cityCode.getCode());
-        maps.put("signatureHeader", signature(timestamp + playSecret + nonceHeader + timestamp));
+        maps.put("code", cityCode);
+        maps.put("page", pn);
+        maps.put("page_size", pageSize);
+        maps.put("serach_key", search_key);
+        maps.put("signatureHeader", signature(timestamp + token + nonceHeader + timestamp));
         final HttpEntity httpEntity = new HttpEntity(maps, headers);
         final ResponseEntity<String> exchange = restTemplate.exchange("http://103.66.32.242:8005/zwfwMovePortal/interface/interfaceJson",
                 HttpMethod.POST, httpEntity, String.class);
         if(exchange.getStatusCodeValue()==200) {
-            log.info("获取成功:{}",exchange.getBody());
-           return exchange.getBody();
+            log.info("获取核酸检测机构成功:{}",exchange.getBody());
+            return exchange.getBody();
         } else {
-            log.error("获取疫情防控信息失败");
-            emailSendUtil.sendEmailToAdmin("1444171773@qq.com", "获取{"+city +"}的防控政策数据失败");
-            throw new EpidemicException("获取防控信息失败:" + city);
+            log.error("获取核酸检测机构信息失败");
+            emailSendUtil.sendEmailToAdmin("1444171773@qq.com", "获取{"+ cityCode + ":" + search_key +"}的检测机构失败");
+            throw new EpidemicException("获取检测机构失败:" + cityCode + ":" + search_key);
         }
-    }
-
-    /**
-     * 获取城市的编码
-     * @return
-     */
-    private CityCode getCityCode(String city) {
-        final CityCode cityCode = cityCodeMapper.selectOne(new QueryWrapper<CityCode>().eq(true, "city", city));
-        if(cityCode == null) {
-            throw new EpidemicException("请输入正确的城市");
-        }
-        return cityCode;
     }
 
     /**
@@ -107,21 +108,16 @@ public class PolicyUtil {
      * @param timestamp
      * @return
      */
-    private HttpHeaders headers(String timestamp) {
+    public HttpHeaders headers(String timestamp) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("User-Agent", USER_AGENT);
         headers.set("x-wif-nonce", x_wif_nonce);
         headers.set("x-wif-paasid", x_wif_paasid);
         headers.set("x-wif-timestamp", timestamp);
-        headers.set("x-wif-signature", signature(timestamp + headSecret + timestamp));
+        headers.set("x-wif-signature", signature(timestamp + placeHeaderKey + x_wif_nonce + timestamp));
         return headers;
     }
-
-    /**
-     * 生成请求头signature
-     * @return
-     */
     private String signature(String text) {
         MessageDigest messageDigest;
         String encodeStr = "";
@@ -132,6 +128,7 @@ public class PolicyUtil {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        String sign = encodeStr.toUpperCase();
         log.info("生成的签名为：{}",encodeStr.toUpperCase());
         return encodeStr.toUpperCase();
     }

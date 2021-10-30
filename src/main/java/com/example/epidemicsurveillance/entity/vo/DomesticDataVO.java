@@ -7,24 +7,16 @@ import lombok.ToString;
 
 /**
  * @author Zero
- * @date 2021/10/23 21:42
+ * @date 2021/10/30 13:30
  * @description
  * @since 1.8
  **/
 @Data
 @ToString
-@NoArgsConstructor
 @AllArgsConstructor
-public class CityPhoneVO {
-    private String code;
+@NoArgsConstructor
+public class DomesticDataVO {
 
-    private String county;
+    private Integer id;
 
-    private String province;
-
-    private String city;
-
-    private String telephone;
-
-    private String serviceTime;
 }

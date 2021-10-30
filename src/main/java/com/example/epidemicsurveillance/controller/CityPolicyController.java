@@ -23,11 +23,11 @@ import java.util.Map;
 /**
  * @author Zero
  * @date 2021/10/23 16:49
- * @description
+ * @description 出行指南
  * @since 1.8
  **/
 @RestController
-@RequestMapping("/api/v1/policy")
+@RequestMapping("/api/v1//user/policy")
 @Slf4j
 @Validated
 public class CityPolicyController {

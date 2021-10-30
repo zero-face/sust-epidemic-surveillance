@@ -4,10 +4,12 @@ package com.example.epidemicsurveillance.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.epidemicsurveillance.entity.DomesticData;
 import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.entity.vo.EpidemicDataVO;
 import com.example.epidemicsurveillance.entity.vo.globaldata.AllGlobalData;
 import com.example.epidemicsurveillance.response.ResponseResult;
+import com.example.epidemicsurveillance.service.IDomesticDataService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -32,7 +34,7 @@ import java.util.Map;
 @Validated
 @Slf4j
 @RestController
-@RequestMapping("/api/v1/epidemic-data")
+@RequestMapping("/api/v1/user/epidemic-data")
 @CrossOrigin
 @Api(tags = "前台全球疫情数据模块")
 public class GlobalEpidemicDataController {
@@ -42,6 +44,9 @@ public class GlobalEpidemicDataController {
 
     @Resource
     private IGlobalEpidemicDataService globalEpidemicDataService;
+
+    @Resource
+    private IDomesticDataService domesticDataService;
 
     @ApiOperation(value = "获取全部地区的名称")
     @GetMapping
@@ -69,6 +74,15 @@ public class GlobalEpidemicDataController {
     @GetMapping("getChinaEpidemicTotalData")
     public ResponseResult getChinaEpidemicTotalData(){
         return globalEpidemicDataService.getChinaEpidemicTotalData();
+    @GetMapping("/domestic")
+    public ResponseResult getTodayData() {
+        final DomesticData todayData = domesticDataService.getTodayData();
+        final DomesticData yesterdayData = domesticDataService.getYesterdayData();
+        Map<String, Object> todayDatavo = JSON.parseObject(JSON.toJSONString(todayData), new TypeReference<Map<String, Object>>() {});
+        if(todayData != null && yesterdayData != null) {
+            return ResponseResult.ok().data(todayDatavo).message("获取成功");
+        }
+        return ResponseResult.error().message("获取失败");
     }
 
 }

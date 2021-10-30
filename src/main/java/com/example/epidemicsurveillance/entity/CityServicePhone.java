@@ -24,9 +24,9 @@ public class CityServicePhone {
 
     private String province;
 
-    private String serverTime;
+    private String serviceTime;
 
     private String county;
 
-    private String phone;
+    private String telephone;
 }
