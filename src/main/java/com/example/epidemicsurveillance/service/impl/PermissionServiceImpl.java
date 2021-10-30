@@ -32,6 +32,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author zyf
  * @since 2021-10-09
+ * @description 第二作者认为这段代码其丑（zero）
  */
 @Service
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
@@ -64,10 +65,15 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
             list=new LinkedList<>();
             //第一层
             Permission rootPermission = permissionMapper.selectById(1);
+            //获取超级管理员权限对应的角色
             List<Role> rootPermissionRoleList=roleMapper.getRoleListByPermissionId(rootPermission.getId());
+            //根据超级管理员权限获取对应的账户
             List<Admin> rootPermissionAdminList=adminMapper.getAdminByPermissionId(rootPermission.getId());
+            //permission权限中添加对应的角色
             rootPermission.setRoles(rootPermissionRoleList);
+            //将权限对应的角色字符串添加进入权限对象
             rootPermission.setRoleNames(roleListToRoleString(rootPermissionRoleList));
+            //将权限对应的管理员添加进入对象中
             rootPermission.setAdminUsernames(adminListToRoleString(rootPermissionAdminList));
             //第二层
             QueryWrapper<Permission> secondPermissionWrapper=new QueryWrapper<>();
