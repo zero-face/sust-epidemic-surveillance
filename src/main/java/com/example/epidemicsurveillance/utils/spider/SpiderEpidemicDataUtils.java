@@ -61,8 +61,8 @@ public class SpiderEpidemicDataUtils {
                 HttpEntity httpEntity = response.getEntity();
                 //爬取的JSON数据有误，这里进行处理
                 String context = EntityUtils.toString(httpEntity, "utf8").replaceAll("\\\\","");
-                int areaTree = context.indexOf("areaTree");
-                String substring = "{"+context.substring(areaTree - 1, context.length() - 3);
+                int pos = context.indexOf("data")+7;
+                String substring = context.substring(pos,context.length()-3);
                 return substring;
             }else {
                 throw new EpidemicException("数据获取失败,url是"+url);

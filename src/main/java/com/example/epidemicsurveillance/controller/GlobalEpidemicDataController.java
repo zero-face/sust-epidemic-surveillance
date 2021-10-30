@@ -65,4 +65,10 @@ public class GlobalEpidemicDataController {
         return ResponseResult.ok().message("获取成功").data(epidemicVo);
     }
 
+    @ApiOperation(value = "获取全国疫情数据")
+    @GetMapping("getChinaEpidemicTotalData")
+    public ResponseResult getChinaEpidemicTotalData(){
+        return globalEpidemicDataService.getChinaEpidemicTotalData();
+    }
+
 }

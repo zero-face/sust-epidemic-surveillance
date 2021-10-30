@@ -16,5 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChinaEpidemic {
+    private ChinaTotal chinaTotal;
+    private ChinaAdd chinaAdd;
     private List<ChinaEpidemicAreaTree> areaTree;
 }

@@ -34,4 +34,6 @@ public interface IGlobalEpidemicDataService extends IService<GlobalEpidemicData>
     List<ProvinceData> getEveryCountryProvinceData(Integer countryId);
 
     List<CityData> getEveryProvinceCityData(Integer provinceId);
+
+    ResponseResult getChinaEpidemicTotalData();
 }
