@@ -132,6 +132,7 @@ public class PolicyUtil {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
+        log.info("生成的签名为：{}",encodeStr.toUpperCase());
         return encodeStr.toUpperCase();
     }
     private String byte2Hex(byte[] digest) {

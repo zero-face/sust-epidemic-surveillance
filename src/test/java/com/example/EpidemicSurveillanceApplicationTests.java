@@ -3,6 +3,7 @@ package com.example;
 import com.example.epidemicsurveillance.service.ICityPolicyService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import com.example.epidemicsurveillance.task.domestic_data_task.DomesticDataTask;
+import com.example.epidemicsurveillance.utils.nat_facility.NATUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -45,6 +46,15 @@ class EpidemicSurveillanceApplicationTests {
     void test2() {
         String date = LocalDate.now().toString();
         System.out.println(date.substring(0,date.lastIndexOf("-")));
+    }
+
+    @Autowired
+    private NATUtil NATUtil;
+    @Test
+    void test3() {
+        //获取shuju
+        final String s = NATUtil.PlacesFind("陕西省", "西安市", 2, "5");
+        System.out.println(s);
     }
 
     @Test
