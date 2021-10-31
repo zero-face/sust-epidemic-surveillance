@@ -126,6 +126,7 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
             chinaMapGlobalData.setValue(globalEpidemicData.getTotalDiagnosis());
             list.add(chinaMapGlobalData);
         }
+        
         return ResponseResult.ok().data("list",list);
     }
 }
