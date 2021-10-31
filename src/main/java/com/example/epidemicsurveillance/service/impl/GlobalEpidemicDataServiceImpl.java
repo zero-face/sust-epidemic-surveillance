@@ -119,14 +119,14 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
         QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
         wrapper.eq("parent_id",2);
         List<GlobalEpidemicData> globalEpidemicDatas = globalEpidemicDataMapper.selectList(wrapper);
-        List<ChinaMapGlobalData> list=new LinkedList<>();
+        List<ChinaMapGlobalData> dataList=new LinkedList<>();
         for (GlobalEpidemicData globalEpidemicData:globalEpidemicDatas) {
             ChinaMapGlobalData chinaMapGlobalData=new ChinaMapGlobalData();
             chinaMapGlobalData.setName(globalEpidemicData.getAreaName());
             chinaMapGlobalData.setValue(globalEpidemicData.getTotalDiagnosis());
-            list.add(chinaMapGlobalData);
+            dataList.add(chinaMapGlobalData);
         }
         
-        return ResponseResult.ok().data("list",list);
+        return ResponseResult.ok().data("list",dataList);
     }
 }
