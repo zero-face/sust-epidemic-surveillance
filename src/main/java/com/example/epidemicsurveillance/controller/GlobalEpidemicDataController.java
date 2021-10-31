@@ -75,6 +75,7 @@ public class GlobalEpidemicDataController {
     public ResponseResult getChinaEpidemicTotalData() {
         return globalEpidemicDataService.getChinaEpidemicTotalData();
     }
+
     @GetMapping("/domestic")
     public ResponseResult getTodayData() {
         final DomesticData todayData = domesticDataService.getTodayData();
@@ -84,6 +85,12 @@ public class GlobalEpidemicDataController {
             return ResponseResult.ok().data(todayDatavo).message("获取成功");
         }
         return ResponseResult.error().message("获取失败");
+    }
+
+    @ApiOperation(value = "获取中国各个省疫情数据")
+    @GetMapping("getAllProvinceEpidemicData")
+    public ResponseResult getAllProvinceEpidemicData(){
+        return globalEpidemicDataService.getAllProvinceEpidemicData();
     }
 
 }

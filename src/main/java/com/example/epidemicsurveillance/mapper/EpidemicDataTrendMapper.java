@@ -15,4 +15,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface EpidemicDataTrendMapper extends BaseMapper<EpidemicDataTrend> {
 
+    EpidemicDataTrend getTodayEpidemicDataTrend();
 }
+

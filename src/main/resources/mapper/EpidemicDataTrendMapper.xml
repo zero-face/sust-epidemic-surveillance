@@ -23,4 +23,10 @@
         id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, gmt_create, gmt_modified
     </sql>
 
+    <select id="getTodayEpidemicDataTrend" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
+        select <include refid="Base_Column_List"/>
+        from epidemic_data_trend order by gmt_create DESC
+        limit 1
+    </select>
+
 </mapper>
