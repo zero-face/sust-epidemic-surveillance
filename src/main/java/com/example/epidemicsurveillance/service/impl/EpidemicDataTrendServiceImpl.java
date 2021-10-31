@@ -1,9 +1,11 @@
 package com.example.epidemicsurveillance.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.EpidemicDataTrend;
 import com.example.epidemicsurveillance.mapper.EpidemicDataTrendMapper;
+import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IEpidemicDataTrendService;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,4 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class EpidemicDataTrendServiceImpl extends ServiceImpl<EpidemicDataTrendMapper, EpidemicDataTrend> implements IEpidemicDataTrendService {
 
+    @Autowired
+    private EpidemicDataTrendMapper epidemicDataTrendMapper;
+
+    @Override
+    public ResponseResult getTodayEpidemicDataTrend() {
+        EpidemicDataTrend epidemicDataTrend=epidemicDataTrendMapper.getTodayEpidemicDataTrend();
+        return ResponseResult.ok().data("chinaEpidemicAddData",epidemicDataTrend);
+    }
 }

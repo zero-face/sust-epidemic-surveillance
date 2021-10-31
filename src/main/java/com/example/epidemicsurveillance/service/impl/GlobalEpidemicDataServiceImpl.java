@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.epidemicsurveillance.entity.GlobalEpidemicData;
 import com.example.epidemicsurveillance.entity.query.GlobalEpidemicDataQuery;
+import com.example.epidemicsurveillance.entity.vo.globaldata.ChinaMapGlobalData;
 import com.example.epidemicsurveillance.entity.vo.globaldata.CityData;
 import com.example.epidemicsurveillance.entity.vo.globaldata.CountryData;
 import com.example.epidemicsurveillance.entity.vo.globaldata.ProvinceData;
@@ -15,6 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -110,5 +112,20 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
     public ResponseResult getChinaEpidemicTotalData() {
         GlobalEpidemicData chinaEpidemicTotalData = globalEpidemicDataMapper.selectById(2);
         return ResponseResult.ok().data("chinaEpidemicTotalData",chinaEpidemicTotalData);
+    }
+
+    @Override
+    public ResponseResult getAllProvinceEpidemicData() {
+        QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
+        wrapper.eq("parent_id",2);
+        List<GlobalEpidemicData> globalEpidemicDatas = globalEpidemicDataMapper.selectList(wrapper);
+        List<ChinaMapGlobalData> list=new LinkedList<>();
+        for (GlobalEpidemicData globalEpidemicData:globalEpidemicDatas) {
+            ChinaMapGlobalData chinaMapGlobalData=new ChinaMapGlobalData();
+            chinaMapGlobalData.setName(globalEpidemicData.getAreaName());
+            chinaMapGlobalData.setValue(globalEpidemicData.getTotalDiagnosis());
+            list.add(chinaMapGlobalData);
+        }
+        return ResponseResult.ok().data("list",list);
     }
 }

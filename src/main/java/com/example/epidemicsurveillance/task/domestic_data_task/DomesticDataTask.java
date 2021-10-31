@@ -5,7 +5,6 @@ import com.example.epidemicsurveillance.mapper.DomesticDataMapper;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -29,7 +28,7 @@ public class DomesticDataTask {
     /**
      * 每天早上10-12点都会执行一次
      */
-    @Scheduled(cron = "* * 10-12 * * *")
+   // @Scheduled(cron = "* * 10-12 * * *")
     public void getChinaEpidemicData() {
         final DomesticData todayData = domesticDataMapper.getTodayData();
         if(todayData == null) {
