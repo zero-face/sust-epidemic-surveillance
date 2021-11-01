@@ -44,6 +44,10 @@ public class CityPolicyVO {
 
     private String destinationCity;
 
+    private String locationTime;
+
+    private String destinationTime;
+
 
     /**
      * 推送时间戳

@@ -131,6 +131,9 @@ public class CityPolicyServiceImpl implements ICityPolicyService {
         customPlan.setLocationWaterway(locationPolicy.getWaterway());
         customPlan.setDestinationWaterway(destinationPolicy.getWaterway());
 
+        customPlan.setLocationTime(locationPolicy.getCreateTime());
+        customPlan.setDestinationTime(destinationPolicy.getCreateTime());
+
         return customPlan;
     }
 
