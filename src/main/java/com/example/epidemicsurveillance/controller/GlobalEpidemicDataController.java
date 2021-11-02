@@ -11,6 +11,7 @@ import com.example.epidemicsurveillance.entity.vo.globaldata.AllGlobalData;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IDomesticDataService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
+import com.sun.org.apache.regexp.internal.RE;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -91,6 +92,12 @@ public class GlobalEpidemicDataController {
     @GetMapping("getAllProvinceEpidemicData")
     public ResponseResult getAllProvinceEpidemicData(){
         return globalEpidemicDataService.getAllProvinceEpidemicData();
+    }
+
+    @ApiOperation(value = "获取中国各个省现有确诊的疫情数据")
+    @GetMapping("getAllProvinceNowConfirmData")
+    public ResponseResult getAllProvinceNowConfirmData(){
+        return globalEpidemicDataService.getAllProvinceNowConfirmData();
     }
 
 }

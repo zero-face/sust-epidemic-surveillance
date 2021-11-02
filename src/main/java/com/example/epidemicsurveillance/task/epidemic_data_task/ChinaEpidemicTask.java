@@ -7,6 +7,7 @@ import com.example.epidemicsurveillance.entity.spider.china.*;
 import com.example.epidemicsurveillance.service.IEpidemicDataTrendService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
+import com.example.epidemicsurveillance.utils.dateutil.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -68,6 +69,7 @@ public class ChinaEpidemicTask {
         trend.setOverseasInput(chinaAdd.getImportedCase());//境外输入
         trend.setTotalDeath(chinaAdd.getDead());//累计死亡
         trend.setTotalCure(chinaAdd.getHeal());//累计治愈
+        trend.setToday(DateUtil.getTodayTimeString());
         iEpidemicDataTrendService.save(trend);
 
 

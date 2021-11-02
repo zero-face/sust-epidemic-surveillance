@@ -14,19 +14,26 @@
         <result column="overseas_input" property="overseasInput" />
         <result column="total_cure" property="totalCure" />
         <result column="total_death" property="totalDeath" />
+        <result column="today" property="today" />
         <result column="gmt_create" property="gmtCreate" />
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, gmt_create, gmt_modified
+        id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, gmt_create, gmt_modified,today
     </sql>
 
     <select id="getTodayEpidemicDataTrend" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
         select <include refid="Base_Column_List"/>
         from epidemic_data_trend order by gmt_create DESC
         limit 1
+    </select>
+
+    <select id="getLatelyAddConfirmEpidemicData" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
+        select <include refid="Base_Column_List"/>
+        from epidemic_data_trend order by gmt_create DESC
+        limit 15
     </select>
 
 </mapper>

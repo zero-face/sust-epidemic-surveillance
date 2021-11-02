@@ -129,4 +129,19 @@ public class GlobalEpidemicDataServiceImpl extends ServiceImpl<GlobalEpidemicDat
 
         return ResponseResult.ok().data("list",dataList);
     }
+
+    @Override
+    public ResponseResult getAllProvinceNowConfirmData() {
+        QueryWrapper<GlobalEpidemicData> wrapper=new QueryWrapper<>();
+        wrapper.eq("parent_id",2);
+        List<GlobalEpidemicData> globalEpidemicDatas = globalEpidemicDataMapper.selectList(wrapper);
+        List<ChinaMapGlobalData> dataList=new LinkedList<>();
+        for (GlobalEpidemicData globalEpidemicData:globalEpidemicDatas) {
+            ChinaMapGlobalData chinaMapGlobalData=new ChinaMapGlobalData();
+            chinaMapGlobalData.setName(globalEpidemicData.getAreaName());
+            chinaMapGlobalData.setValue(globalEpidemicData.getExistingDiagnosis());
+            dataList.add(chinaMapGlobalData);
+        }
+        return ResponseResult.ok().data("list",dataList);
+    }
 }

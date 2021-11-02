@@ -32,4 +32,16 @@ public class EpidemicDataTrendController {
     public ResponseResult getTodayEpidemicDataTrend(){
         return iEpidemicDataTrendService.getTodayEpidemicDataTrend();
     }
+
+    @ApiOperation(value = "获取近十五天国内新增疫情数据")
+    @GetMapping("getLatelyAddConfirmEpidemicData")
+    public ResponseResult getLatelyAddConfirmEpidemicData(){
+        return iEpidemicDataTrendService.getLatelyAddConfirmEpidemicData();
+    }
+
+    @ApiOperation(value = "获取近十五天内国内境外输入疫情数据")
+    @GetMapping("getLatelyImportedCaseEpidemicData")
+    public ResponseResult getLatelyImportedCaseEpidemicData(){
+        return iEpidemicDataTrendService.getLatelyImportedCaseEpidemicData();
+    }
 }

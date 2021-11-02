@@ -15,4 +15,8 @@ import com.example.epidemicsurveillance.response.ResponseResult;
 public interface IEpidemicDataTrendService extends IService<EpidemicDataTrend> {
 
     ResponseResult getTodayEpidemicDataTrend();
+
+    ResponseResult getLatelyAddConfirmEpidemicData();
+
+    ResponseResult getLatelyImportedCaseEpidemicData();
 }
