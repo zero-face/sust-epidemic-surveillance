@@ -38,4 +38,6 @@ public interface IGlobalEpidemicDataService extends IService<GlobalEpidemicData>
     ResponseResult getChinaEpidemicTotalData();
 
     ResponseResult getAllProvinceEpidemicData();
+
+    ResponseResult getAllProvinceNowConfirmData();
 }
