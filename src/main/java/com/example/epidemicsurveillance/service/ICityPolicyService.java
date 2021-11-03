@@ -17,5 +17,4 @@ public interface ICityPolicyService {
 
     List<CityServicePhone> getCityServerPhone(String city, String key);
 
-    CityPolicyVO customizedTravelPlan(CityPolicy locationPolicy, CityPolicy destinationPolicy,List<CityServicePhone> locationServerPhone,List<CityServicePhone> destinationServerTime);
 }

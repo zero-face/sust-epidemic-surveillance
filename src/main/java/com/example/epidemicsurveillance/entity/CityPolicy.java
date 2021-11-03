@@ -82,4 +82,6 @@ public class CityPolicy {
      * 消息提供者
      */
     private String provider;
+
+
 }

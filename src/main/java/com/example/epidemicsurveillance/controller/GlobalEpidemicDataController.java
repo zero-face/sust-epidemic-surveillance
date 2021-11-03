@@ -11,7 +11,6 @@ import com.example.epidemicsurveillance.entity.vo.globaldata.AllGlobalData;
 import com.example.epidemicsurveillance.response.ResponseResult;
 import com.example.epidemicsurveillance.service.IDomesticDataService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
-import com.sun.org.apache.regexp.internal.RE;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

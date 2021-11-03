@@ -19,34 +19,27 @@ public class CityPolicyVO {
     /**
      * 地区编码
      */
-    private String locationCode;
-
-    private String destinationCode;
+    private String code;
 
     /**
      * 服务电话
      */
-    private List<CityPhoneVO> locationPhone;
+    private List<CityPhoneVO> cityPhone;
 
-    private List<CityPhoneVO> destinationPhone;
 
     /**
      * 省
      */
-    private String locationProvince;
+    private String province;
 
-    private String destinationProvince;
 
     /**
      * 城市（直辖市到市级）
      */
-    private String locationcity;
+    private String city;
 
-    private String destinationCity;
 
-    private String locationTime;
-
-    private String destinationTime;
+    private String createTime;
 
 
     /**
@@ -57,49 +50,41 @@ public class CityPolicyVO {
     /**
      * 风险等级
      */
-    private String locationLevelTag;
+    private String levelTag;
 
-    private String destinationLevelTag;
 
     /**
      * 入境地政策
      */
-    private String destinationPolicy;
+    private String comePolicy;
 
     /**
      * 处境政策
      */
-    private String locationPolicy;
+    private String leavePolicy;
 
     /**
      * 航空政策
      */
-    private String destinationAviation;
 
-    private String locationAviation;
+    private String aviation;
 
     /**
      * 公路政策
      */
-    private String locationHighway;
-
-    private String destinationHighway;
+    private String highway;
 
     /**
      * 铁路交通政策
      */
-    private String locationRailway;
-    private String destinationRailway;
+    private String railway;
 
     /**
      * 水路政策
      */
-    private String locationWaterway;
-    private String destinationWaterway;
-
+    private String waterway;
     /**
      * 消息提供者
      */
-    private String locationProvider;
-    private String destinationProvider;
+    private String provider;
 }

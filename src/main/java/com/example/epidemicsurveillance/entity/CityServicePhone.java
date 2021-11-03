@@ -16,7 +16,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CityServicePhone {
-    private String id;
 
     private String code;
 
