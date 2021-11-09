@@ -48,5 +48,13 @@ public class GlobalTotalData implements Serializable {
      * 新增死亡人数
      */
     private Integer deadAdd;
+    /**
+     * 治愈率
+     */
+    private Double curerate;
+    /**
+     * 死亡率
+     */
+    private Double deathrate;
 
 }

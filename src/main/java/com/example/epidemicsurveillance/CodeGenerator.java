@@ -42,8 +42,7 @@ public class CodeGenerator {
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://114.55.174.182:3306/sust_epidemic_surveillance?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai");
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("Zyf_20010415");
+
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -98,7 +97,7 @@ public class CodeGenerator {
         //生成 @RestController 控制器
         strategy.setRestControllerStyle(true);
         //表名称
-        strategy.setInclude("epidemic_data_trend");
+        strategy.setInclude("epidemic_data_today");
         strategy.setControllerMappingHyphenStyle(true);
         //表前缀
         //strategy.setTablePrefix("t_");

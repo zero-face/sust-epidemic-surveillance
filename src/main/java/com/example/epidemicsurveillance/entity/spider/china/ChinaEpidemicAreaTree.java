@@ -21,6 +21,10 @@ public class ChinaEpidemicAreaTree {
      */
     private String name;
     /**
+     * 新增确诊人数
+     */
+    private ChinaEpidemicToday today;
+    /**
      * 全国疫情数据每日统计
      */
     private ChinaEpidemicDayTotalData total;

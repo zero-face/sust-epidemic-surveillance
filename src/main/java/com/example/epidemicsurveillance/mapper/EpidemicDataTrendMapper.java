@@ -20,5 +20,9 @@ public interface EpidemicDataTrendMapper extends BaseMapper<EpidemicDataTrend> {
     EpidemicDataTrend getTodayEpidemicDataTrend();
 
     List<EpidemicDataTrend> getLatelyAddConfirmEpidemicData();
+
+    EpidemicDataTrend getWorldTodayEpidemicAddData();
+
+    List<EpidemicDataTrend> getChinaAndWorldAddConfirmTrend();
 }
 

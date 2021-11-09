@@ -14,6 +14,7 @@
         <result column="overseas_input" property="overseasInput" />
         <result column="total_cure" property="totalCure" />
         <result column="total_death" property="totalDeath" />
+        <result column="add_confirm" property="addConfirm"/>
         <result column="parent_id" property="parentId" />
         <result column="is_delete" property="isDelete" />
         <result column="gmt_create" property="gmtCreate" />
@@ -22,7 +23,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, parent_id, is_delete, gmt_create, gmt_modified
+        id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, add_confirm,parent_id, is_delete, gmt_create, gmt_modified
     </sql>
 
     <!--获取各个国家-->
@@ -45,5 +46,32 @@
                area_name as name
         from global_epidemic_data
         where parent_id=${provinceId}
+    </select>
+
+    <!--获取全球累计确诊Top10国家数据-->
+    <select id="getEpidemicConfirmDataTopTenCountry" resultType="com.example.epidemicsurveillance.entity.GlobalEpidemicData">
+        select id,area_name,total_diagnosis from global_epidemic_data where parent_id=1 and id !=1
+        order by total_diagnosis DESC limit 10
+    </select>
+
+    <!--获取全球现有确诊Top10国家数据-->
+    <select id="getEpidemicNowConfirmDataTopTenCountry" resultType="com.example.epidemicsurveillance.entity.GlobalEpidemicData">
+        select id,area_name,existing_diagnosis from global_epidemic_data where parent_id=1 and id !=1
+        order by existing_diagnosis DESC limit 10
+    </select>
+    <!--获取全球新增确诊Top10国家数据-->
+    <select id="getEpidemicAddConfirmDataTopTenCountry" resultType="com.example.epidemicsurveillance.entity.GlobalEpidemicData">
+        select id,area_name,add_confirm from global_epidemic_data where parent_id=1 and id !=1
+        order by add_confirm DESC limit 10
+    </select>
+    <!--获取全球死亡Top10国家数据-->
+    <select id="getEpidemicDeadDataTopTenCountry" resultType="com.example.epidemicsurveillance.entity.GlobalEpidemicData">
+        select id,area_name,total_death from global_epidemic_data where parent_id=1 and id !=1
+        order by total_death DESC limit 10
+    </select>
+    <!--获取全球治愈Top10国家数据-->
+    <select id="getEpidemicHealDataTopTenCountry" resultType="com.example.epidemicsurveillance.entity.GlobalEpidemicData">
+        select id,area_name,total_cure from global_epidemic_data where parent_id=1 and id !=1
+        order by total_cure DESC limit 10
     </select>
 </mapper>

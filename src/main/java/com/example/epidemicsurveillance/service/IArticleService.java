@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.epidemicsurveillance.entity.Article;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.epidemicsurveillance.entity.query.ArticleDataQuery;
+import com.example.epidemicsurveillance.response.ResponseResult;
 
 /**
  * <p>
@@ -16,4 +17,8 @@ import com.example.epidemicsurveillance.entity.query.ArticleDataQuery;
 public interface IArticleService extends IService<Article> {
 
     void pageQuery(Page<Article> pageResult, ArticleDataQuery articleDataQuery);
+
+    ResponseResult getArticleListByType(Integer type);
+
+    ResponseResult getArticleById(Integer id);
 }

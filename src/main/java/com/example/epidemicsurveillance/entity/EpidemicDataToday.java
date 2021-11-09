@@ -1,6 +1,9 @@
 package com.example.epidemicsurveillance.entity;
 
-import com.baomidou.mybatisplus.annotation.*;
+import com.baomidou.mybatisplus.annotation.FieldFill;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
@@ -15,16 +18,16 @@ import java.time.LocalDateTime;
 
 /**
  * <p>
- * 全球疫情数据表
+ * 今日疫情新增表
  * </p>
  *
  * @author zyf
- * @since 2021-10-12
+ * @since 2021-11-06
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="GlobalEpidemicData对象", description="全球疫情数据表")
-public class GlobalEpidemicData implements Serializable {
+@ApiModel(value="EpidemicDataToday对象", description="今日疫情新增表")
+public class EpidemicDataToday implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,39 +38,11 @@ public class GlobalEpidemicData implements Serializable {
     @ApiModelProperty(value = "地区名称")
     private String areaName;
 
-    @ApiModelProperty(value = "现有确诊")
-    private Integer existingDiagnosis;
-
-    @ApiModelProperty(value = "无症状")
-    private Integer asymptomatic;
-
-    @ApiModelProperty(value = "疑似")
-    private Integer suspected;
-
-    @ApiModelProperty(value = "重症")
-    private Integer severe;
-
-    @ApiModelProperty(value = "累计确诊")
-    private Integer totalDiagnosis;
-
-    @ApiModelProperty(value = "境外输入")
-    private Integer overseasInput;
-
-    @ApiModelProperty(value = "累计治愈")
-    private Integer totalCure;
-
-    @ApiModelProperty(value = "累计死亡")
-    private Integer totalDeath;
-
-    @ApiModelProperty(value = "新增确诊")
+    @ApiModelProperty(value = "今日新增确诊")
     private Integer addConfirm;
 
-    @ApiModelProperty(value = "父id")
-    private Integer parentId;
-
-    @ApiModelProperty(value = "0未删除,1已删除")
-    @TableLogic
-    private Integer isDelete;
+    @ApiModelProperty(value = "现有确诊")
+    private Integer nowConfirm;
 
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
@@ -80,6 +55,9 @@ public class GlobalEpidemicData implements Serializable {
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime gmtModified;
+
+    @ApiModelProperty(value = "父地区名称")
+    private String parentName;
 
 
 }
