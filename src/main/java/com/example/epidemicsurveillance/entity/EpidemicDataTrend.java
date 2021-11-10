@@ -65,6 +65,12 @@ public class EpidemicDataTrend implements Serializable {
     @ApiModelProperty(value = "统计当日日期")
     private String today;
 
+    @ApiModelProperty(value = "治愈率")
+    private Double healRate;
+
+    @ApiModelProperty(value = "死亡率")
+    private Double deadRate;
+
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)

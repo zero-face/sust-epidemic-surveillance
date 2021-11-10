@@ -51,7 +51,7 @@ public class RealTimeInfoProcessor implements PageProcessor {
 
                 int pos = contentTemp.indexOf("<div class=\"fujian-box\">");
                 String content=contentTemp.substring(0,pos-3);
-                String title=page.getHtml().css("title").get();
+                String title=page.getHtml().css("title").get().replace("<title>","").replace("</title>","");
                 String url=page.getUrl().toString();
                 Article article=new Article();
                 article.setType(4);
@@ -64,6 +64,7 @@ public class RealTimeInfoProcessor implements PageProcessor {
                 if(iArticleService.getOne(wrapper) == null){
                     iArticleService.save(article);
                 }
+
             }
         }
     }

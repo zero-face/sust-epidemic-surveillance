@@ -40,4 +40,18 @@ public interface IGlobalEpidemicDataService extends IService<GlobalEpidemicData>
     ResponseResult getAllProvinceEpidemicData();
 
     ResponseResult getAllProvinceNowConfirmData();
+
+    ResponseResult getAllProvinceEpidemicDataForWXFrom();
+
+    ResponseResult getAllCountryEpidemic();
+
+    ResponseResult getAllCountryNowConfirmEpidemicData();
+
+    ResponseResult getWorldEpidemicDataAndTodayAddEpidemicData();
+
+    ResponseResult getEpidemicDataTopTenCountry(Integer type);
+
+    ResponseResult getChinaAndWorldAddConfirmTrend();
+
+    ResponseResult getAllCountryEpidemicDataForWXFrom();
 }

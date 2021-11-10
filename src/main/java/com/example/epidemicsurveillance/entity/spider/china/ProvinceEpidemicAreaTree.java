@@ -21,6 +21,10 @@ public class ProvinceEpidemicAreaTree {
      */
     private String name;
     /**
+     * 全省当日新增疫情统计
+     */
+    private ChinaEpidemicToday today;
+    /**
      * 全省疫情数据每日统计
      */
     private ProvinceEpidemicDayTotalData total;

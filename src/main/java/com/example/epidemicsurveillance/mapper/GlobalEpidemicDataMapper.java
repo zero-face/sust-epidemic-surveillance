@@ -25,4 +25,14 @@ public interface GlobalEpidemicDataMapper extends BaseMapper<GlobalEpidemicData>
     List<ProvinceData> getEveryCountryProvinceData(Integer countryId);
 
     List<CityData> getEveryProvinceCityData(Integer provinceId);
+
+    List<GlobalEpidemicData> getEpidemicConfirmDataTopTenCountry();
+
+    List<GlobalEpidemicData> getEpidemicNowConfirmDataTopTenCountry();
+
+    List<GlobalEpidemicData> getEpidemicAddConfirmDataTopTenCountry();
+
+    List<GlobalEpidemicData> getEpidemicDeadDataTopTenCountry();
+
+    List<GlobalEpidemicData> getEpidemicHealDataTopTenCountry();
 }

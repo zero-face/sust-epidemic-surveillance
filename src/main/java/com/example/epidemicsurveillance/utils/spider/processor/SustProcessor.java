@@ -44,7 +44,7 @@ public class SustProcessor implements PageProcessor {
             page.addTargetRequests(urlList);
         }else {
             //需要解析的页面
-            String title = page.getHtml().css("title").toString();
+            String title = page.getHtml().css("title").toString().replace("<title>","").replace("</title>","");
             String html = page.getHtml().css("div#vsb_content_2").toString();
             String content = html.replaceAll("src=\"", "src=\"https://www.sust.edu.cn");
             String url = page.getUrl().toString();

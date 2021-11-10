@@ -13,6 +13,7 @@ import com.example.epidemicsurveillance.service.IDomesticDataService;
 import com.example.epidemicsurveillance.service.IGlobalEpidemicDataService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -47,6 +48,7 @@ public class GlobalEpidemicDataController {
 
     @Resource
     private IDomesticDataService domesticDataService;
+
 
     @ApiOperation(value = "获取全部地区的名称")
     @GetMapping
@@ -87,16 +89,58 @@ public class GlobalEpidemicDataController {
         return ResponseResult.error().message("获取失败");
     }
 
-    @ApiOperation(value = "获取中国各个省疫情数据")
+    @ApiOperation(value = "获取中国各个省疫情数据加载地图")
     @GetMapping("getAllProvinceEpidemicData")
     public ResponseResult getAllProvinceEpidemicData(){
         return globalEpidemicDataService.getAllProvinceEpidemicData();
     }
 
-    @ApiOperation(value = "获取中国各个省现有确诊的疫情数据")
+    @ApiOperation(value = "获取中国各个省现有确诊的疫情数据加载地图")
     @GetMapping("getAllProvinceNowConfirmData")
     public ResponseResult getAllProvinceNowConfirmData(){
         return globalEpidemicDataService.getAllProvinceNowConfirmData();
     }
 
+    @ApiOperation(value = "获取中国各个省份的详细疫情数据加载微信小程序树形表格")
+    @GetMapping("getAllProvinceEpidemicDataForWXFrom")
+    public ResponseResult getAllProvinceEpidemicDataForWXFrom(){
+        return globalEpidemicDataService.getAllProvinceEpidemicDataForWXFrom();
+    }
+
+    @ApiOperation(value = "获取世界各国累计确诊数据加载地图")
+    @GetMapping("getAllCountryEpidemicData")
+    public ResponseResult getAllCountryEpidemic(){
+        return globalEpidemicDataService.getAllCountryEpidemic();
+    }
+
+    @ApiOperation(value = "获取世界各国现有确诊数据加载地图")
+    @GetMapping("getAllCountryNowConfirmEpidemicData")
+    public ResponseResult getAllCountryNowConfirmEpidemicData(){
+        return globalEpidemicDataService.getAllCountryNowConfirmEpidemicData();
+    }
+
+    @ApiOperation(value = "获取世界疫情总数据和新增数据")
+    @GetMapping("getWorldEpidemicDataAndTodayAddEpidemicData")
+    public ResponseResult getWorldEpidemicDataAndTodayAddEpidemicData(){
+        return globalEpidemicDataService.getWorldEpidemicDataAndTodayAddEpidemicData();
+    }
+
+    @ApiOperation(value = "获取全球疫情数据Top10，加载柱状图")
+    @GetMapping("getEpidemicDataTopTenCountry/{type}")
+    public ResponseResult getEpidemicDataTopTenCountry(@ApiParam(name = "type",value = "柱状图类型",required = true)
+                                                                 @PathVariable Integer type){
+        return globalEpidemicDataService.getEpidemicDataTopTenCountry(type);
+    }
+
+    @ApiOperation(value = "获取国内外十五日内新增疫情趋势数据")
+    @GetMapping("getChinaAndWorldAddConfirmTrend")
+    public ResponseResult getChinaAndWorldAddConfirmTrend(){
+        return globalEpidemicDataService.getChinaAndWorldAddConfirmTrend();
+    }
+
+    @ApiOperation(value = "获取世界各国最新疫情数据")
+    @GetMapping("getAllCountryEpidemicDataForWXFrom")
+    public ResponseResult getAllCountryEpidemicDataForWXFrom(){
+        return globalEpidemicDataService.getAllCountryEpidemicDataForWXFrom();
+    }
 }

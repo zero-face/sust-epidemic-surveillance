@@ -15,25 +15,39 @@
         <result column="total_cure" property="totalCure" />
         <result column="total_death" property="totalDeath" />
         <result column="today" property="today" />
+        <result column="heal_rate" property="healRate"/>
+        <result column="dead_rate" property="deadRate"/>
         <result column="gmt_create" property="gmtCreate" />
         <result column="gmt_modified" property="gmtModified" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, area_name, existing_diagnosis, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, gmt_create, gmt_modified,today
+        id, area_name, existing_diagnosis,heal_rate,dead_rate, asymptomatic, suspected, severe, total_diagnosis, overseas_input, total_cure, total_death, gmt_create, gmt_modified,today
     </sql>
 
     <select id="getTodayEpidemicDataTrend" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
         select <include refid="Base_Column_List"/>
-        from epidemic_data_trend order by gmt_create DESC
+        from epidemic_data_trend where area_name='中国' order by gmt_create DESC
         limit 1
     </select>
 
     <select id="getLatelyAddConfirmEpidemicData" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
         select <include refid="Base_Column_List"/>
-        from epidemic_data_trend order by gmt_create DESC
+        from epidemic_data_trend where area_name='中国' order by gmt_create DESC
         limit 15
+    </select>
+
+
+    <select id="getWorldTodayEpidemicAddData" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
+        select <include refid="Base_Column_List"/>
+        from epidemic_data_trend where area_name='全球' order by gmt_create DESC
+        limit 1
+    </select>
+
+    <select id="getChinaAndWorldAddConfirmTrend" resultType="com.example.epidemicsurveillance.entity.EpidemicDataTrend">
+        select <include refid="Base_Column_List"/> from epidemic_data_trend
+        order by today limit 30
     </select>
 
 </mapper>

@@ -29,7 +29,7 @@ public class NotificationProcessor implements PageProcessor {
 
     @Override
     public void process(Page page) {
-            String title=page.getHtml().css("title").toString().replaceAll("_腾讯新闻","");
+            String title=page.getHtml().css("title").toString().replaceAll("_腾讯新闻","").replace("<title>","").replace("</title>","");
             String context=page.getHtml().css("div.content-article").toString();
             String url=page.getUrl().toString();
             String time = LocalDateTime.now().toString();

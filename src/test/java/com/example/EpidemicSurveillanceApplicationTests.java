@@ -4,12 +4,11 @@ import com.example.epidemicsurveillance.service.ICityPolicyService;
 import com.example.epidemicsurveillance.spider.SpiderToGetData;
 import com.example.epidemicsurveillance.task.domestic_data_task.DomesticDataTask;
 import com.example.epidemicsurveillance.utils.nat_facility.NATUtil;
+import com.example.epidemicsurveillance.utils.spider.SpiderEpidemicDataUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.net.URISyntaxException;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +25,9 @@ class EpidemicSurveillanceApplicationTests {
 
     @Autowired
     private DomesticDataTask domesticDataTask;
+
+    @Autowired
+    private SpiderEpidemicDataUtils spiderEpidemicDataUtils;
 
 
     @Test
@@ -73,5 +75,10 @@ class EpidemicSurveillanceApplicationTests {
 //        System.out.println(matcher.group(1));
 //        System.out.println(matcher.group(2));
 
+    }
+
+    @Test
+    void spider(){
+        System.out.println(spiderEpidemicDataUtils.getChinaDataJson("https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&callback=jQuery35108028357975576601_1634228907365&_=1634228907366"));
     }
 }

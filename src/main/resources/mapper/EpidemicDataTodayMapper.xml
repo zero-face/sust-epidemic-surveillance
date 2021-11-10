@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.epidemicsurveillance.mapper.EpidemicDataTodayMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.example.epidemicsurveillance.entity.EpidemicDataToday">
+        <id column="id" property="id" />
+        <result column="area_name" property="areaName" />
+        <result column="add_confirm" property="addConfirm" />
+        <result column="now_confirm" property="nowConfirm" />
+        <result column="gmt_create" property="gmtCreate" />
+        <result column="gmt_modified" property="gmtModified" />
+        <result column="parent_name" property="parentName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, area_name, add_confirm, now_confirm, gmt_create, gmt_modified, parent_name
+    </sql>
+
+</mapper>
