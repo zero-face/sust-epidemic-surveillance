@@ -45,7 +45,7 @@ public class CityPolicyController {
     private ICityPolicyService cityPolicyService;
 
     @GetMapping
-    public ResponseResult getCityPolicy(@RequestParam("location")String location) {
+    public ResponseResult getCityPolicy(@RequestParam("city")String location) {
         final CityPolicy cityPolicy = cityPolicyService.getCityPolicy(location,cityKey);
         final List<CityServicePhone> cityServerPhones = cityPolicyService.getCityServerPhone(location, phoneKey);
         if(cityPolicy == null || cityServerPhones==null) {
@@ -53,14 +53,15 @@ public class CityPolicyController {
         }
         final List<CityPhoneVO> cityPhoneVOS = cityServerPhones.stream().map(phone -> {
             final CityPhoneVO cityPhoneVO = new CityPhoneVO();
-            BeanUtils.copyProperties(cityServerPhones, cityPhoneVO);
+            BeanUtils.copyProperties(phone, cityPhoneVO);
             return cityPhoneVO;
         }).collect(Collectors.toList());
 
         final CityPolicyVO cityPolicyVO = new CityPolicyVO();
+        BeanUtils.copyProperties(cityPolicy, cityPolicyVO);
         cityPolicyVO.setCityPhone(cityPhoneVOS);
         Map<String, Object> customPolicy = JSON.parseObject(JSON.toJSONString(cityPolicyVO), new TypeReference<Map<String, Object>>() {});
+        log.info("返回的对象：{}",customPolicy );
         return ResponseResult.ok().message("本次出行查询成功").data(customPolicy);
     }
-
 }

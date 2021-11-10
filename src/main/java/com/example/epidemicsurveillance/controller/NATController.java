@@ -39,7 +39,7 @@ public class NATController {
     @Autowired
     private ICityCodeService cityCodeService;
 
-    @PostMapping
+    @GetMapping
     public ResponseResult NATQuery(@RequestParam(value = "province",required = false) @NotBlank String province,
                                    @RequestParam("search_key") @NotBlank String search_key,
                                    @RequestParam("pn") @Min(value = 1,message = "页数最小只能是1") Integer  pn,
